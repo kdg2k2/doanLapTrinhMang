@@ -1,4 +1,5 @@
 ﻿using GI.Screenshot;
+using KdgTranslationApp.BLL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -125,6 +126,26 @@ namespace KdgTranslationApp
             if (e.Button == MouseButtons.Left)
             {
                 contextMenuStrip_Camera.Show(cbtnCamera, e.Location);
+            }
+        }
+        /// <summary>
+        /// Dịch văn bản trong tb_quest khi có sự kiện click và cho kết quả ra tb_answer
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// 
+        GoogleTranslator_API trans = new GoogleTranslator_API();
+        private void btnTranslate_Click(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(tb_quest.Text))//kiểm tra đầu vào
+            {
+                MessageBox.Show("Please enter text first");
+                return;
+            }
+
+            else
+            {
+                tb_answer.Text = trans.TranslateText(tb_quest.Text, cbb_quest.Text, cbb_answer.Text);
             }
         }
     }

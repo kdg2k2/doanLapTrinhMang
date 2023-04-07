@@ -29,24 +29,19 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.cbtnCamera = new DevExpress.XtraEditors.CheckButton();
             this.contextMenuStrip_Camera = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.vietnameseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.englishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tb_quest = new System.Windows.Forms.TextBox();
+            this.cbb_quest = new System.Windows.Forms.ComboBox();
+            this.cbb_answer = new System.Windows.Forms.ComboBox();
+            this.tb_answer = new System.Windows.Forms.TextBox();
+            this.cbtnReset = new DevExpress.XtraEditors.CheckButton();
+            this.checkButton1 = new DevExpress.XtraEditors.CheckButton();
+            this.cbtnCamera = new DevExpress.XtraEditors.CheckButton();
+            this.btnTranslate = new System.Windows.Forms.Button();
             this.contextMenuStrip_Camera.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // cbtnCamera
-            // 
-            this.cbtnCamera.ContextMenuStrip = this.contextMenuStrip_Camera;
-            this.cbtnCamera.ImageOptions.Image = global::KdgTranslationApp.Properties.Resources.camera;
-            this.cbtnCamera.Location = new System.Drawing.Point(388, 129);
-            this.cbtnCamera.Name = "cbtnCamera";
-            this.cbtnCamera.Size = new System.Drawing.Size(23, 18);
-            this.cbtnCamera.TabIndex = 0;
-            this.cbtnCamera.Text = "checkButton1";
-            this.cbtnCamera.MouseDown += new System.Windows.Forms.MouseEventHandler(this.cbtnCamera_MouseDown);
             // 
             // contextMenuStrip_Camera
             // 
@@ -75,16 +70,310 @@
             this.tb_quest.Location = new System.Drawing.Point(13, 13);
             this.tb_quest.Multiline = true;
             this.tb_quest.Name = "tb_quest";
-            this.tb_quest.Size = new System.Drawing.Size(450, 110);
+            this.tb_quest.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.tb_quest.Size = new System.Drawing.Size(435, 110);
             this.tb_quest.TabIndex = 1;
+            // 
+            // cbb_quest
+            // 
+            this.cbb_quest.FormattingEnabled = true;
+            this.cbb_quest.Items.AddRange(new object[] {
+            "Afrikaans",
+            "Albanian",
+            "Amharic",
+            "Arabic",
+            "Armenian",
+            "Azerbaijani",
+            "Basque",
+            "Belarusian",
+            "Bengali",
+            "Bosnian",
+            "Bulgarian",
+            "Catalan",
+            "Cebuano",
+            "Chichewa",
+            "Chinese (Simplified)",
+            "Chinese (Traditional)",
+            "Corsican",
+            "Croatian",
+            "Czech",
+            "Danish",
+            "Dutch",
+            "English",
+            "Esperanto",
+            "Estonian",
+            "Filipino",
+            "Finnish",
+            "French",
+            "Frisian",
+            "Galician",
+            "Georgian",
+            "German",
+            "Greek",
+            "Gujarati",
+            "Haitian Creole",
+            "Hausa",
+            "Hawaiian",
+            "Hebrew",
+            "Hindi",
+            "Hmong",
+            "Hungarian",
+            "Icelandic",
+            "Igbo",
+            "Indonesian",
+            "Irish",
+            "Italian",
+            "Japanese",
+            "Javanese",
+            "Kannada",
+            "Kazakh",
+            "Khmer",
+            "Kinyarwanda",
+            "Korean",
+            "Kurdish (Kurmanji)",
+            "Kyrgyz",
+            "Lao",
+            "Latin",
+            "Latvian",
+            "Lithuanian",
+            "Luxembourgish",
+            "Macedonian",
+            "Malagasy",
+            "Malay",
+            "Malayalam",
+            "Maltese",
+            "Maori",
+            "Marathi",
+            "Mongolian",
+            "Myanmar (Burmese)",
+            "Nepali",
+            "Norwegian",
+            "Nyanja (Chichewa)",
+            "Odia (Oriya)",
+            "Pashto",
+            "Persian",
+            "Polish",
+            "Portuguese",
+            "Punjabi",
+            "Romanian",
+            "Russian",
+            "Samoan",
+            "Scots Gaelic",
+            "Serbian",
+            "Sesotho",
+            "Shona",
+            "Sindhi",
+            "Sinhala (Sinhalese)",
+            "Slovak",
+            "Slovenian",
+            "Somali",
+            "Spanish",
+            "Sundanese",
+            "Swahili",
+            "Swedish",
+            "Tajik",
+            "Tamil",
+            "Tatar",
+            "Telugu",
+            "Thai",
+            "Turkish",
+            "Turkmen",
+            "Ukrainian",
+            "Urdu",
+            "Uyghur",
+            "Uzbek",
+            "Vietnamese",
+            "Welsh",
+            "Xhosa",
+            "Yiddish",
+            "Yoruba",
+            "Zulu"});
+            this.cbb_quest.Location = new System.Drawing.Point(46, 129);
+            this.cbb_quest.Name = "cbb_quest";
+            this.cbb_quest.Size = new System.Drawing.Size(145, 21);
+            this.cbb_quest.TabIndex = 2;
+            // 
+            // cbb_answer
+            // 
+            this.cbb_answer.FormattingEnabled = true;
+            this.cbb_answer.Items.AddRange(new object[] {
+            "Afrikaans",
+            "Albanian",
+            "Amharic",
+            "Arabic",
+            "Armenian",
+            "Azerbaijani",
+            "Basque",
+            "Belarusian",
+            "Bengali",
+            "Bosnian",
+            "Bulgarian",
+            "Catalan",
+            "Cebuano",
+            "Chichewa",
+            "Chinese (Simplified)",
+            "Chinese (Traditional)",
+            "Corsican",
+            "Croatian",
+            "Czech",
+            "Danish",
+            "Dutch",
+            "English",
+            "Esperanto",
+            "Estonian",
+            "Filipino",
+            "Finnish",
+            "French",
+            "Frisian",
+            "Galician",
+            "Georgian",
+            "German",
+            "Greek",
+            "Gujarati",
+            "Haitian Creole",
+            "Hausa",
+            "Hawaiian",
+            "Hebrew",
+            "Hindi",
+            "Hmong",
+            "Hungarian",
+            "Icelandic",
+            "Igbo",
+            "Indonesian",
+            "Irish",
+            "Italian",
+            "Japanese",
+            "Javanese",
+            "Kannada",
+            "Kazakh",
+            "Khmer",
+            "Kinyarwanda",
+            "Korean",
+            "Kurdish (Kurmanji)",
+            "Kyrgyz",
+            "Lao",
+            "Latin",
+            "Latvian",
+            "Lithuanian",
+            "Luxembourgish",
+            "Macedonian",
+            "Malagasy",
+            "Malay",
+            "Malayalam",
+            "Maltese",
+            "Maori",
+            "Marathi",
+            "Mongolian",
+            "Myanmar (Burmese)",
+            "Nepali",
+            "Norwegian",
+            "Nyanja (Chichewa)",
+            "Odia (Oriya)",
+            "Pashto",
+            "Persian",
+            "Polish",
+            "Portuguese",
+            "Punjabi",
+            "Romanian",
+            "Russian",
+            "Samoan",
+            "Scots Gaelic",
+            "Serbian",
+            "Sesotho",
+            "Shona",
+            "Sindhi",
+            "Sinhala (Sinhalese)",
+            "Slovak",
+            "Slovenian",
+            "Somali",
+            "Spanish",
+            "Sundanese",
+            "Swahili",
+            "Swedish",
+            "Tajik",
+            "Tamil",
+            "Tatar",
+            "Telugu",
+            "Thai",
+            "Turkish",
+            "Turkmen",
+            "Ukrainian",
+            "Urdu",
+            "Uyghur",
+            "Uzbek",
+            "Vietnamese",
+            "Welsh",
+            "Xhosa",
+            "Yiddish",
+            "Yoruba",
+            "Zulu"});
+            this.cbb_answer.Location = new System.Drawing.Point(233, 129);
+            this.cbb_answer.Name = "cbb_answer";
+            this.cbb_answer.Size = new System.Drawing.Size(145, 21);
+            this.cbb_answer.TabIndex = 2;
+            // 
+            // tb_answer
+            // 
+            this.tb_answer.Location = new System.Drawing.Point(13, 157);
+            this.tb_answer.Multiline = true;
+            this.tb_answer.Name = "tb_answer";
+            this.tb_answer.ReadOnly = true;
+            this.tb_answer.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.tb_answer.Size = new System.Drawing.Size(435, 110);
+            this.tb_answer.TabIndex = 4;
+            // 
+            // cbtnReset
+            // 
+            this.cbtnReset.ImageOptions.Image = global::KdgTranslationApp.Properties.Resources.file;
+            this.cbtnReset.Location = new System.Drawing.Point(13, 128);
+            this.cbtnReset.Name = "cbtnReset";
+            this.cbtnReset.Size = new System.Drawing.Size(30, 23);
+            this.cbtnReset.TabIndex = 5;
+            this.cbtnReset.Text = "checkButton2";
+            // 
+            // checkButton1
+            // 
+            this.checkButton1.ImageOptions.Image = global::KdgTranslationApp.Properties.Resources.left_and_right_arrows;
+            this.checkButton1.Location = new System.Drawing.Point(197, 128);
+            this.checkButton1.Name = "checkButton1";
+            this.checkButton1.Size = new System.Drawing.Size(30, 23);
+            this.checkButton1.TabIndex = 3;
+            this.checkButton1.Text = "checkButton1";
+            // 
+            // cbtnCamera
+            // 
+            this.cbtnCamera.ContextMenuStrip = this.contextMenuStrip_Camera;
+            this.cbtnCamera.ImageOptions.Image = global::KdgTranslationApp.Properties.Resources.camera;
+            this.cbtnCamera.Location = new System.Drawing.Point(338, 105);
+            this.cbtnCamera.Name = "cbtnCamera";
+            this.cbtnCamera.Size = new System.Drawing.Size(23, 18);
+            this.cbtnCamera.TabIndex = 0;
+            this.cbtnCamera.Text = "checkButton1";
+            this.cbtnCamera.MouseDown += new System.Windows.Forms.MouseEventHandler(this.cbtnCamera_MouseDown);
+            // 
+            // btnTranslate
+            // 
+            this.btnTranslate.Location = new System.Drawing.Point(384, 128);
+            this.btnTranslate.Name = "btnTranslate";
+            this.btnTranslate.Size = new System.Drawing.Size(64, 23);
+            this.btnTranslate.TabIndex = 6;
+            this.btnTranslate.Text = "Translate";
+            this.btnTranslate.UseVisualStyleBackColor = true;
+            this.btnTranslate.Click += new System.EventHandler(this.btnTranslate_Click);
             // 
             // KdgTranslateApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(632, 278);
-            this.Controls.Add(this.tb_quest);
+            this.ClientSize = new System.Drawing.Size(463, 278);
+            this.Controls.Add(this.btnTranslate);
+            this.Controls.Add(this.cbtnReset);
+            this.Controls.Add(this.tb_answer);
+            this.Controls.Add(this.checkButton1);
+            this.Controls.Add(this.cbb_answer);
+            this.Controls.Add(this.cbb_quest);
             this.Controls.Add(this.cbtnCamera);
+            this.Controls.Add(this.tb_quest);
             this.MaximizeBox = false;
             this.Name = "KdgTranslateApp";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -102,6 +391,12 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip_Camera;
         private System.Windows.Forms.ToolStripMenuItem vietnameseToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem englishToolStripMenuItem;
+        private System.Windows.Forms.ComboBox cbb_quest;
+        private System.Windows.Forms.ComboBox cbb_answer;
+        private DevExpress.XtraEditors.CheckButton checkButton1;
+        private System.Windows.Forms.TextBox tb_answer;
+        private DevExpress.XtraEditors.CheckButton cbtnReset;
+        private System.Windows.Forms.Button btnTranslate;
     }
 }
 

@@ -38,11 +38,12 @@
             this.tb_answer = new System.Windows.Forms.TextBox();
             this.btnTranslate = new System.Windows.Forms.Button();
             this.rbtn_AutoTranslate = new System.Windows.Forms.RadioButton();
+            this.cbtnVoiceInput = new DevExpress.XtraEditors.CheckButton();
+            this.cbtn_answerSpeak = new DevExpress.XtraEditors.CheckButton();
             this.cbtn_questSpeak = new DevExpress.XtraEditors.CheckButton();
             this.cbtnReset = new DevExpress.XtraEditors.CheckButton();
             this.cbtnSwitch = new DevExpress.XtraEditors.CheckButton();
             this.cbtnCamera = new DevExpress.XtraEditors.CheckButton();
-            this.cbtn_answerSpeak = new DevExpress.XtraEditors.CheckButton();
             this.contextMenuStrip_Camera.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -348,6 +349,26 @@
             this.rbtn_AutoTranslate.UseVisualStyleBackColor = true;
             this.rbtn_AutoTranslate.Click += new System.EventHandler(this.rbtn_AutoTranslate_Click);
             // 
+            // cbtnVoiceInput
+            // 
+            this.cbtnVoiceInput.ImageOptions.Image = global::KdgTranslationApp.Properties.Resources.google_voice;
+            this.cbtnVoiceInput.Location = new System.Drawing.Point(369, 113);
+            this.cbtnVoiceInput.Name = "cbtnVoiceInput";
+            this.cbtnVoiceInput.Size = new System.Drawing.Size(23, 18);
+            this.cbtnVoiceInput.TabIndex = 10;
+            this.cbtnVoiceInput.Text = "checkButton1";
+            this.cbtnVoiceInput.Click += new System.EventHandler(this.cbtnVoiceInput_Click);
+            // 
+            // cbtn_answerSpeak
+            // 
+            this.cbtn_answerSpeak.ImageOptions.Image = global::KdgTranslationApp.Properties.Resources.sound;
+            this.cbtn_answerSpeak.Location = new System.Drawing.Point(399, 256);
+            this.cbtn_answerSpeak.Name = "cbtn_answerSpeak";
+            this.cbtn_answerSpeak.Size = new System.Drawing.Size(23, 18);
+            this.cbtn_answerSpeak.TabIndex = 9;
+            this.cbtn_answerSpeak.Text = "checkButton1";
+            this.cbtn_answerSpeak.Click += new System.EventHandler(this.cbtn_answerSpeak_Click);
+            // 
             // cbtn_questSpeak
             // 
             this.cbtn_questSpeak.ImageOptions.Image = global::KdgTranslationApp.Properties.Resources.sound;
@@ -389,21 +410,12 @@
             this.cbtnCamera.Text = "checkButton1";
             this.cbtnCamera.MouseDown += new System.Windows.Forms.MouseEventHandler(this.cbtnCamera_MouseDown);
             // 
-            // cbtn_answerSpeak
-            // 
-            this.cbtn_answerSpeak.ImageOptions.Image = global::KdgTranslationApp.Properties.Resources.sound;
-            this.cbtn_answerSpeak.Location = new System.Drawing.Point(399, 250);
-            this.cbtn_answerSpeak.Name = "cbtn_answerSpeak";
-            this.cbtn_answerSpeak.Size = new System.Drawing.Size(23, 18);
-            this.cbtn_answerSpeak.TabIndex = 9;
-            this.cbtn_answerSpeak.Text = "checkButton1";
-            this.cbtn_answerSpeak.Click += new System.EventHandler(this.cbtn_answerSpeak_Click);
-            // 
             // KdgTranslateApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(463, 285);
+            this.Controls.Add(this.cbtnVoiceInput);
             this.Controls.Add(this.cbtn_answerSpeak);
             this.Controls.Add(this.cbtn_questSpeak);
             this.Controls.Add(this.rbtn_AutoTranslate);
@@ -442,6 +454,7 @@
         private System.Windows.Forms.RadioButton rbtn_AutoTranslate;
         private DevExpress.XtraEditors.CheckButton cbtn_questSpeak;
         private DevExpress.XtraEditors.CheckButton cbtn_answerSpeak;
+        private DevExpress.XtraEditors.CheckButton cbtnVoiceInput;
     }
 }
 

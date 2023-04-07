@@ -34,9 +34,10 @@
             // 
             // cbtnCamera
             // 
+            this.cbtnCamera.ImageOptions.Image = global::KdgTranslationApp.Properties.Resources.camera;
             this.cbtnCamera.Location = new System.Drawing.Point(388, 129);
             this.cbtnCamera.Name = "cbtnCamera";
-            this.cbtnCamera.Size = new System.Drawing.Size(75, 23);
+            this.cbtnCamera.Size = new System.Drawing.Size(23, 18);
             this.cbtnCamera.TabIndex = 0;
             this.cbtnCamera.Text = "checkButton1";
             this.cbtnCamera.Click += new System.EventHandler(this.cbtnCamera_Click);

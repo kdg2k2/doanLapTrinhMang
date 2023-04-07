@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KdgTranslateApp));
             this.contextMenuStrip_Camera = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.vietnameseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.englishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -44,7 +45,12 @@
             this.cbtnReset = new DevExpress.XtraEditors.CheckButton();
             this.cbtnSwitch = new DevExpress.XtraEditors.CheckButton();
             this.cbtnCamera = new DevExpress.XtraEditors.CheckButton();
+            this.notifyIcon_Taskbar = new System.Windows.Forms.NotifyIcon(this.components);
+            this.contextMenuStrip_notifyIcon = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.kdgTranslateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip_Camera.SuspendLayout();
+            this.contextMenuStrip_notifyIcon.SuspendLayout();
             this.SuspendLayout();
             // 
             // contextMenuStrip_Camera
@@ -362,7 +368,7 @@
             // cbtn_answerSpeak
             // 
             this.cbtn_answerSpeak.ImageOptions.Image = global::KdgTranslationApp.Properties.Resources.sound;
-            this.cbtn_answerSpeak.Location = new System.Drawing.Point(399, 256);
+            this.cbtn_answerSpeak.Location = new System.Drawing.Point(399, 257);
             this.cbtn_answerSpeak.Name = "cbtn_answerSpeak";
             this.cbtn_answerSpeak.Size = new System.Drawing.Size(23, 18);
             this.cbtn_answerSpeak.TabIndex = 9;
@@ -410,6 +416,36 @@
             this.cbtnCamera.Text = "checkButton1";
             this.cbtnCamera.MouseDown += new System.Windows.Forms.MouseEventHandler(this.cbtnCamera_MouseDown);
             // 
+            // notifyIcon_Taskbar
+            // 
+            this.notifyIcon_Taskbar.ContextMenuStrip = this.contextMenuStrip_notifyIcon;
+            this.notifyIcon_Taskbar.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon_Taskbar.Icon")));
+            this.notifyIcon_Taskbar.Text = "KdgTranslate";
+            this.notifyIcon_Taskbar.Visible = true;
+            this.notifyIcon_Taskbar.MouseClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_Taskbar_MouseClick);
+            // 
+            // contextMenuStrip_notifyIcon
+            // 
+            this.contextMenuStrip_notifyIcon.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.kdgTranslateToolStripMenuItem,
+            this.exitToolStripMenuItem});
+            this.contextMenuStrip_notifyIcon.Name = "contextMenuStrip_notifyIcon";
+            this.contextMenuStrip_notifyIcon.Size = new System.Drawing.Size(142, 48);
+            // 
+            // kdgTranslateToolStripMenuItem
+            // 
+            this.kdgTranslateToolStripMenuItem.Name = "kdgTranslateToolStripMenuItem";
+            this.kdgTranslateToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.kdgTranslateToolStripMenuItem.Text = "KdgTranslate";
+            this.kdgTranslateToolStripMenuItem.Click += new System.EventHandler(this.kdgTranslateToolStripMenuItem_Click);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
             // KdgTranslateApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -433,6 +469,7 @@
             this.Text = "KdgTranslate";
             this.Load += new System.EventHandler(this.KdgTranslateApp_Load);
             this.contextMenuStrip_Camera.ResumeLayout(false);
+            this.contextMenuStrip_notifyIcon.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -455,6 +492,10 @@
         private DevExpress.XtraEditors.CheckButton cbtn_questSpeak;
         private DevExpress.XtraEditors.CheckButton cbtn_answerSpeak;
         private DevExpress.XtraEditors.CheckButton cbtnVoiceInput;
+        private System.Windows.Forms.NotifyIcon notifyIcon_Taskbar;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip_notifyIcon;
+        private System.Windows.Forms.ToolStripMenuItem kdgTranslateToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
     }
 }
 

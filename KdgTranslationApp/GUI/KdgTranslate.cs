@@ -313,5 +313,46 @@ namespace KdgTranslationApp
                 recognier.Dispose(); // Giải phóng tài nguyên
             }
         }
+
+        /// <summary>
+        /// set sự kiện cho contentMenuTrip của NotifyIcon
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void kdgTranslateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Show();
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        /// <summary>
+        /// set sự kiện cho notifyIcon
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void notifyIcon_Taskbar_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                this.Show();
+            }
+        }
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                e.Cancel = true; // Chặn sự kiện FormClosing.
+                this.Hide(); // Ẩn Form đi.
+            }
+            else
+            {
+                base.OnFormClosing(e);
+            }
+        }
     }
 }

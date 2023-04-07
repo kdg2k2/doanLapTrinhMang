@@ -1,0 +1,53 @@
+commit 31992fc8c5435b28334fe2a93843fefb5598c624 (HEAD -> master, origin/master)
+Author: DG <kdg2k2@gmail.com>
+Date:   Fri Apr 7 14:45:34 2023 +0700
+
+    Set chạy ngầm ứng dụng bằng notifyIcon
+
+commit c411342b543dfe3f2efcb3c9d2db228eed3221c2
+Author: DG <kdg2k2@gmail.com>
+Date:   Fri Apr 7 14:37:33 2023 +0700
+
+    sử dụng Speech to Text để nhập bằng giọn nói
+
+commit 9bc2c14562d565d3cea08e2e0c2d254878d64683
+Author: DG <kdg2k2@gmail.com>
+Date:   Fri Apr 7 14:28:02 2023 +0700
+
+    Sử dụng thư viện TextToSpeech đọc văn bản từ textbox
+
+commit 0ca0de6796258049447e543bc65a08fd6a305f8a
+Author: DG <kdg2k2@gmail.com>
+Date:   Fri Apr 7 14:15:17 2023 +0700
+
+    Thêm chức năng tự động dịch
+
+commit f68ff78007b78d3959a0f069add330c4abc4009c
+Author: DG <kdg2k2@gmail.com>
+Date:   Fri Apr 7 13:59:06 2023 +0700
+
+    Sử dụng GoogleAPI tạo kết nối client đến server
+
+commit 9de06e7d545da43bebf375ff2ed6915e081407d1
+Author: DG <kdg2k2@gmail.com>
+Date:   Fri Apr 7 13:31:34 2023 +0700
+
+    Thêm ContentMenuTrip cho cbtnCamera
+
+commit 55ec9fdbed6abd20a63e045c9d87f0c09b7dd6b0
+Author: DG <kdg2k2@gmail.com>
+Date:   Fri Apr 7 13:14:31 2023 +0700
+
+    chụp ảnh bằng GI và lấy văn bản ra bằng Tesseract OCR
+
+commit 4b19323d66129dd270279d505266a55dc0e74027
+Author: DG <kdg2k2@gmail.com>
+Date:   Fri Apr 7 13:06:20 2023 +0700
+
+    Add project files.
+
+commit d841c5a85d3025c5ead9e9960bace64a401d342d
+Author: DG <kdg2k2@gmail.com>
+Date:   Fri Apr 7 13:06:15 2023 +0700
+
+    Add .gitattributes and .gitignore.

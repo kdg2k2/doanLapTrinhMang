@@ -67,15 +67,15 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="KdgTranslate.cs">
+    <Compile Include="GUI\KdgTranslate.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="KdgTranslate.Designer.cs">
+    <Compile Include="GUI\KdgTranslate.Designer.cs">
       <DependentUpon>KdgTranslate.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="KdgTranslate.resx">
+    <EmbeddedResource Include="GUI\KdgTranslate.resx">
       <DependentUpon>KdgTranslate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -117,7 +117,9 @@
     <None Include="tessdata\pdf.ttx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="tessdata\vie.traineddata" />
+    <None Include="tessdata\vie.traineddata">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resource\camera.png" />
@@ -129,7 +131,6 @@
   <ItemGroup>
     <Folder Include="BLL\" />
     <Folder Include="DAL\" />
-    <Folder Include="GUI\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Tesseract.5.2.0\build\Tesseract.targets" Condition="Exists('..\packages\Tesseract.5.2.0\build\Tesseract.targets')" />

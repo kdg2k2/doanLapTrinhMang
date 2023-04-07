@@ -72,7 +72,31 @@ namespace KdgTranslationApp
             return res;
         }
 
-        private void cbtnCamera_Click(object sender, EventArgs e)
+        private void vietnameseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Thu nhỏ cửa sổ hiện tại để có thể chụp ảnh màn hình
+            this.WindowState = FormWindowState.Minimized;
+            // Dừng chương trình trong 0.5 giây để đợi cửa sổ thu nhỏ hoàn thành
+            Thread.Sleep(500);
+            // Chụp một ảnh vùng màn hình được chọn và chuyển đổi thành định dạng bitmap
+            try
+            {
+                Bitmap bitmap = ConvertToBitmap(Screenshot.CaptureRegion());
+                // Nhận diện ký tự trong ảnh bitmap sử dụng thư viện OCR và lưu kết quả vào biến ocrResult
+                string ocrResult = OCR(bitmap, "vie");
+                // Hiển thị kết quả nhận diện ký tự lên TextBox
+                tb_quest.Text = ocrResult;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            // Khôi phục kích thước cửa sổ hiện tại
+            this.WindowState = FormWindowState.Normal;
+        }
+
+        private void englishToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // Thu nhỏ cửa sổ hiện tại để có thể chụp ảnh màn hình
             this.WindowState = FormWindowState.Minimized;
@@ -94,6 +118,14 @@ namespace KdgTranslationApp
 
             // Khôi phục kích thước cửa sổ hiện tại
             this.WindowState = FormWindowState.Normal;
+        }
+
+        private void cbtnCamera_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                contextMenuStrip_Camera.Show(cbtnCamera, e.Location);
+            }
         }
     }
 }

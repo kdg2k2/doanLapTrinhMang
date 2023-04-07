@@ -14,6 +14,8 @@ using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Media.Imaging;
 using Tesseract;
+using Timer = System.Windows.Forms.Timer;
+
 
 namespace KdgTranslationApp
 {
@@ -22,6 +24,17 @@ namespace KdgTranslationApp
         public KdgTranslateApp()
         {
             InitializeComponent();
+        }
+        /// <summary>
+        /// Set sự kiện xảy ra khi form được load
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void KdgTranslateApp_Load(object sender, EventArgs e)
+        {
+            //set ngôn ngữ mặc định
+            cbb_quest.Text = "English";
+            cbb_answer.Text = "Vietnamese";
         }
 
         /// <summary>
@@ -147,6 +160,85 @@ namespace KdgTranslationApp
             {
                 tb_answer.Text = trans.TranslateText(tb_quest.Text, cbb_quest.Text, cbb_answer.Text);
             }
+        }
+
+        /// <summary>
+        /// Set sự kiện tự động dịch khi click vào radiobtn
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// 
+        private bool isRadioButtonChecked = false;//tắt nút Dịch khi kích hoạt radio button
+        private void rbtn_AutoTranslate_Click(object sender, EventArgs e)
+        {
+            if (isRadioButtonChecked)
+            {
+                rbtn_AutoTranslate.Checked = false;
+                isRadioButtonChecked = false;
+                btnTranslate.Enabled = true;
+            }
+            else
+            {
+                rbtn_AutoTranslate.Checked = true;
+                isRadioButtonChecked = true;
+                btnTranslate.Enabled = false;
+                if (tb_quest.Text != "")
+                    tb_answer.Text = trans.TranslateText(tb_quest.Text, cbb_quest.Text, cbb_answer.Text);
+            }
+        }
+
+        private Timer timer = new Timer(); // Khai báo một đối tượng Timer
+        private string lastText = ""; // Khai báo một chuỗi để lưu trữ văn bản cuối cùng được nhập vào ô textbox
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            timer.Stop(); // Dừng Timer để tránh bị gọi lại trước khi xử lý hoàn tất
+            if (lastText != "")
+            {
+                tb_answer.Text = trans.TranslateText(lastText, cbb_quest.Text, cbb_answer.Text); // Nếu văn bản cuối cùng khác rỗng, dịch nó sang ngôn ngữ được chọn và đưa ra ô textbox
+            }
+        }
+
+        private void tb_quest_TextChanged(object sender, EventArgs e)
+        {
+            if (rbtn_AutoTranslate.Checked) // Nếu ô radio button "translate" được chọn
+            {
+                lastText = tb_quest.Text; // Lưu trữ văn bản cuối cùng được nhập vào ô textbox
+                timer.Stop(); // Dừng Timer trước khi đặt lại thời gian
+                timer.Tick -= Timer_Tick; // Loại bỏ Tick đã được thêm vào trước đó (nếu có)
+                timer.Tick += Timer_Tick; // Thêm phương thức Timer_Tick vào danh sách các Tick được thực hiện khi Timer chạy
+                timer.Interval = 1500; // Thiết lập thời gian trì hoãn cho Timer là 1500ms
+                timer.Start(); // Khởi động Timer
+            }
+        }
+
+        /// <summary>
+        /// set sự kiện đổi chỗ text của 2 cbb
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void cbtnSwitch_Click(object sender, EventArgs e)
+        {
+            //đổi chỗ 2 văn bản của 2 combobox
+            string temp = cbb_quest.Text;
+            cbb_quest.Text = cbb_answer.Text;
+            cbb_answer.Text = temp;
+
+            if (tb_quest.Text != "")//nếu tb_quest khác rỗng sẽ tự dịch
+                tb_answer.Text = trans.TranslateText(tb_quest.Text, cbb_quest.Text, cbb_answer.Text);
+        }
+
+        /// <summary>
+        /// set sự kiện làm trống các ô textbox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void cbtnReset_Click(object sender, EventArgs e)
+        {
+            //reset về rỗng
+            tb_quest.Text = "";
+            tb_answer.Text = "";
+            cbb_answer.Text = "Vietnamese";
+            cbb_quest.Text = "English";
         }
     }
 }

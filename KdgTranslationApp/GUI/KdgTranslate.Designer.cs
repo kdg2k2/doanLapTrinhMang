@@ -89,6 +89,7 @@
             // 
             this.cbb_quest.FormattingEnabled = true;
             this.cbb_quest.Items.AddRange(new object[] {
+            "Detect",
             "Afrikaans",
             "Albanian",
             "Amharic",

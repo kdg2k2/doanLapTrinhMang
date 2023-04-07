@@ -18,6 +18,8 @@ using Timer = System.Windows.Forms.Timer;
 using System.Speech;
 using System.Speech.Synthesis;
 using System.Speech.Recognition;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace KdgTranslationApp
 {
@@ -32,11 +34,64 @@ namespace KdgTranslationApp
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
+        /// 
+        Convert_language_code cv = new Convert_language_code();
         private void KdgTranslateApp_Load(object sender, EventArgs e)
         {
             //set ngôn ngữ mặc định
-            cbb_quest.Text = "English";
+            cbb_quest.Text = "Detect";
             cbb_answer.Text = "Vietnamese";
+        }
+
+        /// <summary>
+        /// Dịch văn bản trong tb_quest khi có sự kiện click và cho kết quả ra tb_answer
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// 
+        GoogleTranslator_API trans = new GoogleTranslator_API();
+        private async void btnTranslate_Click(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(tb_quest.Text))//kiểm tra đầu vào
+            {
+                MessageBox.Show("Please enter text first");
+                return;
+            }
+
+            else if (cbb_quest.Text == "Detect" && tb_quest.Text != "")
+            {
+                cbb_quest.Text = cv.ConvertCodeToLanguageName(await LanguageDetector.DetectLanguageAsync(tb_quest.Text, tb_answer.Text));
+                tb_answer.Text = trans.TranslateText(tb_quest.Text, cbb_quest.Text, cbb_answer.Text);
+            }
+
+            else
+            {
+                tb_answer.Text = trans.TranslateText(tb_quest.Text, cbb_quest.Text, cbb_answer.Text);
+            }
+        }
+
+        public static class LanguageDetector
+        {
+            public static async Task<string> DetectLanguageAsync(string text, string targetLanguage)
+            {
+                Convert_language_code cv = new Convert_language_code();
+                using (var client = new HttpClient())
+                {
+                    var url = $"https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl={cv.ConvertLanguageNameToCode(targetLanguage)}&dt=t&q={Uri.EscapeDataString(text)}";
+                    var response = await client.GetAsync(url);
+                    response.EnsureSuccessStatusCode();
+                    var content = await response.Content.ReadAsStringAsync();
+                    var parts = content.Split('"');
+                    if (parts.Length >= 2)
+                    {
+                        return parts[1];
+                    }
+                    else
+                    {
+                        throw new Exception("Cannot detect language.");
+                    }
+                }
+            }
         }
 
         /// <summary>
@@ -143,26 +198,6 @@ namespace KdgTranslationApp
                 contextMenuStrip_Camera.Show(cbtnCamera, e.Location);
             }
         }
-        /// <summary>
-        /// Dịch văn bản trong tb_quest khi có sự kiện click và cho kết quả ra tb_answer
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        /// 
-        GoogleTranslator_API trans = new GoogleTranslator_API();
-        private void btnTranslate_Click(object sender, EventArgs e)
-        {
-            if (String.IsNullOrEmpty(tb_quest.Text))//kiểm tra đầu vào
-            {
-                MessageBox.Show("Please enter text first");
-                return;
-            }
-
-            else
-            {
-                tb_answer.Text = trans.TranslateText(tb_quest.Text, cbb_quest.Text, cbb_answer.Text);
-            }
-        }
 
         /// <summary>
         /// Set sự kiện tự động dịch khi click vào radiobtn
@@ -191,12 +226,18 @@ namespace KdgTranslationApp
 
         private Timer timer = new Timer(); // Khai báo một đối tượng Timer
         private string lastText = ""; // Khai báo một chuỗi để lưu trữ văn bản cuối cùng được nhập vào ô textbox
-        private void Timer_Tick(object sender, EventArgs e)
+        private async void Timer_Tick(object sender, EventArgs e)
         {
             timer.Stop(); // Dừng Timer để tránh bị gọi lại trước khi xử lý hoàn tất
             if (lastText != "")
             {
-                tb_answer.Text = trans.TranslateText(lastText, cbb_quest.Text, cbb_answer.Text); // Nếu văn bản cuối cùng khác rỗng, dịch nó sang ngôn ngữ được chọn và đưa ra ô textbox
+                if (cbb_quest.Text == "Detect" && tb_quest.Text != "")
+                {
+                    cbb_quest.Text = cv.ConvertCodeToLanguageName(await LanguageDetector.DetectLanguageAsync(tb_quest.Text, tb_answer.Text));
+                    tb_answer.Text = trans.TranslateText(tb_quest.Text, cbb_quest.Text, cbb_answer.Text);
+                }
+                else
+                    tb_answer.Text = trans.TranslateText(lastText, cbb_quest.Text, cbb_answer.Text); // Nếu văn bản cuối cùng khác rỗng, dịch nó sang ngôn ngữ được chọn và đưa ra ô textbox
             }
         }
 

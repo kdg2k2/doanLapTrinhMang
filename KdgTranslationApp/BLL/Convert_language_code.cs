@@ -130,5 +130,127 @@ namespace KdgTranslationApp.BLL
             return code;
         }
 
+        public string ConvertCodeToLanguageName(string code)
+        {
+            string languageName = "";
+            //110 ngôn ngữ
+            switch (code)
+            {
+                case "af": languageName = "Afrikaans"; break;
+                case "sq": languageName = "Albanian"; break;
+                case "am": languageName = "Amharic"; break;
+                case "ar": languageName = "Arabic"; break;
+                case "hy": languageName = "Armenian"; break;
+                case "az": languageName = "Azerbaijani"; break;
+                case "eu": languageName = "Basque"; break;
+                case "be": languageName = "Belarusian"; break;
+                case "bn": languageName = "Bengali"; break;
+                case "bs": languageName = "Bosnian"; break;
+                case "bg": languageName = "Bulgarian"; break;
+                case "ca": languageName = "Catalan"; break;
+                case "ceb": languageName = "Cebuano"; break;
+                case "ny": languageName = "Chichewa"; break;
+                case "zh-CN": languageName = "Chinese (Simplified)"; break;
+                case "zh-TW": languageName = "Chinese (Traditional)"; break;
+                case "co": languageName = "Corsican"; break;
+                case "hr": languageName = "Croatian"; break;
+                case "cs": languageName = "Czech"; break;
+                case "da": languageName = "Danish"; break;
+                case "nl": languageName = "Dutch"; break;
+                case "en": languageName = "English"; break;
+                case "eo": languageName = "Esperanto"; break;
+                case "et": languageName = "Estonian"; break;
+                case "tl": languageName = "Filipino"; break;
+                case "fi": languageName = "Finnish"; break;
+                case "fr": languageName = "French"; break;
+                case "fy": languageName = "Frisian"; break;
+                case "gl": languageName = "Galician"; break;
+                case "ka": languageName = "Georgian"; break;
+                case "de": languageName = "German"; break;
+                case "el": languageName = "Greek"; break;
+                case "gu": languageName = "Gujarati"; break;
+                case "ht": languageName = "Haitian Creole"; break;
+                case "ha": languageName = "Hausa"; break;
+                case "haw": languageName = "Hawaiian"; break;
+                case "iw": languageName = "Hebrew"; break;
+                case "hi": languageName = "Hindi"; break;
+                case "hmn": languageName = "Hmong"; break;
+                case "hu": languageName = "Hungarian"; break;
+                case "is": languageName = "Icelandic"; break;
+                case "ig": languageName = "Igbo"; break;
+                case "id": languageName = "Indonesian"; break;
+                case "ga": languageName = "Irish"; break;
+                case "it": languageName = "Italian"; break;
+                case "ja": languageName = "Japanese"; break;
+                case "jw": languageName = "Javanese"; break;
+                case "kn": languageName = "Kannada"; break;
+                case "kk": languageName = "Kazakh"; break;
+                case "km": languageName = "Khmer"; break;
+                case "rw": languageName = "Kinyarwanda"; break;
+                case "ko": languageName = "Korean"; break;
+                case "ku": languageName = "Kurdish (Kurmanji)"; break;
+                case "ky": languageName = "Kyrgyz"; break;
+                case "lo": languageName = "Lao"; break;
+                case "la": languageName = "Latin"; break;
+                case "lv": languageName = "Latvian"; break;
+                case "lt": languageName = "Lithuanian"; break;
+                case "lb": languageName = "Luxembourgish"; break;
+                case "mk": languageName = "Macedonian"; break;
+                case "mg": languageName = "Malagasy"; break;
+                case "ms": languageName = "Malay"; break;
+                case "ml": languageName = "Malayalam"; break;
+                case "mt": languageName = "Maltese"; break;
+                case "mi": languageName = "Maori"; break;
+                case "mr": languageName = "Marathi"; break;
+                case "mn": languageName = "Mongolian"; break;
+                case "my": languageName = "Myanmar (Burmese)"; break;
+                case "ne": languageName = "Nepali"; break;
+                case "no": languageName = "Norwegian"; break;
+                case "ny (Chichewa)": languageName = "Nyanja"; break;
+                case "or": languageName = "Odia (Oriya)"; break;
+                case "ps": languageName = "Pashto"; break;
+                case "fa": languageName = "Persian"; break;
+                case "pl": languageName = "Polish"; break;
+                case "pt": languageName = "Portuguese"; break;
+                case "pa": languageName = "Punjabi"; break;
+                case "ro": languageName = "Romanian"; break;
+                case "ru": languageName = "Russian"; break;
+                case "sm": languageName = "Samoan"; break;
+                case "gd": languageName = "Scots Gaelic"; break;
+                case "sr": languageName = "Serbian"; break;
+                case "st": languageName = "Sesotho"; break;
+                case "sn": languageName = "Shona"; break;
+                case "sd": languageName = "Sindhi"; break;
+                case "si": languageName = "Sinhala (Sinhalese)"; break;
+                case "sk": languageName = "Slovak"; break;
+                case "sl": languageName = "Slovenian"; break;
+                case "so": languageName = "Somali"; break;
+                case "es": languageName = "Spanish"; break;
+                case "su": languageName = "Sundanese"; break;
+                case "sw": languageName = "Swahili"; break;
+                case "sv": languageName = "Swedish"; break;
+                case "tg": languageName = "Tajik"; break;
+                case "ta": languageName = "Tamil"; break;
+                case "tt": languageName = "Tatar"; break;
+                case "te": languageName = "Telugu"; break;
+                case "th": languageName = "Thai"; break;
+                case "tr": languageName = "Turkish"; break;
+                case "tk": languageName = "Turkmen"; break;
+                case "uk": languageName = "Ukrainian"; break;
+                case "ur": languageName = "Urdu"; break;
+                case "ug": languageName = "Uyghur"; break;
+                case "uz": languageName = "Uzbek"; break;
+                case "vi": languageName = "Vietnamese"; break;
+                case "cy": languageName = "Welsh"; break;
+                case "xh": languageName = "Xhosa"; break;
+                case "yi": languageName = "Yiddish"; break;
+                case "yo": languageName = "Yoruba"; break;
+                case "zu": languageName = "Zulu"; break;
+                default: break;
+            }
+
+            return languageName;
+        }
+
     }
 }

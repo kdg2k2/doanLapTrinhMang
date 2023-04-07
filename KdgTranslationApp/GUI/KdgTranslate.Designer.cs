@@ -36,11 +36,13 @@
             this.cbb_quest = new System.Windows.Forms.ComboBox();
             this.cbb_answer = new System.Windows.Forms.ComboBox();
             this.tb_answer = new System.Windows.Forms.TextBox();
+            this.btnTranslate = new System.Windows.Forms.Button();
+            this.rbtn_AutoTranslate = new System.Windows.Forms.RadioButton();
+            this.cbtn_questSpeak = new DevExpress.XtraEditors.CheckButton();
             this.cbtnReset = new DevExpress.XtraEditors.CheckButton();
             this.cbtnSwitch = new DevExpress.XtraEditors.CheckButton();
             this.cbtnCamera = new DevExpress.XtraEditors.CheckButton();
-            this.btnTranslate = new System.Windows.Forms.Button();
-            this.rbtn_AutoTranslate = new System.Windows.Forms.RadioButton();
+            this.cbtn_answerSpeak = new DevExpress.XtraEditors.CheckButton();
             this.contextMenuStrip_Camera.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -324,6 +326,38 @@
             this.tb_answer.Size = new System.Drawing.Size(435, 110);
             this.tb_answer.TabIndex = 4;
             // 
+            // btnTranslate
+            // 
+            this.btnTranslate.Location = new System.Drawing.Point(384, 136);
+            this.btnTranslate.Name = "btnTranslate";
+            this.btnTranslate.Size = new System.Drawing.Size(64, 23);
+            this.btnTranslate.TabIndex = 6;
+            this.btnTranslate.Text = "Translate";
+            this.btnTranslate.UseVisualStyleBackColor = true;
+            this.btnTranslate.Click += new System.EventHandler(this.btnTranslate_Click);
+            // 
+            // rbtn_AutoTranslate
+            // 
+            this.rbtn_AutoTranslate.AutoSize = true;
+            this.rbtn_AutoTranslate.Location = new System.Drawing.Point(338, 0);
+            this.rbtn_AutoTranslate.Name = "rbtn_AutoTranslate";
+            this.rbtn_AutoTranslate.Size = new System.Drawing.Size(114, 17);
+            this.rbtn_AutoTranslate.TabIndex = 7;
+            this.rbtn_AutoTranslate.TabStop = true;
+            this.rbtn_AutoTranslate.Text = "Instant translation";
+            this.rbtn_AutoTranslate.UseVisualStyleBackColor = true;
+            this.rbtn_AutoTranslate.Click += new System.EventHandler(this.rbtn_AutoTranslate_Click);
+            // 
+            // cbtn_questSpeak
+            // 
+            this.cbtn_questSpeak.ImageOptions.Image = global::KdgTranslationApp.Properties.Resources.sound;
+            this.cbtn_questSpeak.Location = new System.Drawing.Point(399, 113);
+            this.cbtn_questSpeak.Name = "cbtn_questSpeak";
+            this.cbtn_questSpeak.Size = new System.Drawing.Size(23, 18);
+            this.cbtn_questSpeak.TabIndex = 8;
+            this.cbtn_questSpeak.Text = "checkButton1";
+            this.cbtn_questSpeak.Click += new System.EventHandler(this.cbtn_questSpeak_Click);
+            // 
             // cbtnReset
             // 
             this.cbtnReset.ImageOptions.Image = global::KdgTranslationApp.Properties.Resources.file;
@@ -355,33 +389,23 @@
             this.cbtnCamera.Text = "checkButton1";
             this.cbtnCamera.MouseDown += new System.Windows.Forms.MouseEventHandler(this.cbtnCamera_MouseDown);
             // 
-            // btnTranslate
+            // cbtn_answerSpeak
             // 
-            this.btnTranslate.Location = new System.Drawing.Point(384, 136);
-            this.btnTranslate.Name = "btnTranslate";
-            this.btnTranslate.Size = new System.Drawing.Size(64, 23);
-            this.btnTranslate.TabIndex = 6;
-            this.btnTranslate.Text = "Translate";
-            this.btnTranslate.UseVisualStyleBackColor = true;
-            this.btnTranslate.Click += new System.EventHandler(this.btnTranslate_Click);
-            // 
-            // rbtn_AutoTranslate
-            // 
-            this.rbtn_AutoTranslate.AutoSize = true;
-            this.rbtn_AutoTranslate.Location = new System.Drawing.Point(338, 0);
-            this.rbtn_AutoTranslate.Name = "rbtn_AutoTranslate";
-            this.rbtn_AutoTranslate.Size = new System.Drawing.Size(114, 17);
-            this.rbtn_AutoTranslate.TabIndex = 7;
-            this.rbtn_AutoTranslate.TabStop = true;
-            this.rbtn_AutoTranslate.Text = "Instant translation";
-            this.rbtn_AutoTranslate.UseVisualStyleBackColor = true;
-            this.rbtn_AutoTranslate.Click += new System.EventHandler(this.rbtn_AutoTranslate_Click);
+            this.cbtn_answerSpeak.ImageOptions.Image = global::KdgTranslationApp.Properties.Resources.sound;
+            this.cbtn_answerSpeak.Location = new System.Drawing.Point(399, 250);
+            this.cbtn_answerSpeak.Name = "cbtn_answerSpeak";
+            this.cbtn_answerSpeak.Size = new System.Drawing.Size(23, 18);
+            this.cbtn_answerSpeak.TabIndex = 9;
+            this.cbtn_answerSpeak.Text = "checkButton1";
+            this.cbtn_answerSpeak.Click += new System.EventHandler(this.cbtn_answerSpeak_Click);
             // 
             // KdgTranslateApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(463, 285);
+            this.Controls.Add(this.cbtn_answerSpeak);
+            this.Controls.Add(this.cbtn_questSpeak);
             this.Controls.Add(this.rbtn_AutoTranslate);
             this.Controls.Add(this.btnTranslate);
             this.Controls.Add(this.cbtnReset);
@@ -416,6 +440,8 @@
         private DevExpress.XtraEditors.CheckButton cbtnReset;
         private System.Windows.Forms.Button btnTranslate;
         private System.Windows.Forms.RadioButton rbtn_AutoTranslate;
+        private DevExpress.XtraEditors.CheckButton cbtn_questSpeak;
+        private DevExpress.XtraEditors.CheckButton cbtn_answerSpeak;
     }
 }
 

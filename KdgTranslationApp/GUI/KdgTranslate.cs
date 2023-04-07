@@ -15,6 +15,8 @@ using System.Windows.Forms;
 using System.Windows.Media.Imaging;
 using Tesseract;
 using Timer = System.Windows.Forms.Timer;
+using System.Speech;
+using System.Speech.Synthesis;
 
 
 namespace KdgTranslationApp
@@ -239,6 +241,41 @@ namespace KdgTranslationApp
             tb_answer.Text = "";
             cbb_answer.Text = "Vietnamese";
             cbb_quest.Text = "English";
+        }
+
+        /// <summary>
+        /// set sự kiện đọc văn bản trong textbox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// 
+        SpeechSynthesizer voice = new SpeechSynthesizer();
+        private void cbtn_questSpeak_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                voice.SelectVoiceByHints(VoiceGender.Male);//chọn giọng nói
+
+                voice.SpeakAsync(tb_quest.Text);//đọc văn bản trong tb_quest
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);//show lỗi
+            }
+        }
+
+        private void cbtn_answerSpeak_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                voice.SelectVoiceByHints(VoiceGender.Female);//chọn giọng nói
+
+                voice.SpeakAsync(tb_answer.Text);//đọc văn bản trong tb_quest
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);//show lỗi
+            }
         }
     }
 }

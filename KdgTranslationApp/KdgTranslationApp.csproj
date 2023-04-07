@@ -54,6 +54,7 @@
       <HintPath>..\packages\System.Drawing.Common.5.0.0\lib\net461\System.Drawing.Common.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http" />
+    <Reference Include="System.Speech" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -131,7 +132,7 @@
     <Content Include="Resource\google-voice.png" />
     <Content Include="Resource\googletranslaterafaga_11283.ico" />
     <None Include="Resource\left-and-right-arrows.png" />
-    <Content Include="Resource\sound.png" />
+    <None Include="Resource\sound.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DAL\" />

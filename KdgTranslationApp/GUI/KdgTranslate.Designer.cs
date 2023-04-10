@@ -207,6 +207,7 @@
             this.cbb_quest.Name = "cbb_quest";
             this.cbb_quest.Size = new System.Drawing.Size(145, 21);
             this.cbb_quest.TabIndex = 2;
+            this.cbb_quest.SelectedIndexChanged += new System.EventHandler(this.cbb_quest_SelectedIndexChanged);
             // 
             // cbb_answer
             // 
@@ -326,6 +327,7 @@
             this.cbb_answer.Name = "cbb_answer";
             this.cbb_answer.Size = new System.Drawing.Size(145, 21);
             this.cbb_answer.TabIndex = 2;
+            this.cbb_answer.SelectedIndexChanged += new System.EventHandler(this.cbb_answer_SelectedIndexChanged);
             // 
             // tb_answer
             // 

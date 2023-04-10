@@ -258,13 +258,16 @@ namespace KdgTranslationApp
         /// <param name="e"></param>
         private void cbtnSwitch_Click(object sender, EventArgs e)
         {
-            //đổi chỗ 2 văn bản của 2 combobox
-            string temp = cbb_quest.Text;
-            cbb_quest.Text = cbb_answer.Text;
-            cbb_answer.Text = temp;
+            if(cbb_quest.Text != "Detect")
+            {
+                //đổi chỗ 2 văn bản của 2 combobox
+                string temp = cbb_quest.Text;
+                cbb_quest.Text = cbb_answer.Text;
+                cbb_answer.Text = temp;
 
-            if (tb_quest.Text != "")//nếu tb_quest khác rỗng sẽ tự dịch
-                tb_answer.Text = trans.TranslateText(tb_quest.Text, cbb_quest.Text, cbb_answer.Text);
+                if (tb_quest.Text != "")//nếu tb_quest khác rỗng sẽ tự dịch
+                    tb_answer.Text = trans.TranslateText(tb_quest.Text, cbb_quest.Text, cbb_answer.Text);
+            }
         }
 
         /// <summary>
@@ -457,6 +460,23 @@ namespace KdgTranslationApp
 
             // Khôi phục kích thước cửa sổ hiện tại
             ShowHiddenForm(this);
+        }
+
+        /// <summary>
+        /// set sự kiện dịch sau khi thay đổi ngôn ngữ
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void cbb_quest_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tb_quest.Text != "")//nếu tb_quest khác rỗng sẽ tự dịch
+                tb_answer.Text = trans.TranslateText(tb_quest.Text, cbb_quest.Text, cbb_answer.Text);
+        }
+
+        private void cbb_answer_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tb_quest.Text != "")//nếu tb_quest khác rỗng sẽ tự dịch
+                tb_answer.Text = trans.TranslateText(tb_quest.Text, cbb_quest.Text, cbb_answer.Text);
         }
     }
 }

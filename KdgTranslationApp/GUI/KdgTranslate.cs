@@ -1,25 +1,19 @@
 ﻿using GI.Screenshot;
 using KdgTranslationApp.BLL;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Drawing.Imaging;
-using System.Linq;
+using System.Net.Http;
 using System.Runtime.InteropServices;
-using System.Text;
+using System.Speech.Recognition;
+using System.Speech.Synthesis;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Media.Imaging;
 using Tesseract;
 using Timer = System.Windows.Forms.Timer;
-using System.Speech;
-using System.Speech.Synthesis;
-using System.Speech.Recognition;
-using System.Net.Http;
-using System.Threading.Tasks;
 
 namespace KdgTranslationApp
 {
@@ -206,7 +200,7 @@ namespace KdgTranslationApp
         /// <param name="e"></param>
         /// 
         private bool isRadioButtonChecked = false;//tắt nút Dịch khi kích hoạt radio button
-        private void rbtn_AutoTranslate_Click(object sender, EventArgs e)
+        private async void rbtn_AutoTranslate_Click(object sender, EventArgs e)
         {
             if (isRadioButtonChecked)
             {
@@ -220,7 +214,10 @@ namespace KdgTranslationApp
                 isRadioButtonChecked = true;
                 btnTranslate.Enabled = false;
                 if (tb_quest.Text != "")
+                {
+                    cbb_quest.Text = cv.ConvertCodeToLanguageName(await LanguageDetector.DetectLanguageAsync(tb_quest.Text, tb_answer.Text));
                     tb_answer.Text = trans.TranslateText(tb_quest.Text, cbb_quest.Text, cbb_answer.Text);
+                }
             }
         }
 
@@ -281,7 +278,7 @@ namespace KdgTranslationApp
             tb_quest.Text = "";
             tb_answer.Text = "";
             cbb_answer.Text = "Vietnamese";
-            cbb_quest.Text = "English";
+            cbb_quest.Text = "Detect";
         }
 
         /// <summary>

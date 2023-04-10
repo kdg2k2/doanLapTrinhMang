@@ -39,19 +39,19 @@
             this.tb_answer = new System.Windows.Forms.TextBox();
             this.btnTranslate = new System.Windows.Forms.Button();
             this.rbtn_AutoTranslate = new System.Windows.Forms.RadioButton();
+            this.notifyIcon_Taskbar = new System.Windows.Forms.NotifyIcon(this.components);
+            this.contextMenuStrip_notifyIcon = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.kdgTranslateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.textRecognitionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.englishToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.vietnameseToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cbtnVoiceInput = new DevExpress.XtraEditors.CheckButton();
             this.cbtn_answerSpeak = new DevExpress.XtraEditors.CheckButton();
             this.cbtn_questSpeak = new DevExpress.XtraEditors.CheckButton();
             this.cbtnReset = new DevExpress.XtraEditors.CheckButton();
             this.cbtnSwitch = new DevExpress.XtraEditors.CheckButton();
             this.cbtnCamera = new DevExpress.XtraEditors.CheckButton();
-            this.notifyIcon_Taskbar = new System.Windows.Forms.NotifyIcon(this.components);
-            this.contextMenuStrip_notifyIcon = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.kdgTranslateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.textRecognitionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.englishToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.vietnameseToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip_Camera.SuspendLayout();
             this.contextMenuStrip_notifyIcon.SuspendLayout();
             this.SuspendLayout();
@@ -359,6 +359,60 @@
             this.rbtn_AutoTranslate.UseVisualStyleBackColor = true;
             this.rbtn_AutoTranslate.Click += new System.EventHandler(this.rbtn_AutoTranslate_Click);
             // 
+            // notifyIcon_Taskbar
+            // 
+            this.notifyIcon_Taskbar.ContextMenuStrip = this.contextMenuStrip_notifyIcon;
+            this.notifyIcon_Taskbar.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon_Taskbar.Icon")));
+            this.notifyIcon_Taskbar.Text = "KdgTranslate";
+            this.notifyIcon_Taskbar.Visible = true;
+            this.notifyIcon_Taskbar.MouseClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_Taskbar_MouseClick);
+            // 
+            // contextMenuStrip_notifyIcon
+            // 
+            this.contextMenuStrip_notifyIcon.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.kdgTranslateToolStripMenuItem,
+            this.textRecognitionToolStripMenuItem,
+            this.exitToolStripMenuItem});
+            this.contextMenuStrip_notifyIcon.Name = "contextMenuStrip_notifyIcon";
+            this.contextMenuStrip_notifyIcon.Size = new System.Drawing.Size(160, 70);
+            // 
+            // kdgTranslateToolStripMenuItem
+            // 
+            this.kdgTranslateToolStripMenuItem.Name = "kdgTranslateToolStripMenuItem";
+            this.kdgTranslateToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.kdgTranslateToolStripMenuItem.Text = "KdgTranslate";
+            this.kdgTranslateToolStripMenuItem.Click += new System.EventHandler(this.kdgTranslateToolStripMenuItem_Click);
+            // 
+            // textRecognitionToolStripMenuItem
+            // 
+            this.textRecognitionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.englishToolStripMenuItem1,
+            this.vietnameseToolStripMenuItem1});
+            this.textRecognitionToolStripMenuItem.Name = "textRecognitionToolStripMenuItem";
+            this.textRecognitionToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.textRecognitionToolStripMenuItem.Text = "Text recognition";
+            // 
+            // englishToolStripMenuItem1
+            // 
+            this.englishToolStripMenuItem1.Name = "englishToolStripMenuItem1";
+            this.englishToolStripMenuItem1.Size = new System.Drawing.Size(135, 22);
+            this.englishToolStripMenuItem1.Text = "English";
+            this.englishToolStripMenuItem1.Click += new System.EventHandler(this.englishToolStripMenuItem1_Click);
+            // 
+            // vietnameseToolStripMenuItem1
+            // 
+            this.vietnameseToolStripMenuItem1.Name = "vietnameseToolStripMenuItem1";
+            this.vietnameseToolStripMenuItem1.Size = new System.Drawing.Size(135, 22);
+            this.vietnameseToolStripMenuItem1.Text = "Vietnamese";
+            this.vietnameseToolStripMenuItem1.Click += new System.EventHandler(this.vietnameseToolStripMenuItem1_Click);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
             // cbtnVoiceInput
             // 
             this.cbtnVoiceInput.ImageOptions.Image = global::KdgTranslationApp.Properties.Resources.google_voice;
@@ -420,60 +474,6 @@
             this.cbtnCamera.Text = "checkButton1";
             this.cbtnCamera.MouseDown += new System.Windows.Forms.MouseEventHandler(this.cbtnCamera_MouseDown);
             // 
-            // notifyIcon_Taskbar
-            // 
-            this.notifyIcon_Taskbar.ContextMenuStrip = this.contextMenuStrip_notifyIcon;
-            this.notifyIcon_Taskbar.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon_Taskbar.Icon")));
-            this.notifyIcon_Taskbar.Text = "KdgTranslate";
-            this.notifyIcon_Taskbar.Visible = true;
-            this.notifyIcon_Taskbar.MouseClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_Taskbar_MouseClick);
-            // 
-            // contextMenuStrip_notifyIcon
-            // 
-            this.contextMenuStrip_notifyIcon.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.kdgTranslateToolStripMenuItem,
-            this.textRecognitionToolStripMenuItem,
-            this.exitToolStripMenuItem});
-            this.contextMenuStrip_notifyIcon.Name = "contextMenuStrip_notifyIcon";
-            this.contextMenuStrip_notifyIcon.Size = new System.Drawing.Size(181, 92);
-            // 
-            // kdgTranslateToolStripMenuItem
-            // 
-            this.kdgTranslateToolStripMenuItem.Name = "kdgTranslateToolStripMenuItem";
-            this.kdgTranslateToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.kdgTranslateToolStripMenuItem.Text = "KdgTranslate";
-            this.kdgTranslateToolStripMenuItem.Click += new System.EventHandler(this.kdgTranslateToolStripMenuItem_Click);
-            // 
-            // exitToolStripMenuItem
-            // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.exitToolStripMenuItem.Text = "Exit";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
-            // 
-            // textRecognitionToolStripMenuItem
-            // 
-            this.textRecognitionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.englishToolStripMenuItem1,
-            this.vietnameseToolStripMenuItem1});
-            this.textRecognitionToolStripMenuItem.Name = "textRecognitionToolStripMenuItem";
-            this.textRecognitionToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.textRecognitionToolStripMenuItem.Text = "Text recognition";
-            // 
-            // englishToolStripMenuItem1
-            // 
-            this.englishToolStripMenuItem1.Name = "englishToolStripMenuItem1";
-            this.englishToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.englishToolStripMenuItem1.Text = "English";
-            this.englishToolStripMenuItem1.Click += new System.EventHandler(this.englishToolStripMenuItem1_Click);
-            // 
-            // vietnameseToolStripMenuItem1
-            // 
-            this.vietnameseToolStripMenuItem1.Name = "vietnameseToolStripMenuItem1";
-            this.vietnameseToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.vietnameseToolStripMenuItem1.Text = "Vietnamese";
-            this.vietnameseToolStripMenuItem1.Click += new System.EventHandler(this.vietnameseToolStripMenuItem1_Click);
-            // 
             // KdgTranslateApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -491,6 +491,8 @@
             this.Controls.Add(this.cbb_quest);
             this.Controls.Add(this.cbtnCamera);
             this.Controls.Add(this.tb_quest);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.IconOptions.Image = global::KdgTranslationApp.Properties.Resources._8511303732_g065;
             this.MaximizeBox = false;
             this.Name = "KdgTranslateApp";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

@@ -127,6 +127,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resource\8511303732_g065.gif" />
     <Content Include="Resource\camera.png" />
     <None Include="Resource\file.png" />
     <None Include="Resource\google-voice.png" />

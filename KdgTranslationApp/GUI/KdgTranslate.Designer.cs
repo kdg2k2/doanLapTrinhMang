@@ -49,6 +49,9 @@
             this.contextMenuStrip_notifyIcon = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.kdgTranslateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.textRecognitionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.englishToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.vietnameseToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip_Camera.SuspendLayout();
             this.contextMenuStrip_notifyIcon.SuspendLayout();
             this.SuspendLayout();
@@ -429,23 +432,47 @@
             // 
             this.contextMenuStrip_notifyIcon.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.kdgTranslateToolStripMenuItem,
+            this.textRecognitionToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.contextMenuStrip_notifyIcon.Name = "contextMenuStrip_notifyIcon";
-            this.contextMenuStrip_notifyIcon.Size = new System.Drawing.Size(142, 48);
+            this.contextMenuStrip_notifyIcon.Size = new System.Drawing.Size(181, 92);
             // 
             // kdgTranslateToolStripMenuItem
             // 
             this.kdgTranslateToolStripMenuItem.Name = "kdgTranslateToolStripMenuItem";
-            this.kdgTranslateToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.kdgTranslateToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.kdgTranslateToolStripMenuItem.Text = "KdgTranslate";
             this.kdgTranslateToolStripMenuItem.Click += new System.EventHandler(this.kdgTranslateToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
+            // textRecognitionToolStripMenuItem
+            // 
+            this.textRecognitionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.englishToolStripMenuItem1,
+            this.vietnameseToolStripMenuItem1});
+            this.textRecognitionToolStripMenuItem.Name = "textRecognitionToolStripMenuItem";
+            this.textRecognitionToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.textRecognitionToolStripMenuItem.Text = "Text recognition";
+            // 
+            // englishToolStripMenuItem1
+            // 
+            this.englishToolStripMenuItem1.Name = "englishToolStripMenuItem1";
+            this.englishToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.englishToolStripMenuItem1.Text = "English";
+            this.englishToolStripMenuItem1.Click += new System.EventHandler(this.englishToolStripMenuItem1_Click);
+            // 
+            // vietnameseToolStripMenuItem1
+            // 
+            this.vietnameseToolStripMenuItem1.Name = "vietnameseToolStripMenuItem1";
+            this.vietnameseToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.vietnameseToolStripMenuItem1.Text = "Vietnamese";
+            this.vietnameseToolStripMenuItem1.Click += new System.EventHandler(this.vietnameseToolStripMenuItem1_Click);
             // 
             // KdgTranslateApp
             // 
@@ -497,6 +524,9 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip_notifyIcon;
         private System.Windows.Forms.ToolStripMenuItem kdgTranslateToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem textRecognitionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem englishToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem vietnameseToolStripMenuItem1;
     }
 }
 

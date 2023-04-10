@@ -395,5 +395,71 @@ namespace KdgTranslationApp
                 base.OnFormClosing(e);
             }
         }
+
+        private bool IsFormHidden(Form form)// hàm kiểm tra form có đang bị ẩn ko?
+        {
+            return form.WindowState == FormWindowState.Minimized || !form.Visible;
+        }
+
+        private void ShowHiddenForm(Form form)
+        {
+            if (IsFormHidden(form))//nếu form đang ẩn thì show lên
+            {
+                form.Show();
+                form.WindowState = FormWindowState.Normal;
+            }
+        }
+
+        private void englishToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Normal)
+            {
+                this.WindowState = FormWindowState.Minimized;
+                // Dừng chương trình trong 0.5 giây để đợi cửa sổ thu nhỏ hoàn thành
+                Thread.Sleep(500);
+            }
+            // Chụp một ảnh vùng màn hình được chọn và chuyển đổi thành định dạng bitmap
+            try
+            {
+                Bitmap bitmap = ConvertToBitmap(Screenshot.CaptureRegion());
+                // Nhận diện ký tự trong ảnh bitmap sử dụng thư viện OCR và lưu kết quả vào biến ocrResult
+                string ocrResult = OCR(bitmap, "eng");
+                // Hiển thị kết quả nhận diện ký tự lên TextBox
+                tb_quest.Text = ocrResult;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            // Khôi phục kích thước cửa sổ hiện tại
+            ShowHiddenForm(this);
+        }
+
+        private void vietnameseToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Normal)
+            {
+                this.WindowState = FormWindowState.Minimized;
+                // Dừng chương trình trong 0.5 giây để đợi cửa sổ thu nhỏ hoàn thành
+                Thread.Sleep(500);
+            }
+            // Chụp một ảnh vùng màn hình được chọn và chuyển đổi thành định dạng bitmap
+            try
+            {
+                Bitmap bitmap = ConvertToBitmap(Screenshot.CaptureRegion());
+                // Nhận diện ký tự trong ảnh bitmap sử dụng thư viện OCR và lưu kết quả vào biến ocrResult
+                string ocrResult = OCR(bitmap, "vie");
+                // Hiển thị kết quả nhận diện ký tự lên TextBox
+                tb_quest.Text = ocrResult;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            // Khôi phục kích thước cửa sổ hiện tại
+            ShowHiddenForm(this);
+        }
     }
 }

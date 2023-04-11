@@ -295,9 +295,15 @@ namespace KdgTranslationApp
         {
             try
             {
-                voice.SelectVoiceByHints(VoiceGender.Male);//chọn giọng nói
-
-                voice.SpeakAsync(tb_quest.Text);//đọc văn bản trong tb_quest
+                if (voice.State == SynthesizerState.Ready)
+                {
+                    voice.SelectVoiceByHints(VoiceGender.Male);//chọn giọng nói
+                    voice.SpeakAsync(tb_quest.Text);//đọc văn bản trong tb_quest
+                }
+                if(voice.State == SynthesizerState.Speaking)
+                {
+                    voice.SpeakAsyncCancelAll();
+                }
             }
             catch (Exception ex)
             {
@@ -309,9 +315,15 @@ namespace KdgTranslationApp
         {
             try
             {
-                voice.SelectVoiceByHints(VoiceGender.Female);//chọn giọng nói
-
-                voice.SpeakAsync(tb_answer.Text);//đọc văn bản trong tb_quest
+                if (voice.State == SynthesizerState.Ready)
+                {
+                    voice.SelectVoiceByHints(VoiceGender.Male);//chọn giọng nói
+                    voice.SpeakAsync(tb_answer.Text);//đọc văn bản trong tb_answer
+                }
+                if (voice.State == SynthesizerState.Speaking)
+                {
+                    voice.SpeakAsyncCancelAll();
+                }
             }
             catch (Exception ex)
             {
@@ -327,16 +339,14 @@ namespace KdgTranslationApp
         /// 
         private void recognier_SpeechRecognized(object sender, SpeechRecognizedEventArgs e)// Sự kiện này được gọi khi hệ thống nhận dạng giọng nói thành công
         {
-            tb_quest.Text += e.Result.Text + "\r\n";// Thêm kết quả nhận dạng giọng nói vào cuối của TextBox và xuống dòng
+            tb_quest.Text += e.Result.Text  + "\r\n";// Thêm kết quả nhận dạng giọng nói vào cuối của TextBox và xuống dòng
         }
 
-        bool isRecord = false;
         private void cbtnVoiceInput_Click(object sender, EventArgs e)
         {
             SpeechRecognitionEngine recognier = new SpeechRecognitionEngine();//khởi tạo đối tượng nhân diện và xử lý ngôn ngữ nói
-            if (!isRecord)
+            if (recognier.AudioState != AudioState.Silence)
             {
-                isRecord = true;
                 recognier.SetInputToDefaultAudioDevice();//thiết lập thiết bị mặc định nhận âm thanh đầu vào
 
                 Grammar grammar = new DictationGrammar();// tạo đối tượng grammar thuộc lớp DictationGrammar - là một lớp con của lớp Grammar và đại diện cho một bộ từ điển cho phép người dùng nói bất kỳ từ hoặc cụm từ nào mà hệ thống nhận diện giọng nói có thể xử lý.
@@ -347,9 +357,8 @@ namespace KdgTranslationApp
 
                 recognier.RecognizeAsync(RecognizeMode.Multiple);//bắt đầu một phiên nhận dạng giọng nói bằng cách sử dụng phương thức RecognizeAsync. Tham số RecognizeMode.Multiple được sử dụng để cho phép việc nhận dạng liên tục của nhiều cụm từ được phát hiện trong khi phiên nhận dạng giọng nói đang diễn ra.
             }
-            else
+            if(recognier.AudioState == AudioState.Speech)
             {
-                isRecord = false;
                 recognier.RecognizeAsyncStop(); // Dừng việc nhận diện giọng nói
                 recognier.Dispose(); // Giải phóng tài nguyên
             }

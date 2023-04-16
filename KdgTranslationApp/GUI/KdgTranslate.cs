@@ -1,8 +1,11 @@
 ﻿using GI.Screenshot;
 using KdgTranslationApp.BLL;
+using RestSharp;
 using System;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.IO;
+using System.Media;
 using System.Net.Http;
 using System.Runtime.InteropServices;
 using System.Speech.Recognition;
@@ -313,22 +316,52 @@ namespace KdgTranslationApp
 
         private void cbtn_answerSpeak_Click(object sender, EventArgs e)
         {
-            try
+            string apiKey = "f8p9cIrz7OXjS1Yi6dAQdce5FwQ30n1A";
+            string url = "https://api.zalo.ai/v1/tts/synthesize";
+            int speakerId = 2; // default speaker
+            float speed = 1.0f; // default speed
+            int quality = 0; // default quality
+            int encodeType = 0; // default encoding
+
+            string inputText = tb_answer.Text;
+
+            // create request
+            var client = new RestClient(url);
+            var request = new RestRequest(Method.POST);
+            request.AddHeader("apikey", apiKey);
+            request.AddParameter("input", inputText);
+            request.AddParameter("speaker_id", speakerId);
+            request.AddParameter("speed", speed);
+            request.AddParameter("quality", quality);
+            request.AddParameter("encode_type", encodeType);
+
+            // execute request
+            IRestResponse response = client.Execute(request);
+
+            // check for errors
+            if (response.IsSuccessful)
             {
-                if (voice.State == SynthesizerState.Ready)
+                // read response and get audio url
+                var data = Newtonsoft.Json.JsonConvert.DeserializeObject<dynamic>(response.Content);
+                string audioUrl = data.data.url;
+
+                //show ra xem audioUrl trả về từ API
+                MessageBox.Show("Url API response: " + audioUrl, "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // download audio and play it
+                using (var wc = new System.Net.WebClient())
                 {
-                    voice.SelectVoiceByHints(VoiceGender.Male);//chọn giọng nói
-                    voice.SpeakAsync(tb_answer.Text);//đọc văn bản trong tb_answer
-                }
-                if (voice.State == SynthesizerState.Speaking)
-                {
-                    voice.SpeakAsyncCancelAll();
+                    byte[] audioBytes = wc.DownloadData(audioUrl);
+                    MemoryStream ms = new MemoryStream(audioBytes);
+                    var audio = new SoundPlayer(ms);
+                    audio.Play();
                 }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message);//show lỗi
+                MessageBox.Show(response.Content, "API Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            request.Parameters.Clear();
         }
 
         /// <summary>

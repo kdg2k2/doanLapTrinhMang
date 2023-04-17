@@ -157,7 +157,7 @@ namespace KdgTranslationApp
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
 
             // Khôi phục kích thước cửa sổ hiện tại
@@ -181,7 +181,7 @@ namespace KdgTranslationApp
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
 
             // Khôi phục kích thước cửa sổ hiện tại
@@ -230,14 +230,16 @@ namespace KdgTranslationApp
         {
             timer.Stop(); // Dừng Timer để tránh bị gọi lại trước khi xử lý hoàn tất
             if (lastText != "")
-            {
-                if (cbb_quest.Text == "Detect" && tb_quest.Text != "")
+            {   if(tb_quest.Text != "")
                 {
-                    cbb_quest.Text = cv.ConvertCodeToLanguageName(await LanguageDetector.DetectLanguageAsync(tb_quest.Text, tb_answer.Text));
-                    tb_answer.Text = trans.TranslateText(tb_quest.Text, cbb_quest.Text, cbb_answer.Text);
+                    if (cbb_quest.Text == "Detect")
+                    {
+                        cbb_quest.Text = cv.ConvertCodeToLanguageName(await LanguageDetector.DetectLanguageAsync(tb_quest.Text, tb_answer.Text));
+                        tb_answer.Text = trans.TranslateText(tb_quest.Text, cbb_quest.Text, cbb_answer.Text);
+                    }
+                    else
+                        tb_answer.Text = trans.TranslateText(lastText, cbb_quest.Text, cbb_answer.Text); // Nếu văn bản cuối cùng khác rỗng, dịch nó sang ngôn ngữ được chọn và đưa ra ô textbox
                 }
-                else
-                    tb_answer.Text = trans.TranslateText(lastText, cbb_quest.Text, cbb_answer.Text); // Nếu văn bản cuối cùng khác rỗng, dịch nó sang ngôn ngữ được chọn và đưa ra ô textbox
             }
         }
 
@@ -310,7 +312,7 @@ namespace KdgTranslationApp
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);//show lỗi
+                MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK,MessageBoxIcon.Error);//show lỗi
             }
         }
 
@@ -471,7 +473,7 @@ namespace KdgTranslationApp
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
 
             // Khôi phục kích thước cửa sổ hiện tại
@@ -497,7 +499,7 @@ namespace KdgTranslationApp
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
 
             // Khôi phục kích thước cửa sổ hiện tại

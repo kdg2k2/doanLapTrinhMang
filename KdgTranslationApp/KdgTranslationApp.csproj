@@ -79,6 +79,7 @@
   <ItemGroup>
     <Compile Include="BLL\Convert_language_code.cs" />
     <Compile Include="BLL\GoogleTranslator_API.cs" />
+    <Compile Include="DAL\DBConnect.cs" />
     <Compile Include="GUI\KdgTranslate.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -142,9 +143,7 @@
     <None Include="Resource\left-and-right-arrows.png" />
     <None Include="Resource\sound.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DAL\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Tesseract.5.2.0\build\Tesseract.targets" Condition="Exists('..\packages\Tesseract.5.2.0\build\Tesseract.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

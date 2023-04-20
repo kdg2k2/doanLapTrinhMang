@@ -1,7 +1,9 @@
-﻿using GI.Screenshot;
+﻿using AutoCopySelectionText;
+using GI.Screenshot;
 using KdgTranslationApp.BLL;
 using RestSharp;
 using System;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
@@ -33,11 +35,52 @@ namespace KdgTranslationApp
         /// <param name="e"></param>
         /// 
         Convert_language_code cv = new Convert_language_code();
+        SqlConnection con = DBConnect.GetDBConnection();
+        DBConnect dbcon = new DBConnect();
         private void KdgTranslateApp_Load(object sender, EventArgs e)
         {
             //set ngôn ngữ mặc định
             cbb_quest.Text = "Detect";
             cbb_answer.Text = "Vietnamese";
+
+            //set hotkey
+            con.Open();
+
+            using (SqlCommand cmd = new SqlCommand("select keys from Keys where idEvent = 'sf'", con))
+            {
+                string result = (string)cmd.ExecuteScalar();
+                tb_ShowFormKey.Text = result;
+            }
+
+            using (SqlCommand cmd = new SqlCommand("select keys from Keys where idEvent = 'orc_en'", con))
+            {
+                string result = (string)cmd.ExecuteScalar();
+                tb_TR_EnglishKey.Text = result;
+            }
+
+            using (SqlCommand cmd = new SqlCommand("select keys from Keys where idEvent = 'orc_vi'", con))
+            {
+                string result = (string)cmd.ExecuteScalar();
+                tb_TR_VietnameseKey.Text = result;
+            }
+
+            if (tb_ShowFormKey.Text != "")
+            {
+                string sf = tb_ShowFormKey.Text;
+                RegisterHotKey(this.Handle, 1, MOD_ALT, (int)(Keys)Enum.Parse(typeof(Keys), sf));
+            }
+
+            if (tb_TR_EnglishKey.Text != "")
+            {
+                string orc_en = tb_TR_EnglishKey.Text;
+                RegisterHotKey(this.Handle, 2, MOD_ALT, (int)(Keys)Enum.Parse(typeof(Keys), orc_en));
+            }
+
+            if (tb_TR_VietnameseKey.Text != "")
+            {
+                string orc_vi = tb_TR_VietnameseKey.Text;
+                RegisterHotKey(this.Handle, 3, MOD_ALT, (int)(Keys)Enum.Parse(typeof(Keys), orc_vi));
+            }
         }
 
         /// <summary>
@@ -47,7 +90,7 @@ namespace KdgTranslationApp
         /// <param name="e"></param>
         /// 
         GoogleTranslator_API trans = new GoogleTranslator_API();
-        private async void btnTranslate_Click(object sender, EventArgs e)
+        private async void btnTranslate_Click_1(object sender, EventArgs e)
         {
             if (String.IsNullOrEmpty(tb_quest.Text))//kiểm tra đầu vào
             {
@@ -67,6 +110,9 @@ namespace KdgTranslationApp
             }
         }
 
+        /// <summary>
+        /// Phát hiện ngôn ngữ
+        /// </summary>
         public static class LanguageDetector
         {
             public static async Task<string> DetectLanguageAsync(string text, string targetLanguage)
@@ -140,13 +186,16 @@ namespace KdgTranslationApp
             return res;
         }
 
-        private void vietnameseToolStripMenuItem_Click(object sender, EventArgs e)
+        private void vietnameseToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            // Thu nhỏ cửa sổ hiện tại để có thể chụp ảnh màn hình
-            this.WindowState = FormWindowState.Minimized;
-            // Dừng chương trình trong 0.5 giây để đợi cửa sổ thu nhỏ hoàn thành
-            Thread.Sleep(500);
-            // Chụp một ảnh vùng màn hình được chọn và chuyển đổi thành định dạng bitmap
+            if (this.WindowState == FormWindowState.Normal)
+            {
+                // Thu nhỏ cửa sổ hiện tại để có thể chụp ảnh màn hình
+                this.WindowState = FormWindowState.Minimized;
+                // Dừng chương trình trong 0.5 giây để đợi cửa sổ thu nhỏ hoàn thành
+                Thread.Sleep(500);
+                // Chụp một ảnh vùng màn hình được chọn và chuyển đổi thành định dạng bitmap
+            }
             try
             {
                 Bitmap bitmap = ConvertToBitmap(Screenshot.CaptureRegion());
@@ -157,20 +206,23 @@ namespace KdgTranslationApp
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             // Khôi phục kích thước cửa sổ hiện tại
-            this.WindowState = FormWindowState.Normal;
+            ShowHiddenForm(this);
         }
 
-        private void englishToolStripMenuItem_Click(object sender, EventArgs e)
+        private void englishToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            // Thu nhỏ cửa sổ hiện tại để có thể chụp ảnh màn hình
-            this.WindowState = FormWindowState.Minimized;
-            // Dừng chương trình trong 0.5 giây để đợi cửa sổ thu nhỏ hoàn thành
-            Thread.Sleep(500);
-            // Chụp một ảnh vùng màn hình được chọn và chuyển đổi thành định dạng bitmap
+            if (this.WindowState == FormWindowState.Normal)
+            {
+                // Thu nhỏ cửa sổ hiện tại để có thể chụp ảnh màn hình
+                this.WindowState = FormWindowState.Minimized;
+                // Dừng chương trình trong 0.5 giây để đợi cửa sổ thu nhỏ hoàn thành
+                Thread.Sleep(500);
+                // Chụp một ảnh vùng màn hình được chọn và chuyển đổi thành định dạng bitmap
+            }
             try
             {
                 Bitmap bitmap = ConvertToBitmap(Screenshot.CaptureRegion());
@@ -181,18 +233,18 @@ namespace KdgTranslationApp
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             // Khôi phục kích thước cửa sổ hiện tại
-            this.WindowState = FormWindowState.Normal;
+            ShowHiddenForm(this);
         }
 
-        private void cbtnCamera_MouseDown(object sender, MouseEventArgs e)
+        private void cbtnCamera_MouseDown_1(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
-                contextMenuStrip_Camera.Show(cbtnCamera, e.Location);
+                contextMenuStrip_CameraIcon.Show(cbtnCamera, e.Location);
             }
         }
 
@@ -203,7 +255,7 @@ namespace KdgTranslationApp
         /// <param name="e"></param>
         /// 
         private bool isRadioButtonChecked = false;//tắt nút Dịch khi kích hoạt radio button
-        private async void rbtn_AutoTranslate_Click(object sender, EventArgs e)
+        private async void rbtn_AutoTranslate_Click_1(object sender, EventArgs e)
         {
             if (isRadioButtonChecked)
             {
@@ -230,7 +282,8 @@ namespace KdgTranslationApp
         {
             timer.Stop(); // Dừng Timer để tránh bị gọi lại trước khi xử lý hoàn tất
             if (lastText != "")
-            {   if(tb_quest.Text != "")
+            {
+                if (tb_quest.Text != "")
                 {
                     if (cbb_quest.Text == "Detect")
                     {
@@ -243,7 +296,7 @@ namespace KdgTranslationApp
             }
         }
 
-        private void tb_quest_TextChanged(object sender, EventArgs e)
+        private void tb_quest_TextChanged_1(object sender, EventArgs e)
         {
             if (rbtn_AutoTranslate.Checked) // Nếu ô radio button "translate" được chọn
             {
@@ -261,9 +314,9 @@ namespace KdgTranslationApp
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void cbtnSwitch_Click(object sender, EventArgs e)
+        private void cbtnSwitch_Click_1(object sender, EventArgs e)
         {
-            if(cbb_quest.Text != "Detect")
+            if (cbb_quest.Text != "Detect")
             {
                 //đổi chỗ 2 văn bản của 2 combobox
                 string temp = cbb_quest.Text;
@@ -280,7 +333,7 @@ namespace KdgTranslationApp
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void cbtnReset_Click(object sender, EventArgs e)
+        private void cbtnReset_Click_1(object sender, EventArgs e)
         {
             //reset về rỗng
             tb_quest.Text = "";
@@ -296,7 +349,7 @@ namespace KdgTranslationApp
         /// <param name="e"></param>
         /// 
         SpeechSynthesizer voice = new SpeechSynthesizer();
-        private void cbtn_questSpeak_Click(object sender, EventArgs e)
+        private void cbtn_questSpeak_Click_1(object sender, EventArgs e)
         {
             try
             {
@@ -305,18 +358,18 @@ namespace KdgTranslationApp
                     voice.SelectVoiceByHints(VoiceGender.Male);//chọn giọng nói
                     voice.SpeakAsync(tb_quest.Text);//đọc văn bản trong tb_quest
                 }
-                if(voice.State == SynthesizerState.Speaking)
+                if (voice.State == SynthesizerState.Speaking)
                 {
                     voice.SpeakAsyncCancelAll();
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK,MessageBoxIcon.Error);//show lỗi
+                MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);//show lỗi
             }
         }
 
-        private void cbtn_answerSpeak_Click(object sender, EventArgs e)
+        private void cbtn_answerSpeak_Click_1(object sender, EventArgs e)
         {
             string apiKey = "f8p9cIrz7OXjS1Yi6dAQdce5FwQ30n1A";
             string url = "https://api.zalo.ai/v1/tts/synthesize";
@@ -374,10 +427,10 @@ namespace KdgTranslationApp
         /// 
         private void recognier_SpeechRecognized(object sender, SpeechRecognizedEventArgs e)// Sự kiện này được gọi khi hệ thống nhận dạng giọng nói thành công
         {
-            tb_quest.Text += e.Result.Text  + "\r\n";// Thêm kết quả nhận dạng giọng nói vào cuối của TextBox và xuống dòng
+            tb_quest.Text += e.Result.Text + "\r\n";// Thêm kết quả nhận dạng giọng nói vào cuối của TextBox và xuống dòng
         }
 
-        private void cbtnVoiceInput_Click(object sender, EventArgs e)
+        private void cbtnVoiceInput_Click_1(object sender, EventArgs e)
         {
             SpeechRecognitionEngine recognier = new SpeechRecognitionEngine();//khởi tạo đối tượng nhân diện và xử lý ngôn ngữ nói
             if (recognier.AudioState != AudioState.Silence)
@@ -392,7 +445,7 @@ namespace KdgTranslationApp
 
                 recognier.RecognizeAsync(RecognizeMode.Multiple);//bắt đầu một phiên nhận dạng giọng nói bằng cách sử dụng phương thức RecognizeAsync. Tham số RecognizeMode.Multiple được sử dụng để cho phép việc nhận dạng liên tục của nhiều cụm từ được phát hiện trong khi phiên nhận dạng giọng nói đang diễn ra.
             }
-            if(recognier.AudioState == AudioState.Speech)
+            if (recognier.AudioState == AudioState.Speech)
             {
                 recognier.RecognizeAsyncStop(); // Dừng việc nhận diện giọng nói
                 recognier.Dispose(); // Giải phóng tài nguyên
@@ -404,12 +457,12 @@ namespace KdgTranslationApp
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void kdgTranslateToolStripMenuItem_Click(object sender, EventArgs e)
+        private void kdgTranslateToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             this.Show();
         }
 
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        private void exitToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             Application.Exit();
         }
@@ -419,7 +472,7 @@ namespace KdgTranslationApp
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void notifyIcon_Taskbar_MouseClick(object sender, MouseEventArgs e)
+        private void notifyIcon_Taskbar_MouseClick_1(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
@@ -454,56 +507,14 @@ namespace KdgTranslationApp
             }
         }
 
-        private void englishToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void englishToolStripMenuItem1_Click_1(object sender, EventArgs e)
         {
-            if (this.WindowState == FormWindowState.Normal)
-            {
-                this.WindowState = FormWindowState.Minimized;
-                // Dừng chương trình trong 0.5 giây để đợi cửa sổ thu nhỏ hoàn thành
-                Thread.Sleep(500);
-            }
-            // Chụp một ảnh vùng màn hình được chọn và chuyển đổi thành định dạng bitmap
-            try
-            {
-                Bitmap bitmap = ConvertToBitmap(Screenshot.CaptureRegion());
-                // Nhận diện ký tự trong ảnh bitmap sử dụng thư viện OCR và lưu kết quả vào biến ocrResult
-                string ocrResult = OCR(bitmap, "eng");
-                // Hiển thị kết quả nhận diện ký tự lên TextBox
-                tb_quest.Text = ocrResult;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK,MessageBoxIcon.Error);
-            }
-
-            // Khôi phục kích thước cửa sổ hiện tại
-            ShowHiddenForm(this);
+            this.englishToolStripMenuItem.PerformClick();
         }
 
-        private void vietnameseToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void vietnameseToolStripMenuItem1_Click_1(object sender, EventArgs e)
         {
-            if (this.WindowState == FormWindowState.Normal)
-            {
-                this.WindowState = FormWindowState.Minimized;
-                // Dừng chương trình trong 0.5 giây để đợi cửa sổ thu nhỏ hoàn thành
-                Thread.Sleep(500);
-            }
-            // Chụp một ảnh vùng màn hình được chọn và chuyển đổi thành định dạng bitmap
-            try
-            {
-                Bitmap bitmap = ConvertToBitmap(Screenshot.CaptureRegion());
-                // Nhận diện ký tự trong ảnh bitmap sử dụng thư viện OCR và lưu kết quả vào biến ocrResult
-                string ocrResult = OCR(bitmap, "vie");
-                // Hiển thị kết quả nhận diện ký tự lên TextBox
-                tb_quest.Text = ocrResult;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK,MessageBoxIcon.Error);
-            }
-
-            // Khôi phục kích thước cửa sổ hiện tại
-            ShowHiddenForm(this);
+            this.vietnameseToolStripMenuItem.PerformClick();
         }
 
         /// <summary>
@@ -511,16 +522,87 @@ namespace KdgTranslationApp
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void cbb_quest_SelectedIndexChanged(object sender, EventArgs e)
+        private void cbb_quest_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             if (tb_quest.Text != "")//nếu tb_quest khác rỗng sẽ tự dịch
                 tb_answer.Text = trans.TranslateText(tb_quest.Text, cbb_quest.Text, cbb_answer.Text);
         }
 
-        private void cbb_answer_SelectedIndexChanged(object sender, EventArgs e)
+        private void cbb_answer_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             if (tb_quest.Text != "")//nếu tb_quest khác rỗng sẽ tự dịch
                 tb_answer.Text = trans.TranslateText(tb_quest.Text, cbb_quest.Text, cbb_answer.Text);
+        }
+
+        /// <summary>
+        /// Đăng kí phím tắt
+        /// </summary>
+        /// <param name="m"></param>
+        /// 
+        protected override void WndProc(ref Message m)
+        {
+            if (m.Msg == WM_HOTKEY && (int)m.WParam == 1)
+            {
+                if (IsFormHidden(this))//Nếu form đang ẩn thì kích hoạt sự kiện lắng nghe bấm phím
+                {
+                    this.Show();
+                    this.WindowState = FormWindowState.Normal;
+                }
+
+                this.Activate();
+            }
+
+            if (m.Msg == WM_HOTKEY && (int)m.WParam == 2)
+            {
+                this.englishToolStripMenuItem.PerformClick();
+            }
+
+            if (m.Msg == WM_HOTKEY && (int)m.WParam == 3)
+            {
+                this.vietnameseToolStripMenuItem.PerformClick();
+            }
+            base.WndProc(ref m);
+        }
+
+        [DllImport("user32.dll")]
+        public static extern bool RegisterHotKey(IntPtr hWnd, int id, int fsModifiers, int vk);
+
+        [DllImport("user32.dll")]
+        public static extern bool UnregisterHotKey(IntPtr hWnd, int id);
+
+        const int WM_HOTKEY = 0x0312;
+        const int MOD_ALT = 0x0001;
+
+        /// <summary>
+        /// Lưu phím tắt vào csdl
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            if (tb_ShowFormKey.Text != "")
+            {
+                dbcon.Update("sf", tb_ShowFormKey.Text);
+                UnregisterHotKey(this.Handle, 1);
+                string hotKey = tb_ShowFormKey.Text;
+                RegisterHotKey(this.Handle, 1, MOD_ALT, (int)(Keys)Enum.Parse(typeof(Keys), hotKey));
+            }
+
+            if (tb_TR_EnglishKey.Text != "")
+            {
+                dbcon.Update("orc_en", tb_TR_EnglishKey.Text);
+                UnregisterHotKey(this.Handle, 2);
+                string hotKey = tb_TR_EnglishKey.Text;
+                RegisterHotKey(this.Handle, 2, MOD_ALT, (int)(Keys)Enum.Parse(typeof(Keys), hotKey));
+            }
+
+            if (tb_TR_VietnameseKey.Text != "")
+            {
+                dbcon.Update("orc_vi", tb_TR_VietnameseKey.Text);
+                UnregisterHotKey(this.Handle, 3);
+                string hotKey = tb_TR_VietnameseKey.Text;
+                RegisterHotKey(this.Handle, 3, MOD_ALT, (int)(Keys)Enum.Parse(typeof(Keys), hotKey));
+            }
         }
     }
 }

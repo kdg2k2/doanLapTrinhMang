@@ -1,7 +1,8 @@
-Devexpress 22.1.3.0 Active Full Version: https://laptrinhvb.net/bai-viet/chuyen-de-csharp/--SOFTWARE---Download-phan-mem-Devexpress-22-1-3-0-Active-Full-Version/171f7a6b9a263515.html
+- Devexpress 22.1.3.0 Active Full Version: https://laptrinhvb.net/bai-viet/chuyen-de-csharp/--SOFTWARE---Download-phan-mem-Devexpress-22-1-3-0-Active-Full-Version/171f7a6b9a263515.html
 
-Free GoogleTranslateAPI: https://translate.googleapis.com/translate_a/single?client=gtx&sl={0}&tl={1}&dt=t&q={2}
+- Free GoogleTranslateAPI: https://translate.googleapis.com/translate_a/single?client=gtx&sl={0}&tl={1}&dt=t&q={2}
 
-TextToSpeech: https://www.c-sharpcorner.com/UploadFile/1e050f/text-to-speech-converter-in-C-Sharp/
+- TextToSpeech: https://www.c-sharpcorner.com/UploadFile/1e050f/text-to-speech-converter-in-C-Sharp/
 
-SpeechToText: https://www.codeproject.com/Articles/380027/Csharp-Speech-to-Text
+- SpeechToText: https://www.codeproject.com/Articles/380027/Csharp-Speech-to-Text
+		https://zalo.ai/docs/api/text-to-audio-converter

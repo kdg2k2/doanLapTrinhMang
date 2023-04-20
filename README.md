@@ -1,4 +1,4 @@
-# doanLapTrinhMang
+# KdgTranslate
 c# winform using API
 Sử dụng API của GoogleTranslate và Zalo.ai làm ứng dụng phiên dịch đa ngôn ngữ (110 ngôn ngữ)
 

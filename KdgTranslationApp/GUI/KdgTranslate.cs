@@ -1,5 +1,7 @@
 ﻿using AutoCopySelectionText;
+using DevExpress.Utils.Win.Hook;
 using GI.Screenshot;
+using Gma.System.MouseKeyHook;
 using KdgTranslationApp.BLL;
 using RestSharp;
 using System;
@@ -18,6 +20,8 @@ using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Media.Imaging;
 using Tesseract;
+using Clipboard = System.Windows.Forms.Clipboard;
+using Hook = Gma.System.MouseKeyHook.Hook;
 using Timer = System.Windows.Forms.Timer;
 
 namespace KdgTranslationApp
@@ -81,6 +85,8 @@ namespace KdgTranslationApp
                 string orc_vi = tb_TR_VietnameseKey.Text;
                 RegisterHotKey(this.Handle, 3, MOD_ALT, (int)(Keys)Enum.Parse(typeof(Keys), orc_vi));
             }
+
+            SubscribeGlobal();
         }
 
         /// <summary>
@@ -534,10 +540,18 @@ namespace KdgTranslationApp
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void cbb_quest_SelectedIndexChanged_1(object sender, EventArgs e)
+        private async void cbb_quest_SelectedIndexChanged_1(object sender, EventArgs e)
         {
-            if (tb_quest.Text != "")//nếu tb_quest khác rỗng sẽ tự dịch
-                tb_answer.Text = trans.TranslateText(tb_quest.Text, cbb_quest.Text, cbb_answer.Text);
+            if (tb_quest.Text != "")
+                {
+                    if (cbb_quest.Text == "Detect")
+                    {
+                        cbb_quest.Text = cv.ConvertCodeToLanguageName(await LanguageDetector.DetectLanguageAsync(tb_quest.Text, tb_answer.Text));
+                        tb_answer.Text = trans.TranslateText(tb_quest.Text, cbb_quest.Text, cbb_answer.Text);
+                }
+                    else
+                    tb_answer.Text = trans.TranslateText(tb_quest.Text, cbb_quest.Text, cbb_answer.Text); // Nếu văn bản cuối cùng khác rỗng, dịch nó sang ngôn ngữ được chọn và đưa ra ô textbox
+            }
         }
 
         private void cbb_answer_SelectedIndexChanged_1(object sender, EventArgs e)
@@ -566,12 +580,16 @@ namespace KdgTranslationApp
 
             if (m.Msg == WM_HOTKEY && (int)m.WParam == 2)
             {
+                Unsubscribe();
                 this.englishToolStripMenuItem.PerformClick();
+                Subscribe(Hook.GlobalEvents());
             }
 
             if (m.Msg == WM_HOTKEY && (int)m.WParam == 3)
             {
+                Unsubscribe();
                 this.vietnameseToolStripMenuItem.PerformClick();
+                Subscribe(Hook.GlobalEvents());
             }
             base.WndProc(ref m);
         }
@@ -615,6 +633,42 @@ namespace KdgTranslationApp
                 string hotKey = tb_TR_VietnameseKey.Text;
                 RegisterHotKey(this.Handle, 3, MOD_ALT, (int)(Keys)Enum.Parse(typeof(Keys), hotKey));
             }
+        }
+
+        /// <summary>
+        /// Copy văn bản được bôi đen vào textbox
+        /// </summary>
+        private void SubscribeGlobal()
+        {
+            Unsubscribe();
+            Subscribe(Hook.GlobalEvents());
+        }
+        private IKeyboardMouseEvents m_Events;
+        private void Subscribe(IKeyboardMouseEvents events)
+        {
+            m_Events = events;
+            m_Events.MouseDragStarted += OnMouseDragStarted;
+            m_Events.MouseDragFinished += OnMouseDragFinished;
+        }
+
+        private void Unsubscribe()
+        {
+            if (m_Events == null) return;
+            m_Events.MouseDragStarted -= OnMouseDragStarted;
+            m_Events.MouseDragFinished -= OnMouseDragFinished;
+            m_Events.Dispose();
+            m_Events = null;
+        }
+
+        private void OnMouseDragStarted(object sender, MouseEventArgs e)
+        {
+            Clipboard.Clear();
+        }
+
+        private void OnMouseDragFinished(object sender, MouseEventArgs e)
+        {
+            SendKeys.SendWait("^c");
+            tb_quest.Text = Clipboard.GetText();
         }
     }
 }

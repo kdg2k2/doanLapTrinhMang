@@ -273,30 +273,17 @@ namespace KdgTranslationApp
         }
 
         /// <summary>
-        /// Set sự kiện tự động dịch khi click vào radiobtn
+        /// Set sự kiện tự động dịch khi click vào checkbox
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         /// 
-        private bool isRadioButtonChecked = false;//tắt nút Dịch khi kích hoạt radio button
-        private async void rbtn_AutoTranslate_Click_1(object sender, EventArgs e)
+        private async void cbtn_autoTranslate_CheckedChanged(object sender, EventArgs e)
         {
-            if (isRadioButtonChecked)
+            if (tb_quest.Text != "")
             {
-                rbtn_AutoTranslate.Checked = false;
-                isRadioButtonChecked = false;
-                btnTranslate.Enabled = true;
-            }
-            else
-            {
-                rbtn_AutoTranslate.Checked = true;
-                isRadioButtonChecked = true;
-                btnTranslate.Enabled = false;
-                if (tb_quest.Text != "")
-                {
-                    cbb_quest.Text = cv.ConvertCodeToLanguageName(await LanguageDetector.DetectLanguageAsync(tb_quest.Text, tb_answer.Text));
-                    tb_answer.Text = trans.TranslateText(tb_quest.Text, cbb_quest.Text, cbb_answer.Text);
-                }
+                cbb_quest.Text = cv.ConvertCodeToLanguageName(await LanguageDetector.DetectLanguageAsync(tb_quest.Text, tb_answer.Text));
+                tb_answer.Text = trans.TranslateText(tb_quest.Text, cbb_quest.Text, cbb_answer.Text);
             }
         }
 
@@ -332,7 +319,7 @@ namespace KdgTranslationApp
 
         private void tb_quest_TextChanged_1(object sender, EventArgs e)
         {
-            if (rbtn_AutoTranslate.Checked) // Nếu ô radio button "translate" được chọn
+            if (cbtn_autoTranslate.Checked) // Nếu ô radio button "translate" được chọn
             {
                 lastText = tb_quest.Text; // Lưu trữ văn bản cuối cùng được nhập vào ô textbox
                 timer.Stop(); // Dừng Timer trước khi đặt lại thời gian
@@ -703,6 +690,11 @@ namespace KdgTranslationApp
             con.Close();
         }
 
+        /// <summary>
+        /// xóa khoảng trắng
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cbtn_removeSpace_CheckedChanged(object sender, EventArgs e)
         {
             // Kiểm tra nếu TextBox không rỗng
@@ -712,5 +704,7 @@ namespace KdgTranslationApp
                 tb_quest.Text = System.Text.RegularExpressions.Regex.Replace(tb_quest.Text, @"\s+", " ");
             }
         }
+
+        
     }
 }

@@ -32,10 +32,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KdgTranslateApp));
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
+            this.cbtn_removeSpace = new System.Windows.Forms.CheckBox();
             this.cbtnVoiceInput = new DevExpress.XtraEditors.CheckButton();
             this.cbtn_answerSpeak = new DevExpress.XtraEditors.CheckButton();
             this.cbtn_questSpeak = new DevExpress.XtraEditors.CheckButton();
-            this.rbtn_AutoTranslate = new System.Windows.Forms.RadioButton();
             this.btnTranslate = new System.Windows.Forms.Button();
             this.cbtnReset = new DevExpress.XtraEditors.CheckButton();
             this.cbtnSwitch = new DevExpress.XtraEditors.CheckButton();
@@ -67,7 +67,7 @@
             this.vietnameseToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.notifyIcon_Taskbar = new System.Windows.Forms.NotifyIcon(this.components);
-            this.cbtn_removeSpace = new System.Windows.Forms.CheckBox();
+            this.cbtn_autoTranslate = new System.Windows.Forms.CheckBox();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
             this.contextMenuStrip_CameraIcon.SuspendLayout();
@@ -89,11 +89,11 @@
             // 
             // xtraTabPage1
             // 
+            this.xtraTabPage1.Controls.Add(this.cbtn_autoTranslate);
             this.xtraTabPage1.Controls.Add(this.cbtn_removeSpace);
             this.xtraTabPage1.Controls.Add(this.cbtnVoiceInput);
             this.xtraTabPage1.Controls.Add(this.cbtn_answerSpeak);
             this.xtraTabPage1.Controls.Add(this.cbtn_questSpeak);
-            this.xtraTabPage1.Controls.Add(this.rbtn_AutoTranslate);
             this.xtraTabPage1.Controls.Add(this.btnTranslate);
             this.xtraTabPage1.Controls.Add(this.cbtnReset);
             this.xtraTabPage1.Controls.Add(this.cbtnSwitch);
@@ -105,6 +105,17 @@
             this.xtraTabPage1.Name = "xtraTabPage1";
             this.xtraTabPage1.Size = new System.Drawing.Size(563, 317);
             this.xtraTabPage1.Text = "Main";
+            // 
+            // cbtn_removeSpace
+            // 
+            this.cbtn_removeSpace.AutoSize = true;
+            this.cbtn_removeSpace.Location = new System.Drawing.Point(335, 0);
+            this.cbtn_removeSpace.Name = "cbtn_removeSpace";
+            this.cbtn_removeSpace.Size = new System.Drawing.Size(96, 17);
+            this.cbtn_removeSpace.TabIndex = 23;
+            this.cbtn_removeSpace.Text = "Remove space";
+            this.cbtn_removeSpace.UseVisualStyleBackColor = true;
+            this.cbtn_removeSpace.CheckedChanged += new System.EventHandler(this.cbtn_removeSpace_CheckedChanged);
             // 
             // cbtnVoiceInput
             // 
@@ -135,18 +146,6 @@
             this.cbtn_questSpeak.TabIndex = 20;
             this.cbtn_questSpeak.Text = "checkButton1";
             this.cbtn_questSpeak.Click += new System.EventHandler(this.cbtn_questSpeak_Click_1);
-            // 
-            // rbtn_AutoTranslate
-            // 
-            this.rbtn_AutoTranslate.AutoSize = true;
-            this.rbtn_AutoTranslate.Location = new System.Drawing.Point(435, 0);
-            this.rbtn_AutoTranslate.Name = "rbtn_AutoTranslate";
-            this.rbtn_AutoTranslate.Size = new System.Drawing.Size(114, 17);
-            this.rbtn_AutoTranslate.TabIndex = 19;
-            this.rbtn_AutoTranslate.TabStop = true;
-            this.rbtn_AutoTranslate.Text = "Instant translation";
-            this.rbtn_AutoTranslate.UseVisualStyleBackColor = true;
-            this.rbtn_AutoTranslate.Click += new System.EventHandler(this.rbtn_AutoTranslate_Click_1);
             // 
             // btnTranslate
             // 
@@ -658,16 +657,16 @@
             this.notifyIcon_Taskbar.Visible = true;
             this.notifyIcon_Taskbar.MouseClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_Taskbar_MouseClick_1);
             // 
-            // cbtn_removeSpace
+            // cbtn_autoTranslate
             // 
-            this.cbtn_removeSpace.AutoSize = true;
-            this.cbtn_removeSpace.Location = new System.Drawing.Point(335, 0);
-            this.cbtn_removeSpace.Name = "cbtn_removeSpace";
-            this.cbtn_removeSpace.Size = new System.Drawing.Size(96, 17);
-            this.cbtn_removeSpace.TabIndex = 23;
-            this.cbtn_removeSpace.Text = "Remove space";
-            this.cbtn_removeSpace.UseVisualStyleBackColor = true;
-            this.cbtn_removeSpace.CheckedChanged += new System.EventHandler(this.cbtn_removeSpace_CheckedChanged);
+            this.cbtn_autoTranslate.AutoSize = true;
+            this.cbtn_autoTranslate.Location = new System.Drawing.Point(438, 0);
+            this.cbtn_autoTranslate.Name = "cbtn_autoTranslate";
+            this.cbtn_autoTranslate.Size = new System.Drawing.Size(115, 17);
+            this.cbtn_autoTranslate.TabIndex = 24;
+            this.cbtn_autoTranslate.Text = "Instant translation";
+            this.cbtn_autoTranslate.UseVisualStyleBackColor = true;
+            this.cbtn_autoTranslate.CheckedChanged += new System.EventHandler(this.cbtn_autoTranslate_CheckedChanged);
             // 
             // KdgTranslateApp
             // 
@@ -701,7 +700,6 @@
         private DevExpress.XtraEditors.CheckButton cbtnVoiceInput;
         private DevExpress.XtraEditors.CheckButton cbtn_answerSpeak;
         private DevExpress.XtraEditors.CheckButton cbtn_questSpeak;
-        private System.Windows.Forms.RadioButton rbtn_AutoTranslate;
         private System.Windows.Forms.Button btnTranslate;
         private DevExpress.XtraEditors.CheckButton cbtnReset;
         private DevExpress.XtraEditors.CheckButton cbtnSwitch;
@@ -734,6 +732,7 @@
         private System.Windows.Forms.TextBox tb_TR_EnglishKey;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.CheckBox cbtn_removeSpace;
+        private System.Windows.Forms.CheckBox cbtn_autoTranslate;
     }
 }
 

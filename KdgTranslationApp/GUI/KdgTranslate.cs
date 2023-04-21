@@ -673,8 +673,20 @@ namespace KdgTranslationApp
 
         private void OnMouseDragFinished(object sender, MouseEventArgs e)
         {
-            SendKeys.SendWait("^c");
-            tb_quest.Text = Clipboard.GetText();
+            try
+            {
+                SendKeys.SendWait("^c");
+                tb_quest.Text = Clipboard.GetText();
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void KdgTranslateApp_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            con.Close();
         }
     }
 }

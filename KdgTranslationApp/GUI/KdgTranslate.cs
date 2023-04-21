@@ -311,11 +311,21 @@ namespace KdgTranslationApp
                 {
                     if (cbb_quest.Text == "Detect")
                     {
+                        if(cbtn_removeSpace.Checked == true)
+                        {
+                            this.cbtn_removeSpace_CheckedChanged(sender,e);
+                        }
                         cbb_quest.Text = cv.ConvertCodeToLanguageName(await LanguageDetector.DetectLanguageAsync(tb_quest.Text, tb_answer.Text));
                         tb_answer.Text = trans.TranslateText(tb_quest.Text, cbb_quest.Text, cbb_answer.Text);
                     }
                     else
+                    {
+                        if (cbtn_removeSpace.Checked == true)
+                        {
+                            this.cbtn_removeSpace_CheckedChanged(sender, e);
+                        }
                         tb_answer.Text = trans.TranslateText(lastText, cbb_quest.Text, cbb_answer.Text); // Nếu văn bản cuối cùng khác rỗng, dịch nó sang ngôn ngữ được chọn và đưa ra ô textbox
+                    }
                 }
             }
         }
@@ -683,10 +693,24 @@ namespace KdgTranslationApp
 
             }
         }
-
+        /// <summary>
+        /// đóng kết nối SQLite khi đóng form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void KdgTranslateApp_FormClosing(object sender, FormClosingEventArgs e)
         {
             con.Close();
+        }
+
+        private void cbtn_removeSpace_CheckedChanged(object sender, EventArgs e)
+        {
+            // Kiểm tra nếu TextBox không rỗng
+            if (!string.IsNullOrEmpty(tb_quest.Text))
+            {
+                // Thay thế tất cả các khoảng cách liên tiếp bằng 1 khoảng cách
+                tb_quest.Text = System.Text.RegularExpressions.Regex.Replace(tb_quest.Text, @"\s+", " ");
+            }
         }
     }
 }

@@ -67,6 +67,7 @@
             this.vietnameseToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.notifyIcon_Taskbar = new System.Windows.Forms.NotifyIcon(this.components);
+            this.cbtn_removeSpace = new System.Windows.Forms.CheckBox();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
             this.contextMenuStrip_CameraIcon.SuspendLayout();
@@ -88,6 +89,7 @@
             // 
             // xtraTabPage1
             // 
+            this.xtraTabPage1.Controls.Add(this.cbtn_removeSpace);
             this.xtraTabPage1.Controls.Add(this.cbtnVoiceInput);
             this.xtraTabPage1.Controls.Add(this.cbtn_answerSpeak);
             this.xtraTabPage1.Controls.Add(this.cbtn_questSpeak);
@@ -656,6 +658,17 @@
             this.notifyIcon_Taskbar.Visible = true;
             this.notifyIcon_Taskbar.MouseClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_Taskbar_MouseClick_1);
             // 
+            // cbtn_removeSpace
+            // 
+            this.cbtn_removeSpace.AutoSize = true;
+            this.cbtn_removeSpace.Location = new System.Drawing.Point(335, 0);
+            this.cbtn_removeSpace.Name = "cbtn_removeSpace";
+            this.cbtn_removeSpace.Size = new System.Drawing.Size(96, 17);
+            this.cbtn_removeSpace.TabIndex = 23;
+            this.cbtn_removeSpace.Text = "Remove space";
+            this.cbtn_removeSpace.UseVisualStyleBackColor = true;
+            this.cbtn_removeSpace.CheckedChanged += new System.EventHandler(this.cbtn_removeSpace_CheckedChanged);
+            // 
             // KdgTranslateApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -720,6 +733,7 @@
         private System.Windows.Forms.TextBox tb_TR_VietnameseKey;
         private System.Windows.Forms.TextBox tb_TR_EnglishKey;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.CheckBox cbtn_removeSpace;
     }
 }
 

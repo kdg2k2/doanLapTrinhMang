@@ -6,6 +6,7 @@ using KdgTranslationApp.BLL;
 using RestSharp;
 using System;
 using System.Data.SqlClient;
+using System.Data.SQLite;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
@@ -39,7 +40,7 @@ namespace KdgTranslationApp
         /// <param name="e"></param>
         /// 
         Convert_language_code cv = new Convert_language_code();
-        SqlConnection con = DBConnect.GetDBConnection();
+        SQLiteConnection con = DBConnect.GetDBConnection();
         DBConnect dbcon = new DBConnect();
         private void KdgTranslateApp_Load(object sender, EventArgs e)
         {
@@ -49,20 +50,25 @@ namespace KdgTranslationApp
 
             //set hotkey
             con.Open();
+            //dbcon.CreateTable(con);
+            //dbcon.Insert(con, "sf", "D");
+            //dbcon.Insert(con, "orc_en", "E");
+            //dbcon.Insert(con, "orc_vi", "V");
 
-            using (SqlCommand cmd = new SqlCommand("select keys from Keys where idEvent = 'sf'", con))
+
+            using (SQLiteCommand cmd = new SQLiteCommand("select keys from Keys where idEvent = 'sf'", con))
             {
                 string result = (string)cmd.ExecuteScalar();
                 tb_ShowFormKey.Text = result;
             }
 
-            using (SqlCommand cmd = new SqlCommand("select keys from Keys where idEvent = 'orc_en'", con))
+            using (SQLiteCommand cmd = new SQLiteCommand("select keys from Keys where idEvent = 'orc_en'", con))
             {
                 string result = (string)cmd.ExecuteScalar();
                 tb_TR_EnglishKey.Text = result;
             }
 
-            using (SqlCommand cmd = new SqlCommand("select keys from Keys where idEvent = 'orc_vi'", con))
+            using (SQLiteCommand cmd = new SQLiteCommand("select keys from Keys where idEvent = 'orc_vi'", con))
             {
                 string result = (string)cmd.ExecuteScalar();
                 tb_TR_VietnameseKey.Text = result;

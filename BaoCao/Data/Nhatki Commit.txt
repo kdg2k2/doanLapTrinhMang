@@ -1,4 +1,118 @@
-commit 31992fc8c5435b28334fe2a93843fefb5598c624 (HEAD -> master, origin/master)
+commit 122ed630dab93f060450663f68499281c5110473 (HEAD -> master, origin/master)
+Author: Nguyễn Khả Đăng <97999411+kdg2k2@users.noreply.github.com>
+Date:   Thu Apr 20 11:54:11 2023 +0700
+
+    Update README.md
+
+commit 95475e2515cd7dca0f6a2e4a7c451280c3beba66
+Author: Nguyễn Khả Đăng <97999411+kdg2k2@users.noreply.github.com>
+Date:   Thu Apr 20 11:52:46 2023 +0700
+
+    Create README.md
+
+commit 5b6e770002d8ef57ed7acc8d44f5c59fb83cedcf
+Author: DG <kdg2k2@gmail.com>
+Date:   Thu Apr 20 11:39:38 2023 +0700
+
+    update tệp database
+
+commit 1d15f78edec64fb7226b496398408519a2fc40f1
+Author: DG <kdg2k2@gmail.com>
+Date:   Thu Apr 20 11:28:18 2023 +0700
+
+    Thêm chức năng HotKeys và db lưu phím
+:
+commit 122ed630dab93f060450663f68499281c5110473 (HEAD -> master, origin/master)
+Author: Nguyễn Khả Đăng <97999411+kdg2k2@users.noreply.github.com>
+Date:   Thu Apr 20 11:54:11 2023 +0700
+
+    Update README.md
+
+commit 95475e2515cd7dca0f6a2e4a7c451280c3beba66
+Author: Nguyễn Khả Đăng <97999411+kdg2k2@users.noreply.github.com>
+Date:   Thu Apr 20 11:52:46 2023 +0700
+
+    Create README.md
+
+commit 5b6e770002d8ef57ed7acc8d44f5c59fb83cedcf
+Author: DG <kdg2k2@gmail.com>
+Date:   Thu Apr 20 11:39:38 2023 +0700
+
+    update tệp database
+
+commit 1d15f78edec64fb7226b496398408519a2fc40f1
+Author: DG <kdg2k2@gmail.com>
+Date:   Thu Apr 20 11:28:18 2023 +0700
+
+    Thêm chức năng HotKeys và db lưu phím
+
+commit 1bf4d7ba7f81f6e68c72eecf2442fdae53145155
+Author: DG <kdg2k2@gmail.com>
+Date:   Mon Apr 17 22:40:27 2023 +0700
+
+    thêm điều kiện cho chức năng tự động dịch
+
+commit 24084707250589b5b69d1191cf2267d1f79c9d80
+Author: DG <kdg2k2@gmail.com>
+Date:   Mon Apr 17 10:09:09 2023 +0700
+
+    updates packages
+
+commit 81d8481ad1b7aa19d3e861b0b582ffb028c3eaa9
+Author: DG <kdg2k2@gmail.com>
+Date:   Sun Apr 16 23:13:35 2023 +0700
+
+    dùng api zalo.ai text to speech
+
+commit 58d895a7bead0e5aab1407263f9bd789281be7ac
+Author: DG <kdg2k2@gmail.com>
+Date:   Tue Apr 11 11:39:35 2023 +0700
+
+    sửa kiểm tra đầu vào cho speakicon
+
+commit 903abdb9501cebad8c35d3f17e7fff5845562394
+Author: DG <kdg2k2@gmail.com>
+Date:   Mon Apr 10 20:11:58 2023 +0700
+
+    Thêm kiểm tra đầu vào cho Switch + cbb
+
+commit 06566766effd3beb803d867707acb46ff7aa9a5d
+Author: DG <kdg2k2@gmail.com>
+Date:   Mon Apr 10 16:55:30 2023 +0700
+
+    fix lỗi dịch ngay khi detect
+
+commit 3c1b562cbc19d24b2fa070ce7596208c2abbce69
+Author: DG <kdg2k2@gmail.com>
+Date:   Mon Apr 10 11:27:45 2023 +0700
+
+    gọi chức năng dịch màn hình từ notifyIcon
+
+commit 62de0e7224072a66541a68e7cfedb351ef46e3c3
+Author: DG <kdg2k2@gmail.com>
+Date:   Fri Apr 7 22:45:08 2023 +0700
+
+    Thêm chức năng tự động nhận dạng ngôn ngữ
+
+commit a2795aae13dcd83f445ce8eacba62058f26dc6ba
+Author: DG <kdg2k2@gmail.com>
+Date:   Fri Apr 7 16:07:24 2023 +0700
+
+    Upload BaoCao
+
+commit d6fd34dda03cf308b8025cbead521caaab52634c
+Author: DG <kdg2k2@gmail.com>
+Date:   Fri Apr 7 16:05:23 2023 +0700
+
+    Upload BaoCao
+
+commit 83003cdc0d37260df11d93f5e93333f992a8a727
+Author: DG <kdg2k2@gmail.com>
+Date:   Fri Apr 7 15:56:06 2023 +0700
+
+    upload BaoCao
+
+commit 31992fc8c5435b28334fe2a93843fefb5598c624
 Author: DG <kdg2k2@gmail.com>
 Date:   Fri Apr 7 14:45:34 2023 +0700
 
@@ -28,6 +142,54 @@ Date:   Fri Apr 7 13:59:06 2023 +0700
 
     Sử dụng GoogleAPI tạo kết nối client đến server
 
+commit 9de06e7d545da43bebf375ff2ed6915e081407d1
+Author: DG <kdg2k2@gmail.com>
+Date:   Fri Apr 7 13:31:34 2023 +0700
+
+    Thêm ContentMenuTrip cho cbtnCamera
+
+commit 55ec9fdbed6abd20a63e045c9d87f0c09b7dd6b0
+Author: DG <kdg2k2@gmail.com>
+Date:   Fri Apr 7 13:14:31 2023 +0700
+
+    chụp ảnh bằng GI và lấy văn bản ra bằng Tesseract OCR
+
+commit 4b19323d66129dd270279d505266a55dc0e74027
+Author: DG <kdg2k2@gmail.com>
+Date:   Fri Apr 7 13:06:20 2023 +0700
+
+    Add project files.
+
+commit d841c5a85d3025c5ead9e9960bace64a401d342d
+Author: DG <kdg2k2@gmail.com>
+Date:   Fri Apr 7 13:06:15 2023 +0700
+
+    Add .gitattributes and .gitignore.
+(END)
+commit 9de06e7d545da43bebf375ff2ed6915e081407d1
+Author: DG <kdg2k2@gmail.com>
+Date:   Fri Apr 7 13:31:34 2023 +0700
+
+    Thêm ContentMenuTrip cho cbtnCamera
+
+commit 55ec9fdbed6abd20a63e045c9d87f0c09b7dd6b0
+Author: DG <kdg2k2@gmail.com>
+Date:   Fri Apr 7 13:14:31 2023 +0700
+
+    chụp ảnh bằng GI và lấy văn bản ra bằng Tesseract OCR
+
+commit 4b19323d66129dd270279d505266a55dc0e74027
+Author: DG <kdg2k2@gmail.com>
+Date:   Fri Apr 7 13:06:20 2023 +0700
+
+    Add project files.
+
+commit d841c5a85d3025c5ead9e9960bace64a401d342d
+Author: DG <kdg2k2@gmail.com>
+Date:   Fri Apr 7 13:06:15 2023 +0700
+
+    Add .gitattributes and .gitignore.
+(END)
 commit 9de06e7d545da43bebf375ff2ed6915e081407d1
 Author: DG <kdg2k2@gmail.com>
 Date:   Fri Apr 7 13:31:34 2023 +0700

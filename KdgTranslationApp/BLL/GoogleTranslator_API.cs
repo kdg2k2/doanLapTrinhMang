@@ -18,6 +18,11 @@ namespace KdgTranslationApp.BLL
 
             string result = httpClient.GetStringAsync(url).Result;  //Gửi yêu cầu HTTP đến API Google Translate bằng cách gọi phương thức GetStringAsync trên đối tượng httpClient, truyền vào địa chỉ URL của API và đợi kết quả trả về bằng cách gọi phương thức Result.
 
+            if (string.IsNullOrWhiteSpace(result))
+            {
+                throw new Exception("No response received from Google Translate API.");
+            }
+
             var jsonData = new JavaScriptSerializer().Deserialize<List<dynamic>>(result);//Sử dụng lớp JavaScriptSerializer để phân tích cú pháp chuỗi JSON phản hồi từ API Google Translate và chuyển đổi nó thành một danh sách các đối tượng động (dynamic) của các dòng và các phần tử trong mỗi dòng
 
             var translationItems = jsonData[0];//Lấy danh sách các dòng chứa phần dịch của câu đầu vào từ đối tượng JSON phân tích được.

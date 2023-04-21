@@ -1,6 +1,6 @@
 # KdgTranslate
 c# winform using API
-Sử dụng API của GoogleTranslate và Zalo.ai làm ứng dụng phiên dịch đa ngôn ngữ (110 ngôn ngữ)
+Sử dụng API của GoogleTranslate và Zalo.ai làm ứng dụng phiên dịch và đọc đa ngôn ngữ (110 ngôn ngữ) với giọng thoại của người việt
 
 <Có sử dụng DevExpress - link tải và thông tin tra cứu tham khảo trong .\BaoCao\Data\Data.txt>
 

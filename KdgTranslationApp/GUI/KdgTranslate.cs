@@ -120,15 +120,27 @@ namespace KdgTranslationApp
                 Convert_language_code cv = new Convert_language_code();
                 using (var client = new HttpClient())
                 {
+                    // Tạo biến url chứa URL của API Google Translate để nhận diện ngôn ngữ, sử dụng biến cv để chuyển đổi ngôn ngữ đích thành mã ngôn ngữ
                     var url = $"https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl={cv.ConvertLanguageNameToCode(targetLanguage)}&dt=t&q={Uri.EscapeDataString(text)}";
+
+                    // Gửi yêu cầu HTTP GET tới URL của API Google Translate bằng đối tượng HttpClient
                     var response = await client.GetAsync(url);
+
+                    // Kiểm tra xem phản hồi từ API có thành công hay không, nếu không thì ném ra một ngoại lệ
                     response.EnsureSuccessStatusCode();
+
+                    // Đọc nội dung của phản hồi HTTP từ API Google Translate và lưu trữ nó trong biến content dưới dạng chuỗi
                     var content = await response.Content.ReadAsStringAsync();
+
+                    // Tách chuỗi JSON phản hồi từ API Google Translate để lấy kết quả phân tích ngôn ngữ
                     var parts = content.Split('"');
+
+                    // Nếu chuỗi JSON phản hồi chứa ít nhất 2 phần tử, trả về phần tử thứ hai là kết quả phân tích ngôn ngữ
                     if (parts.Length >= 2)
                     {
                         return parts[1];
                     }
+                    // Nếu không, ném ra một ngoại lệ
                     else
                     {
                         throw new Exception("Cannot detect language.");
@@ -380,7 +392,7 @@ namespace KdgTranslationApp
 
             string inputText = tb_answer.Text;
 
-            // create request
+            // tạo request
             var client = new RestClient(url);
             var request = new RestRequest(Method.POST);
             request.AddHeader("apikey", apiKey);
@@ -390,20 +402,20 @@ namespace KdgTranslationApp
             request.AddParameter("quality", quality);
             request.AddParameter("encode_type", encodeType);
 
-            // execute request
+            // gửi request
             IRestResponse response = client.Execute(request);
 
-            // check for errors
+            // kiểm tra có nhận phản hồi thành công không
             if (response.IsSuccessful)
             {
-                // read response and get audio url
+                // đọc phản hồi và nhận url âm thanh
                 var data = Newtonsoft.Json.JsonConvert.DeserializeObject<dynamic>(response.Content);
                 string audioUrl = data.data.url;
 
                 //show ra xem audioUrl trả về từ API
                 MessageBox.Show("Url API response: " + audioUrl, "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                // download audio and play it
+                // tải audio and play
                 using (var wc = new System.Net.WebClient())
                 {
                     byte[] audioBytes = wc.DownloadData(audioUrl);
@@ -412,7 +424,7 @@ namespace KdgTranslationApp
                     audio.Play();
                 }
             }
-            else
+            else //Nếu không thì show nội dung phản hồi lỗi
             {
                 MessageBox.Show(response.Content, "API Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

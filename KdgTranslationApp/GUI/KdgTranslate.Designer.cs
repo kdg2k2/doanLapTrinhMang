@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KdgTranslateApp));
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
+            this.cbtn_autoTranslate = new System.Windows.Forms.CheckBox();
             this.cbtn_removeSpace = new System.Windows.Forms.CheckBox();
             this.cbtnVoiceInput = new DevExpress.XtraEditors.CheckButton();
             this.cbtn_answerSpeak = new DevExpress.XtraEditors.CheckButton();
@@ -67,7 +68,6 @@
             this.vietnameseToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.notifyIcon_Taskbar = new System.Windows.Forms.NotifyIcon(this.components);
-            this.cbtn_autoTranslate = new System.Windows.Forms.CheckBox();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
             this.contextMenuStrip_CameraIcon.SuspendLayout();
@@ -106,6 +106,17 @@
             this.xtraTabPage1.Size = new System.Drawing.Size(563, 317);
             this.xtraTabPage1.Text = "Main";
             // 
+            // cbtn_autoTranslate
+            // 
+            this.cbtn_autoTranslate.AutoSize = true;
+            this.cbtn_autoTranslate.Location = new System.Drawing.Point(438, 0);
+            this.cbtn_autoTranslate.Name = "cbtn_autoTranslate";
+            this.cbtn_autoTranslate.Size = new System.Drawing.Size(115, 17);
+            this.cbtn_autoTranslate.TabIndex = 24;
+            this.cbtn_autoTranslate.Text = "Instant translation";
+            this.cbtn_autoTranslate.UseVisualStyleBackColor = true;
+            this.cbtn_autoTranslate.CheckedChanged += new System.EventHandler(this.cbtn_autoTranslate_CheckedChanged);
+            // 
             // cbtn_removeSpace
             // 
             this.cbtn_removeSpace.AutoSize = true;
@@ -115,7 +126,7 @@
             this.cbtn_removeSpace.TabIndex = 23;
             this.cbtn_removeSpace.Text = "Remove space";
             this.cbtn_removeSpace.UseVisualStyleBackColor = true;
-            this.cbtn_removeSpace.CheckedChanged += new System.EventHandler(this.cbtn_removeSpace_CheckedChanged);
+            this.cbtn_removeSpace.CheckStateChanged += new System.EventHandler(this.cbtn_removeSpace_CheckStateChanged);
             // 
             // cbtnVoiceInput
             // 
@@ -656,17 +667,6 @@
             this.notifyIcon_Taskbar.Text = "KdgTranslate";
             this.notifyIcon_Taskbar.Visible = true;
             this.notifyIcon_Taskbar.MouseClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_Taskbar_MouseClick_1);
-            // 
-            // cbtn_autoTranslate
-            // 
-            this.cbtn_autoTranslate.AutoSize = true;
-            this.cbtn_autoTranslate.Location = new System.Drawing.Point(438, 0);
-            this.cbtn_autoTranslate.Name = "cbtn_autoTranslate";
-            this.cbtn_autoTranslate.Size = new System.Drawing.Size(115, 17);
-            this.cbtn_autoTranslate.TabIndex = 24;
-            this.cbtn_autoTranslate.Text = "Instant translation";
-            this.cbtn_autoTranslate.UseVisualStyleBackColor = true;
-            this.cbtn_autoTranslate.CheckedChanged += new System.EventHandler(this.cbtn_autoTranslate_CheckedChanged);
             // 
             // KdgTranslateApp
             // 

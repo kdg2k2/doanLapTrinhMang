@@ -1,11 +1,9 @@
 ﻿using AutoCopySelectionText;
-using DevExpress.Utils.Win.Hook;
 using GI.Screenshot;
 using Gma.System.MouseKeyHook;
 using KdgTranslationApp.BLL;
 using RestSharp;
 using System;
-using System.Data.SqlClient;
 using System.Data.SQLite;
 using System.Drawing;
 using System.Drawing.Imaging;
@@ -222,17 +220,18 @@ namespace KdgTranslationApp
             }
             try
             {
+                Unsubscribe();
                 Bitmap bitmap = ConvertToBitmap(Screenshot.CaptureRegion());
                 // Nhận diện ký tự trong ảnh bitmap sử dụng thư viện OCR và lưu kết quả vào biến ocrResult
                 string ocrResult = OCR(bitmap, "vie");
                 // Hiển thị kết quả nhận diện ký tự lên TextBox
                 tb_quest.Text = ocrResult;
+                Subscribe(Hook.GlobalEvents());
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
             // Khôi phục kích thước cửa sổ hiện tại
             ShowHiddenForm(this);
         }
@@ -249,17 +248,18 @@ namespace KdgTranslationApp
             }
             try
             {
+                Unsubscribe();
                 Bitmap bitmap = ConvertToBitmap(Screenshot.CaptureRegion());
                 // Nhận diện ký tự trong ảnh bitmap sử dụng thư viện OCR và lưu kết quả vào biến ocrResult
                 string ocrResult = OCR(bitmap, "eng");
                 // Hiển thị kết quả nhận diện ký tự lên TextBox
                 tb_quest.Text = ocrResult;
+                Subscribe(Hook.GlobalEvents());
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
             // Khôi phục kích thước cửa sổ hiện tại
             ShowHiddenForm(this);
         }
@@ -298,19 +298,11 @@ namespace KdgTranslationApp
                 {
                     if (cbb_quest.Text == "Detect")
                     {
-                        if(cbtn_removeSpace.Checked == true)
-                        {
-                            this.cbtn_removeSpace_CheckedChanged(sender,e);
-                        }
                         cbb_quest.Text = cv.ConvertCodeToLanguageName(await LanguageDetector.DetectLanguageAsync(tb_quest.Text, tb_answer.Text));
                         tb_answer.Text = trans.TranslateText(tb_quest.Text, cbb_quest.Text, cbb_answer.Text);
                     }
                     else
                     {
-                        if (cbtn_removeSpace.Checked == true)
-                        {
-                            this.cbtn_removeSpace_CheckedChanged(sender, e);
-                        }
                         tb_answer.Text = trans.TranslateText(lastText, cbb_quest.Text, cbb_answer.Text); // Nếu văn bản cuối cùng khác rỗng, dịch nó sang ngôn ngữ được chọn và đưa ra ô textbox
                     }
                 }
@@ -546,13 +538,13 @@ namespace KdgTranslationApp
         private async void cbb_quest_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             if (tb_quest.Text != "")
+            {
+                if (cbb_quest.Text == "Detect")
                 {
-                    if (cbb_quest.Text == "Detect")
-                    {
-                        cbb_quest.Text = cv.ConvertCodeToLanguageName(await LanguageDetector.DetectLanguageAsync(tb_quest.Text, tb_answer.Text));
-                        tb_answer.Text = trans.TranslateText(tb_quest.Text, cbb_quest.Text, cbb_answer.Text);
+                    cbb_quest.Text = cv.ConvertCodeToLanguageName(await LanguageDetector.DetectLanguageAsync(tb_quest.Text, tb_answer.Text));
+                    tb_answer.Text = trans.TranslateText(tb_quest.Text, cbb_quest.Text, cbb_answer.Text);
                 }
-                    else
+                else
                     tb_answer.Text = trans.TranslateText(tb_quest.Text, cbb_quest.Text, cbb_answer.Text); // Nếu văn bản cuối cùng khác rỗng, dịch nó sang ngôn ngữ được chọn và đưa ra ô textbox
             }
         }
@@ -577,22 +569,17 @@ namespace KdgTranslationApp
                     this.Show();
                     this.WindowState = FormWindowState.Normal;
                 }
-
                 this.Activate();
             }
 
             if (m.Msg == WM_HOTKEY && (int)m.WParam == 2)
             {
-                Unsubscribe();
                 this.englishToolStripMenuItem.PerformClick();
-                Subscribe(Hook.GlobalEvents());
             }
 
             if (m.Msg == WM_HOTKEY && (int)m.WParam == 3)
             {
-                Unsubscribe();
                 this.vietnameseToolStripMenuItem.PerformClick();
-                Subscribe(Hook.GlobalEvents());
             }
             base.WndProc(ref m);
         }
@@ -674,12 +661,17 @@ namespace KdgTranslationApp
             {
                 SendKeys.SendWait("^c");
                 tb_quest.Text = Clipboard.GetText();
+                if (cbtn_removeSpace.CheckState != CheckState.Unchecked)
+                {
+                    cbtn_removeSpace_CheckStateChanged(sender, e);
+                }
             }
             catch
             {
 
             }
         }
+
         /// <summary>
         /// đóng kết nối SQLite khi đóng form
         /// </summary>
@@ -695,7 +687,7 @@ namespace KdgTranslationApp
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void cbtn_removeSpace_CheckedChanged(object sender, EventArgs e)
+        private void cbtn_removeSpace_CheckStateChanged(object sender, EventArgs e)
         {
             // Kiểm tra nếu TextBox không rỗng
             if (!string.IsNullOrEmpty(tb_quest.Text))
@@ -704,7 +696,5 @@ namespace KdgTranslationApp
                 tb_quest.Text = System.Text.RegularExpressions.Regex.Replace(tb_quest.Text, @"\s+", " ");
             }
         }
-
-        
     }
 }

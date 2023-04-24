@@ -227,6 +227,10 @@ namespace KdgTranslationApp
                 // Hiển thị kết quả nhận diện ký tự lên TextBox
                 tb_quest.Text = ocrResult;
                 Subscribe(Hook.GlobalEvents());
+                if (cbtn_removeSpace.CheckState != CheckState.Unchecked)
+                {
+                    cbtn_removeSpace_CheckStateChanged(sender, e);
+                }
             }
             catch (Exception ex)
             {
@@ -255,6 +259,10 @@ namespace KdgTranslationApp
                 // Hiển thị kết quả nhận diện ký tự lên TextBox
                 tb_quest.Text = ocrResult;
                 Subscribe(Hook.GlobalEvents());
+                if (cbtn_removeSpace.CheckState != CheckState.Unchecked)
+                {
+                    cbtn_removeSpace_CheckStateChanged(sender, e);
+                }
             }
             catch (Exception ex)
             {

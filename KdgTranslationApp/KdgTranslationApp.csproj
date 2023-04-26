@@ -145,7 +145,6 @@
     <Content Include="Resource\camera.png" />
     <None Include="Resource\file.png" />
     <None Include="Resource\google-voice.png" />
-    <Content Include="Resource\googletranslaterafaga_11283.ico" />
     <None Include="Resource\left-and-right-arrows.png" />
     <None Include="Resource\sound.png" />
   </ItemGroup>

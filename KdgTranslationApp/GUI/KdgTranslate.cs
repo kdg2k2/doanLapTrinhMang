@@ -449,24 +449,35 @@ namespace KdgTranslationApp
         {
             tb_quest.Text += e.Result.Text + "\r\n";// Thêm kết quả nhận dạng giọng nói vào cuối của TextBox và xuống dòng
         }
-
-        private void cbtnVoiceInput_Click_1(object sender, EventArgs e)
+        private void cbtnVoiceInput_MouseDown(object sender, MouseEventArgs e)
         {
-            SpeechRecognitionEngine recognier = new SpeechRecognitionEngine();//khởi tạo đối tượng nhân diện và xử lý ngôn ngữ nói
-            if (recognier.AudioState != AudioState.Silence)
+            if (e.Button == MouseButtons.Left)
             {
+                contextMenuStrip_mic.Show(cbtnVoiceInput, e.Location);
+            }
+        }
+        bool isRecording = false;
+        SpeechRecognitionEngine recognier = new SpeechRecognitionEngine();//khởi tạo đối tượng nhân diện và xử lý ngôn ngữ nói
+        private void startRecordToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!isRecording)
+            {
+                // bắt đầu ghi âm
+                isRecording = true;
+                // code ghi âm ở đây
                 recognier.SetInputToDefaultAudioDevice();//thiết lập thiết bị mặc định nhận âm thanh đầu vào
-
                 Grammar grammar = new DictationGrammar();// tạo đối tượng grammar thuộc lớp DictationGrammar - là một lớp con của lớp Grammar và đại diện cho một bộ từ điển cho phép người dùng nói bất kỳ từ hoặc cụm từ nào mà hệ thống nhận diện giọng nói có thể xử lý.
-
                 recognier.LoadGrammar(grammar);//tải bộ từ điển grammar vào đối tượng recognier để sử dụng cho việc nhận diện giọng nói.
-
                 recognier.SpeechRecognized += new EventHandler<SpeechRecognizedEventArgs>(recognier_SpeechRecognized);//gán một phương thức xử lý sự kiện recognier_SpeechRecognized vào sự kiện SpeechRecognized của đối tượng recognier. Phương thức này được gọi khi hệ thống nhận diện giọng nói thành công.
-
                 recognier.RecognizeAsync(RecognizeMode.Multiple);//bắt đầu một phiên nhận dạng giọng nói bằng cách sử dụng phương thức RecognizeAsync. Tham số RecognizeMode.Multiple được sử dụng để cho phép việc nhận dạng liên tục của nhiều cụm từ được phát hiện trong khi phiên nhận dạng giọng nói đang diễn ra.
             }
-            if (recognier.AudioState == AudioState.Speech)
+        }
+        private void stopRecordToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (isRecording)
             {
+                // dừng ghi âm và xử lý kết quả ở đây
+                isRecording = false;
                 recognier.RecognizeAsyncStop(); // Dừng việc nhận diện giọng nói
                 recognier.Dispose(); // Giải phóng tài nguyên
             }

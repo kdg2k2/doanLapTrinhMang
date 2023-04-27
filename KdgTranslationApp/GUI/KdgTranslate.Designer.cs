@@ -47,6 +47,7 @@
             this.englishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.vietnameseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tb_answer = new System.Windows.Forms.TextBox();
+            this.tb_quest = new System.Windows.Forms.RichTextBox();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.label8 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -67,13 +68,16 @@
             this.vietnameseToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.notifyIcon_Taskbar = new System.Windows.Forms.NotifyIcon(this.components);
-            this.tb_quest = new System.Windows.Forms.RichTextBox();
+            this.contextMenuStrip_mic = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.startRecordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.stopRecordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
             this.contextMenuStrip_CameraIcon.SuspendLayout();
             this.xtraTabPage2.SuspendLayout();
             this.contextMenuStrip_notiIcon.SuspendLayout();
+            this.contextMenuStrip_mic.SuspendLayout();
             this.SuspendLayout();
             // 
             // xtraTabControl1
@@ -134,6 +138,7 @@
             // 
             // cbtnVoiceInput
             // 
+            this.cbtnVoiceInput.ContextMenuStrip = this.contextMenuStrip_mic;
             this.cbtnVoiceInput.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cbtnVoiceInput.ImageOptions.Image = global::KdgTranslationApp.Properties.Resources.google_voice;
             this.cbtnVoiceInput.Location = new System.Drawing.Point(480, 127);
@@ -141,7 +146,7 @@
             this.cbtnVoiceInput.Size = new System.Drawing.Size(23, 18);
             this.cbtnVoiceInput.TabIndex = 22;
             this.cbtnVoiceInput.Text = "checkButton1";
-            this.cbtnVoiceInput.Click += new System.EventHandler(this.cbtnVoiceInput_Click_1);
+            this.cbtnVoiceInput.MouseDown += new System.Windows.Forms.MouseEventHandler(this.cbtnVoiceInput_MouseDown);
             // 
             // cbtn_answerSpeak
             // 
@@ -487,6 +492,16 @@
             this.tb_answer.Size = new System.Drawing.Size(538, 130);
             this.tb_answer.TabIndex = 16;
             // 
+            // tb_quest
+            // 
+            this.tb_quest.Font = new System.Drawing.Font("Times New Roman", 9.25F);
+            this.tb_quest.Location = new System.Drawing.Point(11, 18);
+            this.tb_quest.Name = "tb_quest";
+            this.tb_quest.Size = new System.Drawing.Size(538, 130);
+            this.tb_quest.TabIndex = 25;
+            this.tb_quest.Text = "";
+            this.tb_quest.TextChanged += new System.EventHandler(this.tb_quest_TextChanged);
+            // 
             // xtraTabPage2
             // 
             this.xtraTabPage2.Controls.Add(this.label8);
@@ -671,15 +686,27 @@
             this.notifyIcon_Taskbar.Visible = true;
             this.notifyIcon_Taskbar.MouseClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_Taskbar_MouseClick_1);
             // 
-            // tb_quest
+            // contextMenuStrip_mic
             // 
-            this.tb_quest.Font = new System.Drawing.Font("Times New Roman", 9.25F);
-            this.tb_quest.Location = new System.Drawing.Point(11, 18);
-            this.tb_quest.Name = "tb_quest";
-            this.tb_quest.Size = new System.Drawing.Size(538, 130);
-            this.tb_quest.TabIndex = 25;
-            this.tb_quest.Text = "";
-            this.tb_quest.TextChanged += new System.EventHandler(this.tb_quest_TextChanged);
+            this.contextMenuStrip_mic.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.startRecordToolStripMenuItem,
+            this.stopRecordToolStripMenuItem});
+            this.contextMenuStrip_mic.Name = "contextMenuStrip_mic";
+            this.contextMenuStrip_mic.Size = new System.Drawing.Size(139, 48);
+            // 
+            // startRecordToolStripMenuItem
+            // 
+            this.startRecordToolStripMenuItem.Name = "startRecordToolStripMenuItem";
+            this.startRecordToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.startRecordToolStripMenuItem.Text = "Start Record";
+            this.startRecordToolStripMenuItem.Click += new System.EventHandler(this.startRecordToolStripMenuItem_Click);
+            // 
+            // stopRecordToolStripMenuItem
+            // 
+            this.stopRecordToolStripMenuItem.Name = "stopRecordToolStripMenuItem";
+            this.stopRecordToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.stopRecordToolStripMenuItem.Text = "Stop Record";
+            this.stopRecordToolStripMenuItem.Click += new System.EventHandler(this.stopRecordToolStripMenuItem_Click);
             // 
             // KdgTranslateApp
             // 
@@ -703,6 +730,7 @@
             this.xtraTabPage2.ResumeLayout(false);
             this.xtraTabPage2.PerformLayout();
             this.contextMenuStrip_notiIcon.ResumeLayout(false);
+            this.contextMenuStrip_mic.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -747,6 +775,9 @@
         private System.Windows.Forms.CheckBox cbtn_removeSpace;
         private System.Windows.Forms.CheckBox cbtn_autoTranslate;
         private System.Windows.Forms.RichTextBox tb_quest;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip_mic;
+        private System.Windows.Forms.ToolStripMenuItem startRecordToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem stopRecordToolStripMenuItem;
     }
 }
 

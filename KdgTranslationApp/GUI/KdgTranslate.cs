@@ -317,7 +317,7 @@ namespace KdgTranslationApp
             }
         }
 
-        private void tb_quest_TextChanged_1(object sender, EventArgs e)
+        private void tb_quest_TextChanged(object sender, EventArgs e)
         {
             if (cbtn_autoTranslate.Checked) // Nếu ô radio button "translate" được chọn
             {
@@ -329,7 +329,6 @@ namespace KdgTranslationApp
                 timer.Start(); // Khởi động Timer
             }
         }
-
         /// <summary>
         /// set sự kiện đổi chỗ text của 2 cbb
         /// </summary>
@@ -710,5 +709,7 @@ namespace KdgTranslationApp
                 tb_quest.Text = System.Text.RegularExpressions.Regex.Replace(tb_quest.Text, @"\s+", " ");
             }
         }
+
+        
     }
 }

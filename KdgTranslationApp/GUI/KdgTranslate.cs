@@ -668,7 +668,13 @@ namespace KdgTranslationApp
             try
             {
                 SendKeys.SendWait("^c");
-                tb_quest.Text = Clipboard.GetText();
+                if (Clipboard.ContainsText())
+                {
+                    string clipboardText = Clipboard.GetText();
+                    if (!string.IsNullOrWhiteSpace(clipboardText))
+                        tb_quest.Text = Clipboard.GetText();
+                }
+
                 if (cbtn_removeSpace.CheckState != CheckState.Unchecked)
                 {
                     cbtn_removeSpace_CheckStateChanged(sender, e);

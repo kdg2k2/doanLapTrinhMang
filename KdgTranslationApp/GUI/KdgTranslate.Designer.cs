@@ -68,6 +68,7 @@
             this.vietnameseToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.notifyIcon_Taskbar = new System.Windows.Forms.NotifyIcon(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
             this.contextMenuStrip_CameraIcon.SuspendLayout();
@@ -77,11 +78,12 @@
             // 
             // xtraTabControl1
             // 
+            this.xtraTabControl1.Cursor = System.Windows.Forms.Cursors.Default;
             this.xtraTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.xtraTabControl1.Location = new System.Drawing.Point(0, 0);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
-            this.xtraTabControl1.Size = new System.Drawing.Size(565, 342);
+            this.xtraTabControl1.Size = new System.Drawing.Size(562, 347);
             this.xtraTabControl1.TabIndex = 0;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
@@ -103,12 +105,13 @@
             this.xtraTabPage1.Controls.Add(this.tb_quest);
             this.xtraTabPage1.Controls.Add(this.tb_answer);
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(563, 317);
+            this.xtraTabPage1.Size = new System.Drawing.Size(560, 316);
             this.xtraTabPage1.Text = "Main";
             // 
             // cbtn_autoTranslate
             // 
             this.cbtn_autoTranslate.AutoSize = true;
+            this.cbtn_autoTranslate.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cbtn_autoTranslate.Location = new System.Drawing.Point(438, 0);
             this.cbtn_autoTranslate.Name = "cbtn_autoTranslate";
             this.cbtn_autoTranslate.Size = new System.Drawing.Size(115, 17);
@@ -120,6 +123,7 @@
             // cbtn_removeSpace
             // 
             this.cbtn_removeSpace.AutoSize = true;
+            this.cbtn_removeSpace.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cbtn_removeSpace.Location = new System.Drawing.Point(335, 0);
             this.cbtn_removeSpace.Name = "cbtn_removeSpace";
             this.cbtn_removeSpace.Size = new System.Drawing.Size(96, 17);
@@ -130,8 +134,9 @@
             // 
             // cbtnVoiceInput
             // 
+            this.cbtnVoiceInput.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cbtnVoiceInput.ImageOptions.Image = global::KdgTranslationApp.Properties.Resources.google_voice;
-            this.cbtnVoiceInput.Location = new System.Drawing.Point(472, 129);
+            this.cbtnVoiceInput.Location = new System.Drawing.Point(480, 127);
             this.cbtnVoiceInput.Name = "cbtnVoiceInput";
             this.cbtnVoiceInput.Size = new System.Drawing.Size(23, 18);
             this.cbtnVoiceInput.TabIndex = 22;
@@ -140,8 +145,9 @@
             // 
             // cbtn_answerSpeak
             // 
+            this.cbtn_answerSpeak.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cbtn_answerSpeak.ImageOptions.Image = global::KdgTranslationApp.Properties.Resources.sound;
-            this.cbtn_answerSpeak.Location = new System.Drawing.Point(502, 290);
+            this.cbtn_answerSpeak.Location = new System.Drawing.Point(505, 288);
             this.cbtn_answerSpeak.Name = "cbtn_answerSpeak";
             this.cbtn_answerSpeak.Size = new System.Drawing.Size(23, 18);
             this.cbtn_answerSpeak.TabIndex = 21;
@@ -150,8 +156,9 @@
             // 
             // cbtn_questSpeak
             // 
+            this.cbtn_questSpeak.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cbtn_questSpeak.ImageOptions.Image = global::KdgTranslationApp.Properties.Resources.sound;
-            this.cbtn_questSpeak.Location = new System.Drawing.Point(502, 129);
+            this.cbtn_questSpeak.Location = new System.Drawing.Point(505, 127);
             this.cbtn_questSpeak.Name = "cbtn_questSpeak";
             this.cbtn_questSpeak.Size = new System.Drawing.Size(23, 18);
             this.cbtn_questSpeak.TabIndex = 20;
@@ -160,6 +167,7 @@
             // 
             // btnTranslate
             // 
+            this.btnTranslate.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnTranslate.Location = new System.Drawing.Point(472, 152);
             this.btnTranslate.Name = "btnTranslate";
             this.btnTranslate.Size = new System.Drawing.Size(77, 23);
@@ -170,6 +178,7 @@
             // 
             // cbtnReset
             // 
+            this.cbtnReset.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cbtnReset.ImageOptions.Image = global::KdgTranslationApp.Properties.Resources.file;
             this.cbtnReset.Location = new System.Drawing.Point(11, 152);
             this.cbtnReset.Name = "cbtnReset";
@@ -180,16 +189,18 @@
             // 
             // cbtnSwitch
             // 
+            this.cbtnSwitch.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cbtnSwitch.ImageOptions.Image = global::KdgTranslationApp.Properties.Resources.left_and_right_arrows;
-            this.cbtnSwitch.Location = new System.Drawing.Point(241, 152);
+            this.cbtnSwitch.Location = new System.Drawing.Point(241, 149);
             this.cbtnSwitch.Name = "cbtnSwitch";
-            this.cbtnSwitch.Size = new System.Drawing.Size(30, 23);
+            this.cbtnSwitch.Size = new System.Drawing.Size(32, 30);
             this.cbtnSwitch.TabIndex = 15;
             this.cbtnSwitch.Text = "checkButton1";
             this.cbtnSwitch.Click += new System.EventHandler(this.cbtnSwitch_Click_1);
             // 
             // cbb_answer
             // 
+            this.cbb_answer.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cbb_answer.FormattingEnabled = true;
             this.cbb_answer.Items.AddRange(new object[] {
             "Afrikaans",
@@ -310,6 +321,7 @@
             // 
             // cbb_quest
             // 
+            this.cbb_quest.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cbb_quest.FormattingEnabled = true;
             this.cbb_quest.Items.AddRange(new object[] {
             "Detect",
@@ -432,8 +444,9 @@
             // cbtnCamera
             // 
             this.cbtnCamera.ContextMenuStrip = this.contextMenuStrip_CameraIcon;
+            this.cbtnCamera.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cbtnCamera.ImageOptions.Image = global::KdgTranslationApp.Properties.Resources.camera;
-            this.cbtnCamera.Location = new System.Drawing.Point(441, 129);
+            this.cbtnCamera.Location = new System.Drawing.Point(455, 127);
             this.cbtnCamera.Name = "cbtnCamera";
             this.cbtnCamera.Size = new System.Drawing.Size(23, 18);
             this.cbtnCamera.TabIndex = 11;
@@ -464,6 +477,7 @@
             // 
             // tb_quest
             // 
+            this.tb_quest.BackColor = System.Drawing.SystemColors.Menu;
             this.tb_quest.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_quest.Location = new System.Drawing.Point(11, 17);
             this.tb_quest.Multiline = true;
@@ -475,13 +489,14 @@
             // 
             // tb_answer
             // 
+            this.tb_answer.Cursor = System.Windows.Forms.Cursors.Default;
             this.tb_answer.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_answer.Location = new System.Drawing.Point(11, 182);
             this.tb_answer.Multiline = true;
             this.tb_answer.Name = "tb_answer";
             this.tb_answer.ReadOnly = true;
             this.tb_answer.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.tb_answer.Size = new System.Drawing.Size(538, 126);
+            this.tb_answer.Size = new System.Drawing.Size(538, 130);
             this.tb_answer.TabIndex = 16;
             // 
             // xtraTabPage2
@@ -499,7 +514,7 @@
             this.xtraTabPage2.Controls.Add(this.label2);
             this.xtraTabPage2.Controls.Add(this.label1);
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(563, 317);
+            this.xtraTabPage2.Size = new System.Drawing.Size(563, 316);
             this.xtraTabPage2.Text = "Properties";
             // 
             // label8
@@ -672,7 +687,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(565, 342);
+            this.ClientSize = new System.Drawing.Size(562, 347);
             this.Controls.Add(this.xtraTabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.IconOptions.Image = global::KdgTranslationApp.Properties.Resources._8511303732_g065;
@@ -682,6 +697,7 @@
             this.Text = "KdgTranslate";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.KdgTranslateApp_FormClosing);
             this.Load += new System.EventHandler(this.KdgTranslateApp_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
             this.xtraTabControl1.ResumeLayout(false);
             this.xtraTabPage1.ResumeLayout(false);
             this.xtraTabPage1.PerformLayout();

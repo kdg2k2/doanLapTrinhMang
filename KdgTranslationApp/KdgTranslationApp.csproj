@@ -33,6 +33,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>8511303732-g065.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevExpress.BonusSkins.v22.1" />
     <Reference Include="DevExpress.Data.Desktop.v22.1" />
@@ -143,6 +146,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resource\8511303732_g065.gif" />
+    <Content Include="8511303732-g065.ico" />
     <Content Include="Resource\camera.png" />
     <None Include="Resource\file.png" />
     <None Include="Resource\google-voice.png" />

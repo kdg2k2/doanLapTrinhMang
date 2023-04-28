@@ -35,6 +35,9 @@
             this.cbtn_autoTranslate = new System.Windows.Forms.CheckBox();
             this.cbtn_removeSpace = new System.Windows.Forms.CheckBox();
             this.cbtnVoiceInput = new DevExpress.XtraEditors.CheckButton();
+            this.contextMenuStrip_mic = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.startRecordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.stopRecordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cbtn_answerSpeak = new DevExpress.XtraEditors.CheckButton();
             this.cbtn_questSpeak = new DevExpress.XtraEditors.CheckButton();
             this.btnTranslate = new System.Windows.Forms.Button();
@@ -46,7 +49,6 @@
             this.contextMenuStrip_CameraIcon = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.englishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.vietnameseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tb_answer = new System.Windows.Forms.TextBox();
             this.tb_quest = new System.Windows.Forms.RichTextBox();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.label8 = new System.Windows.Forms.Label();
@@ -68,16 +70,14 @@
             this.vietnameseToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.notifyIcon_Taskbar = new System.Windows.Forms.NotifyIcon(this.components);
-            this.contextMenuStrip_mic = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.startRecordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.stopRecordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tb_answer = new System.Windows.Forms.RichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
+            this.contextMenuStrip_mic.SuspendLayout();
             this.contextMenuStrip_CameraIcon.SuspendLayout();
             this.xtraTabPage2.SuspendLayout();
             this.contextMenuStrip_notiIcon.SuspendLayout();
-            this.contextMenuStrip_mic.SuspendLayout();
             this.SuspendLayout();
             // 
             // xtraTabControl1
@@ -95,6 +95,7 @@
             // 
             // xtraTabPage1
             // 
+            this.xtraTabPage1.Controls.Add(this.tb_answer);
             this.xtraTabPage1.Controls.Add(this.cbtn_autoTranslate);
             this.xtraTabPage1.Controls.Add(this.cbtn_removeSpace);
             this.xtraTabPage1.Controls.Add(this.cbtnVoiceInput);
@@ -106,7 +107,6 @@
             this.xtraTabPage1.Controls.Add(this.cbb_answer);
             this.xtraTabPage1.Controls.Add(this.cbb_quest);
             this.xtraTabPage1.Controls.Add(this.cbtnCamera);
-            this.xtraTabPage1.Controls.Add(this.tb_answer);
             this.xtraTabPage1.Controls.Add(this.tb_quest);
             this.xtraTabPage1.Name = "xtraTabPage1";
             this.xtraTabPage1.Size = new System.Drawing.Size(560, 316);
@@ -147,6 +147,28 @@
             this.cbtnVoiceInput.TabIndex = 22;
             this.cbtnVoiceInput.Text = "checkButton1";
             this.cbtnVoiceInput.MouseDown += new System.Windows.Forms.MouseEventHandler(this.cbtnVoiceInput_MouseDown);
+            // 
+            // contextMenuStrip_mic
+            // 
+            this.contextMenuStrip_mic.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.startRecordToolStripMenuItem,
+            this.stopRecordToolStripMenuItem});
+            this.contextMenuStrip_mic.Name = "contextMenuStrip_mic";
+            this.contextMenuStrip_mic.Size = new System.Drawing.Size(139, 48);
+            // 
+            // startRecordToolStripMenuItem
+            // 
+            this.startRecordToolStripMenuItem.Name = "startRecordToolStripMenuItem";
+            this.startRecordToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.startRecordToolStripMenuItem.Text = "Start Record";
+            this.startRecordToolStripMenuItem.Click += new System.EventHandler(this.startRecordToolStripMenuItem_Click);
+            // 
+            // stopRecordToolStripMenuItem
+            // 
+            this.stopRecordToolStripMenuItem.Name = "stopRecordToolStripMenuItem";
+            this.stopRecordToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.stopRecordToolStripMenuItem.Text = "Stop Record";
+            this.stopRecordToolStripMenuItem.Click += new System.EventHandler(this.stopRecordToolStripMenuItem_Click);
             // 
             // cbtn_answerSpeak
             // 
@@ -480,18 +502,6 @@
             this.vietnameseToolStripMenuItem.Text = "Vietnamese";
             this.vietnameseToolStripMenuItem.Click += new System.EventHandler(this.vietnameseToolStripMenuItem_Click_1);
             // 
-            // tb_answer
-            // 
-            this.tb_answer.Cursor = System.Windows.Forms.Cursors.Default;
-            this.tb_answer.Font = new System.Drawing.Font("Times New Roman", 9.25F);
-            this.tb_answer.Location = new System.Drawing.Point(11, 182);
-            this.tb_answer.Multiline = true;
-            this.tb_answer.Name = "tb_answer";
-            this.tb_answer.ReadOnly = true;
-            this.tb_answer.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.tb_answer.Size = new System.Drawing.Size(538, 130);
-            this.tb_answer.TabIndex = 16;
-            // 
             // tb_quest
             // 
             this.tb_quest.Font = new System.Drawing.Font("Times New Roman", 9.25F);
@@ -686,27 +696,13 @@
             this.notifyIcon_Taskbar.Visible = true;
             this.notifyIcon_Taskbar.MouseClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_Taskbar_MouseClick_1);
             // 
-            // contextMenuStrip_mic
+            // tb_answer
             // 
-            this.contextMenuStrip_mic.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.startRecordToolStripMenuItem,
-            this.stopRecordToolStripMenuItem});
-            this.contextMenuStrip_mic.Name = "contextMenuStrip_mic";
-            this.contextMenuStrip_mic.Size = new System.Drawing.Size(139, 48);
-            // 
-            // startRecordToolStripMenuItem
-            // 
-            this.startRecordToolStripMenuItem.Name = "startRecordToolStripMenuItem";
-            this.startRecordToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.startRecordToolStripMenuItem.Text = "Start Record";
-            this.startRecordToolStripMenuItem.Click += new System.EventHandler(this.startRecordToolStripMenuItem_Click);
-            // 
-            // stopRecordToolStripMenuItem
-            // 
-            this.stopRecordToolStripMenuItem.Name = "stopRecordToolStripMenuItem";
-            this.stopRecordToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.stopRecordToolStripMenuItem.Text = "Stop Record";
-            this.stopRecordToolStripMenuItem.Click += new System.EventHandler(this.stopRecordToolStripMenuItem_Click);
+            this.tb_answer.Location = new System.Drawing.Point(11, 182);
+            this.tb_answer.Name = "tb_answer";
+            this.tb_answer.Size = new System.Drawing.Size(538, 130);
+            this.tb_answer.TabIndex = 26;
+            this.tb_answer.Text = "";
             // 
             // KdgTranslateApp
             // 
@@ -726,11 +722,11 @@
             this.xtraTabControl1.ResumeLayout(false);
             this.xtraTabPage1.ResumeLayout(false);
             this.xtraTabPage1.PerformLayout();
+            this.contextMenuStrip_mic.ResumeLayout(false);
             this.contextMenuStrip_CameraIcon.ResumeLayout(false);
             this.xtraTabPage2.ResumeLayout(false);
             this.xtraTabPage2.PerformLayout();
             this.contextMenuStrip_notiIcon.ResumeLayout(false);
-            this.contextMenuStrip_mic.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -751,7 +747,6 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip_CameraIcon;
         private System.Windows.Forms.ToolStripMenuItem englishToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem vietnameseToolStripMenuItem;
-        private System.Windows.Forms.TextBox tb_answer;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage2;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip_notiIcon;
         private System.Windows.Forms.ToolStripMenuItem kdgTranslateToolStripMenuItem;
@@ -778,6 +773,7 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip_mic;
         private System.Windows.Forms.ToolStripMenuItem startRecordToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem stopRecordToolStripMenuItem;
+        private System.Windows.Forms.RichTextBox tb_answer;
     }
 }
 

@@ -1,28 +1,102 @@
-commit 122ed630dab93f060450663f68499281c5110473 (HEAD -> master, origin/master)
-Author: Nguyễn Khả Đăng <97999411+kdg2k2@users.noreply.github.com>
-Date:   Thu Apr 20 11:54:11 2023 +0700
-
-    Update README.md
-
-commit 95475e2515cd7dca0f6a2e4a7c451280c3beba66
-Author: Nguyễn Khả Đăng <97999411+kdg2k2@users.noreply.github.com>
-Date:   Thu Apr 20 11:52:46 2023 +0700
-
-    Create README.md
-
-commit 5b6e770002d8ef57ed7acc8d44f5c59fb83cedcf
+DG@DG MINGW64 /e/WorksSpace/Lap_trinh_Mang/doanLapTrinhMang (master)
+$ git log
+commit 8a831d34ba5e8e5b24bfc95c1d96d4ebd7b02f85 (HEAD -> master, origin/master)
 Author: DG <kdg2k2@gmail.com>
-Date:   Thu Apr 20 11:39:38 2023 +0700
+Date:   Fri Apr 28 14:09:16 2023 +0700
 
-    update tệp database
+    chuyển qua dùng richtextbox
 
-commit 1d15f78edec64fb7226b496398408519a2fc40f1
+commit d458bd0b2bca87dcba8df7cd43d6213c942fd7dc
 Author: DG <kdg2k2@gmail.com>
-Date:   Thu Apr 20 11:28:18 2023 +0700
+Date:   Fri Apr 28 14:05:11 2023 +0700
 
-    Thêm chức năng HotKeys và db lưu phím
-:
-commit 122ed630dab93f060450663f68499281c5110473 (HEAD -> master, origin/master)
+    fixed bug lỗi phát âm thanh
+
+commit cf6364292d9736567fedd0a9bbe7009f641b0266
+Author: DG <kdg2k2@gmail.com>
+Date:   Thu Apr 27 11:47:15 2023 +0700
+
+    fix lỗi mic
+
+commit d13265f109cb4b02a3667ad7962e5aa835da9e2e
+Author: DG <kdg2k2@gmail.com>
+Date:   Thu Apr 27 09:29:04 2023 +0700
+
+    fix lỗi screen capture ko ra nguyên trạng văn bản
+
+commit 1160edf434b276984d2322599541f3ef160ff771
+Author: DG <kdg2k2@gmail.com>
+Date:   Thu Apr 27 09:00:42 2023 +0700
+
+    thêm icon cho app
+
+commit 23b4841d4e58df5212f2246950346f38d8848569
+Author: DG <kdg2k2@gmail.com>
+Date:   Thu Apr 27 08:57:42 2023 +0700
+
+    thêm kiểm tra đầu vào cho bôi đen
+
+commit 997e857e5b6834669f59de79f64ac33eb8a29830
+Author: DG <kdg2k2@gmail.com>
+Date:   Wed Apr 26 17:32:32 2023 +0700
+
+    đổi icon notify
+
+commit d016c3cc1967e22b189a484ba15b233a2f1cd0c8
+Author: DG <kdg2k2@gmail.com>
+Date:   Mon Apr 24 14:33:25 2023 +0700
+
+    thêm điều kiện cho orc
+
+commit 93ff0fb0d67c3a68981f47086feb16aa9340d26d
+Author: DG <kdg2k2@gmail.com>
+Date:   Sat Apr 22 23:45:57 2023 +0700
+
+    sửa điều kiện kiểm tra đầu vào cho ORC
+
+commit 6b6b63bc3be7f4aa488efe2016c717bd0497f478
+Author: DG <kdg2k2@gmail.com>
+Date:   Fri Apr 21 16:53:30 2023 +0700
+
+    đổi nút radiobutton của auto translate sang check button
+
+commit 4d38d56c9ebb9fb32cf2e5de5f0ea45aa5be8fdd
+Author: DG <kdg2k2@gmail.com>
+Date:   Fri Apr 21 16:36:46 2023 +0700
+
+    thêm chức năng xóa khoảng trắng
+
+commit 82ce4907242b664a06cf5314b5e88151c6ebe464
+Author: DG <kdg2k2@gmail.com>
+Date:   Fri Apr 21 15:57:59 2023 +0700
+
+    thêm điều kiện kiểm tra đầu vào cho sự kiện bôi đen copy văn bản
+
+commit e017c8f4a6b5f9be2d662f0e18ae04b7fc7800f0
+Author: DG <kdg2k2@gmail.com>
+Date:   Fri Apr 21 15:24:19 2023 +0700
+
+    xóa tệp rar chứa file db cũ
+
+commit 6a7ee8b94f4274df77870fe5d56a0b148db78b3d
+Author: DG <kdg2k2@gmail.com>
+Date:   Fri Apr 21 15:20:32 2023 +0700
+
+    Chuyển sang dùng SQLite
+
+commit 9c3aee2a16f24f49e974824e0ff914badc076201
+Author: DG <kdg2k2@gmail.com>
+Date:   Fri Apr 21 14:03:22 2023 +0700
+
+    thêm chức năng copy văn bản bôi đen vào text box + thêm kiểm tra đầu vào cho cbb
+
+commit ee568bd41bc682f9c4493de1447d430d83caad50
+Author: DG <kdg2k2@gmail.com>
+Date:   Fri Apr 21 12:01:48 2023 +0700
+
+    upload files báo cáo
+
+commit 122ed630dab93f060450663f68499281c5110473
 Author: Nguyễn Khả Đăng <97999411+kdg2k2@users.noreply.github.com>
 Date:   Thu Apr 20 11:54:11 2023 +0700
 
@@ -190,26 +264,3 @@ Date:   Fri Apr 7 13:06:15 2023 +0700
 
     Add .gitattributes and .gitignore.
 (END)
-commit 9de06e7d545da43bebf375ff2ed6915e081407d1
-Author: DG <kdg2k2@gmail.com>
-Date:   Fri Apr 7 13:31:34 2023 +0700
-
-    Thêm ContentMenuTrip cho cbtnCamera
-
-commit 55ec9fdbed6abd20a63e045c9d87f0c09b7dd6b0
-Author: DG <kdg2k2@gmail.com>
-Date:   Fri Apr 7 13:14:31 2023 +0700
-
-    chụp ảnh bằng GI và lấy văn bản ra bằng Tesseract OCR
-
-commit 4b19323d66129dd270279d505266a55dc0e74027
-Author: DG <kdg2k2@gmail.com>
-Date:   Fri Apr 7 13:06:20 2023 +0700
-
-    Add project files.
-
-commit d841c5a85d3025c5ead9e9960bace64a401d342d
-Author: DG <kdg2k2@gmail.com>
-Date:   Fri Apr 7 13:06:15 2023 +0700
-
-    Add .gitattributes and .gitignore.

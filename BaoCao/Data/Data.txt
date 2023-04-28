@@ -2,9 +2,8 @@
 
 - Free GoogleTranslateAPI: https://translate.googleapis.com/translate_a/single?client=gtx&sl={0}&tl={1}&dt=t&q={2}
 
-- TextToSpeech: https://www.c-sharpcorner.com/UploadFile/1e050f/text-to-speech-converter-in-C-Sharp/
+- TextToSpeech: https://zalo.ai/docs/api/text-to-audio-converter
 
 - SpeechToText: https://www.codeproject.com/Articles/380027/Csharp-Speech-to-Text
-		https://zalo.ai/docs/api/text-to-audio-converter
 
 - ORC tesseract c#: https://laptrinhvb.net/bai-viet/devexpress/---Csharp----Huong-dan-tach-chu-tieng-viet-ra-khoi-hinh-anh-(TESSERACT-OCR-)/b4854fecdc25b429.html

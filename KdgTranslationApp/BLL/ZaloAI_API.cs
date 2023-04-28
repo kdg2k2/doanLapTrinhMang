@@ -32,11 +32,11 @@ namespace KdgTranslationApp.BLL
             }
         }
 
-        public string GetAudioUrl(string text)
+        public string GetAudioUrl(string text, int id)
         {
             string apiKey = "f8p9cIrz7OXjS1Yi6dAQdce5FwQ30n1A";
             string url = "https://api.zalo.ai/v1/tts/synthesize";
-            int speakerId = 4; // default speaker
+            int speakerId = id; // default speaker
             float speed = 1.0f; // default speed
             int quality = 0; // default quality
             int encodeType = 0; // default encoding

@@ -52,6 +52,13 @@ namespace KdgTranslationApp
             //dbcon.Insert(con, "sf", "D");
             //dbcon.Insert(con, "orc_en", "E");
             //dbcon.Insert(con, "orc_vi", "V");
+            //dbcon.CreateTableVoices(con);
+            //dbcon.InsertVoices(con, 1, "South women");
+            //dbcon.InsertVoices(con, 2, "Northern women");
+            //dbcon.InsertVoices(con, 3, "South men");
+            //dbcon.InsertVoices(con, 4, "Northern men");
+            //dbcon.CreateTableChooseVoice(con);
+            //dbcon.InsertChooseVoice(con, "Northern women");
 
 
             using (SQLiteCommand cmd = new SQLiteCommand("select keys from Keys where idEvent = 'sf'", con))
@@ -70,6 +77,12 @@ namespace KdgTranslationApp
             {
                 string result = (string)cmd.ExecuteScalar();
                 tb_TR_VietnameseKey.Text = result;
+            }
+
+            using (SQLiteCommand cmd = new SQLiteCommand("SELECT nameVoice  FROM ChooseVoice", con))
+            {
+                string result = (string)cmd.ExecuteScalar();
+                cbb_ChosseSpeaker.Text = result;
             }
 
             if (tb_ShowFormKey.Text != "")
@@ -372,10 +385,12 @@ namespace KdgTranslationApp
         bool quest = false;
         private void cbtn_questSpeak_Click_1(object sender, EventArgs e)
         {
-            if(quest == false)
+            SQLiteCommand cmd = new SQLiteCommand("select idVoice from Voices where nameVoice = '" + cbb_ChosseSpeaker.Text + "'", con);
+            int id = (int)cmd.ExecuteScalar();
+            if (quest == false)
             {
                 quest = true;
-                string url = zalo.GetAudioUrl(tb_quest.Text);
+                string url = zalo.GetAudioUrl(tb_quest.Text, id);
                 Thread.Sleep(500);
                 zalo.PlaySoundFromUrl(url);
             }
@@ -389,10 +404,12 @@ namespace KdgTranslationApp
         bool answer = false;
         private void cbtn_answerSpeak_Click_1(object sender, EventArgs e)
         {
+            SQLiteCommand cmd = new SQLiteCommand("select idVoice from Voices where nameVoice = '" + cbb_ChosseSpeaker.Text + "'", con);
+            int id = (int)cmd.ExecuteScalar();
             if (answer == false)
             {
                 answer = true;
-                string url = zalo.GetAudioUrl(tb_answer.Text);
+                string url = zalo.GetAudioUrl(tb_answer.Text,id);
                 Thread.Sleep(500);
                 zalo.PlaySoundFromUrl(url);
             }
@@ -605,6 +622,8 @@ namespace KdgTranslationApp
                 string hotKey = tb_TR_VietnameseKey.Text;
                 RegisterHotKey(this.Handle, 3, MOD_ALT, (int)(Keys)Enum.Parse(typeof(Keys), hotKey));
             }
+
+            dbcon.UpdateChooseVoice(cbb_ChosseSpeaker.Text);
         }
 
         /// <summary>

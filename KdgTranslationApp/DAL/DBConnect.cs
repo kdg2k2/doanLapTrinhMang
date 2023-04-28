@@ -46,5 +46,49 @@ namespace AutoCopySelectionText
             cmd.ExecuteNonQuery();
             con.Close();
         }
+
+        public void CreateTableVoices(SQLiteConnection con)
+        {
+            string create = "CREATE TABLE Voices(idVoice int PRIMARY KEY, nameVoice NVARCHAR(50))";
+            var cmd = new SQLiteCommand(create, con);
+            cmd.ExecuteNonQuery();
+        }
+
+        public void InsertVoices(SQLiteConnection con, int idVoice, string nameVoice)
+        {
+            string insert = "INSERT INTO Voices(idVoice, nameVoice) VALUES(@idVoice, @nameVoice)";
+            var cmd = new SQLiteCommand(insert, con);
+            cmd.Parameters.AddWithValue("@idVoice", idVoice);
+            cmd.Parameters.AddWithValue("@nameVoice", nameVoice);
+            cmd.ExecuteNonQuery();
+        }
+
+        public void CreateTableChooseVoice(SQLiteConnection con)
+        {
+            string create = "CREATE TABLE ChooseVoice(nameVoice NVARCHAR(50))";
+            var cmd = new SQLiteCommand(create, con);
+            cmd.ExecuteNonQuery();
+        }
+
+        public void InsertChooseVoice(SQLiteConnection con, string nameVoice)
+        {
+            string insert = "INSERT INTO ChooseVoice(nameVoice) VALUES(@nameVoice)";
+            var cmd = new SQLiteCommand(insert, con);
+            cmd.Parameters.AddWithValue("@nameVoice", nameVoice);
+            cmd.ExecuteNonQuery();
+        }
+
+        public void UpdateChooseVoice(string nameVoice)
+        {
+            if (con.State == System.Data.ConnectionState.Closed)
+            {
+                con.Open();
+            }
+            string update = "UPDATE ChooseVoice SET nameVoice = @nameVoice";
+            SQLiteCommand cmd = new SQLiteCommand(update, con);
+            cmd.Parameters.AddWithValue("@nameVoice", nameVoice);
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
     }
 }

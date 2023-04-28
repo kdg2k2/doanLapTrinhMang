@@ -368,75 +368,39 @@ namespace KdgTranslationApp
         /// <param name="sender"></param>
         /// <param name="e"></param>
         /// 
-        SpeechSynthesizer voice = new SpeechSynthesizer();
+        ZaloAI_API zalo = new ZaloAI_API();
+        bool quest = false;
         private void cbtn_questSpeak_Click_1(object sender, EventArgs e)
         {
-            try
+            if(quest == false)
             {
-                if (voice.State == SynthesizerState.Ready)
-                {
-                    voice.SelectVoiceByHints(VoiceGender.Male);//chọn giọng nói
-                    voice.SpeakAsync(tb_quest.Text);//đọc văn bản trong tb_quest
-                }
-                if (voice.State == SynthesizerState.Speaking)
-                {
-                    voice.SpeakAsyncCancelAll();
-                }
+                quest = true;
+                string url = zalo.GetAudioUrl(tb_quest.Text);
+                Thread.Sleep(500);
+                zalo.PlaySoundFromUrl(url);
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);//show lỗi
+                quest = false;
+                zalo.StopSound();
             }
         }
 
+        bool answer = false;
         private void cbtn_answerSpeak_Click_1(object sender, EventArgs e)
         {
-            string apiKey = "f8p9cIrz7OXjS1Yi6dAQdce5FwQ30n1A";
-            string url = "https://api.zalo.ai/v1/tts/synthesize";
-            int speakerId = 2; // default speaker
-            float speed = 1.0f; // default speed
-            int quality = 0; // default quality
-            int encodeType = 0; // default encoding
-
-            string inputText = tb_answer.Text;
-
-            // tạo request
-            var client = new RestClient(url);
-            var request = new RestRequest(Method.POST);
-            request.AddHeader("apikey", apiKey);
-            request.AddParameter("input", inputText);
-            request.AddParameter("speaker_id", speakerId);
-            request.AddParameter("speed", speed);
-            request.AddParameter("quality", quality);
-            request.AddParameter("encode_type", encodeType);
-
-            // gửi request
-            IRestResponse response = client.Execute(request);
-
-            // kiểm tra có nhận phản hồi thành công không
-            if (response.IsSuccessful)
+            if (answer == false)
             {
-                // đọc phản hồi và nhận url âm thanh
-                var data = Newtonsoft.Json.JsonConvert.DeserializeObject<dynamic>(response.Content);
-                string audioUrl = data.data.url;
-
-                //show ra xem audioUrl trả về từ API
-                MessageBox.Show("Url API response: " + audioUrl, "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                // tải audio and play
-                using (var wc = new System.Net.WebClient())
-                {
-                    byte[] audioBytes = wc.DownloadData(audioUrl);
-                    MemoryStream ms = new MemoryStream(audioBytes);
-                    var audio = new SoundPlayer(ms);
-                    audio.Play();
-                }
+                answer = true;
+                string url = zalo.GetAudioUrl(tb_answer.Text);
+                Thread.Sleep(500);
+                zalo.PlaySoundFromUrl(url);
             }
-            else //Nếu không thì show nội dung phản hồi lỗi
+            else
             {
-                MessageBox.Show(response.Content, "API Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                answer = false;
+                zalo.StopSound();
             }
-            request.Parameters.Clear();
         }
 
         /// <summary>

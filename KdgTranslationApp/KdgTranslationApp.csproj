@@ -89,6 +89,7 @@
   <ItemGroup>
     <Compile Include="BLL\Convert_language_code.cs" />
     <Compile Include="BLL\GoogleTranslator_API.cs" />
+    <Compile Include="BLL\ZaloAI_API.cs" />
     <Compile Include="DAL\DBConnect.cs" />
     <Compile Include="GUI\KdgTranslate.cs">
       <SubType>Form</SubType>

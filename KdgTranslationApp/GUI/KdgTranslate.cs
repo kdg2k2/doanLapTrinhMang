@@ -2,17 +2,13 @@
 using GI.Screenshot;
 using Gma.System.MouseKeyHook;
 using KdgTranslationApp.BLL;
-using RestSharp;
 using System;
 using System.Data.SQLite;
 using System.Drawing;
 using System.Drawing.Imaging;
-using System.IO;
-using System.Media;
 using System.Net.Http;
 using System.Runtime.InteropServices;
 using System.Speech.Recognition;
-using System.Speech.Synthesis;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -409,7 +405,7 @@ namespace KdgTranslationApp
             if (answer == false)
             {
                 answer = true;
-                string url = zalo.GetAudioUrl(tb_answer.Text,id);
+                string url = zalo.GetAudioUrl(tb_answer.Text, id);
                 Thread.Sleep(500);
                 zalo.PlaySoundFromUrl(url);
             }
@@ -653,7 +649,6 @@ namespace KdgTranslationApp
 
         private void OnMouseDragStarted(object sender, MouseEventArgs e)
         {
-            Clipboard.Clear();
         }
 
         private void OnMouseDragFinished(object sender, MouseEventArgs e)
@@ -704,6 +699,6 @@ namespace KdgTranslationApp
             }
         }
 
-        
+
     }
 }

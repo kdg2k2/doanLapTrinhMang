@@ -98,8 +98,6 @@ namespace KdgTranslationApp
                 string orc_vi = tb_TR_VietnameseKey.Text;
                 RegisterHotKey(this.Handle, 3, MOD_ALT, (int)(Keys)Enum.Parse(typeof(Keys), orc_vi));
             }
-
-            SubscribeGlobal();
         }
 
         /// <summary>
@@ -229,13 +227,19 @@ namespace KdgTranslationApp
             }
             try
             {
-                Unsubscribe();
+                if(cbtn_autoCopy.CheckState == CheckState.Checked)
+                {
+                    Unsubscribe();
+                }
                 Bitmap bitmap = ConvertToBitmap(Screenshot.CaptureRegion());
                 // Nhận diện ký tự trong ảnh bitmap sử dụng thư viện OCR và lưu kết quả vào biến ocrResult
                 string ocrResult = OCR(bitmap, "vie");
                 // Hiển thị kết quả nhận diện ký tự lên TextBox
                 tb_quest.Text = ocrResult;
-                Subscribe(Hook.GlobalEvents());
+                if(cbtn_autoCopy.CheckState == CheckState.Checked)
+                {
+                    Subscribe(Hook.GlobalEvents());
+                }
                 if (cbtn_removeSpace.CheckState != CheckState.Unchecked)
                 {
                     cbtn_removeSpace_CheckStateChanged(sender, e);
@@ -261,13 +265,19 @@ namespace KdgTranslationApp
             }
             try
             {
-                Unsubscribe();
+                if (cbtn_autoCopy.CheckState == CheckState.Checked)
+                {
+                    Unsubscribe();
+                }
                 Bitmap bitmap = ConvertToBitmap(Screenshot.CaptureRegion());
                 // Nhận diện ký tự trong ảnh bitmap sử dụng thư viện OCR và lưu kết quả vào biến ocrResult
                 string ocrResult = OCR(bitmap, "eng");
                 // Hiển thị kết quả nhận diện ký tự lên TextBox
                 tb_quest.Text = ocrResult;
-                Subscribe(Hook.GlobalEvents());
+                if (cbtn_autoCopy.CheckState == CheckState.Checked)
+                {
+                    Subscribe(Hook.GlobalEvents());
+                }
                 if (cbtn_removeSpace.CheckState != CheckState.Unchecked)
                 {
                     cbtn_removeSpace_CheckStateChanged(sender, e);
@@ -699,6 +709,16 @@ namespace KdgTranslationApp
             }
         }
 
-        
+        private void cbtn_autoCopy_CheckStateChanged(object sender, EventArgs e)
+        {
+            if (cbtn_autoCopy.CheckState == CheckState.Checked)
+            {
+                SubscribeGlobal();
+            }
+            if (cbtn_autoCopy.CheckState == CheckState.Unchecked)
+            {
+                Unsubscribe();
+            }
+        }
     }
 }

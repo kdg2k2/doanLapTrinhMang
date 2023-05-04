@@ -73,6 +73,7 @@
             this.tb_answer = new DevExpress.XtraRichEdit.RichEditControl();
             this.tb_quest = new DevExpress.XtraRichEdit.RichEditControl();
             this.btnTranslate = new DevExpress.XtraEditors.SimpleButton();
+            this.cbtn_autoCopy = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
@@ -97,6 +98,7 @@
             // 
             // xtraTabPage1
             // 
+            this.xtraTabPage1.Controls.Add(this.cbtn_autoCopy);
             this.xtraTabPage1.Controls.Add(this.btnTranslate);
             this.xtraTabPage1.Controls.Add(this.tb_quest);
             this.xtraTabPage1.Controls.Add(this.tb_answer);
@@ -734,6 +736,17 @@
             this.btnTranslate.Text = "Translate";
             this.btnTranslate.Click += new System.EventHandler(this.btnTranslate_Click);
             // 
+            // cbtn_autoCopy
+            // 
+            this.cbtn_autoCopy.AutoSize = true;
+            this.cbtn_autoCopy.Location = new System.Drawing.Point(254, 0);
+            this.cbtn_autoCopy.Name = "cbtn_autoCopy";
+            this.cbtn_autoCopy.Size = new System.Drawing.Size(74, 17);
+            this.cbtn_autoCopy.TabIndex = 30;
+            this.cbtn_autoCopy.Text = "AutoCopy";
+            this.cbtn_autoCopy.UseVisualStyleBackColor = true;
+            this.cbtn_autoCopy.CheckStateChanged += new System.EventHandler(this.cbtn_autoCopy_CheckStateChanged);
+            // 
             // KdgTranslateApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -806,6 +819,7 @@
         private DevExpress.XtraRichEdit.RichEditControl tb_answer;
         private DevExpress.XtraRichEdit.RichEditControl tb_quest;
         private DevExpress.XtraEditors.SimpleButton btnTranslate;
+        private System.Windows.Forms.CheckBox cbtn_autoCopy;
     }
 }
 

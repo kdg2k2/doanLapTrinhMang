@@ -109,7 +109,7 @@ namespace KdgTranslationApp
         /// <param name="e"></param>
         /// 
         GoogleTranslator_API trans = new GoogleTranslator_API();
-        private async void btnTranslate_Click_1(object sender, EventArgs e)
+        private async void btnTranslate_Click(object sender, EventArgs e)
         {
             if (String.IsNullOrEmpty(tb_quest.Text))//kiểm tra đầu vào
             {
@@ -326,7 +326,7 @@ namespace KdgTranslationApp
             }
         }
 
-        private void tb_quest_TextChanged(object sender, EventArgs e)
+        private void tb_quest_TextChanged_1(object sender, EventArgs e)
         {
             if (cbtn_autoTranslate.Checked) // Nếu ô radio button "translate" được chọn
             {
@@ -699,6 +699,6 @@ namespace KdgTranslationApp
             }
         }
 
-
+        
     }
 }

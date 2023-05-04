@@ -32,6 +32,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KdgTranslateApp));
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
+            this.cbtn_autoCopy = new System.Windows.Forms.CheckBox();
+            this.btnTranslate = new DevExpress.XtraEditors.SimpleButton();
             this.cbtn_autoTranslate = new System.Windows.Forms.CheckBox();
             this.cbtn_removeSpace = new System.Windows.Forms.CheckBox();
             this.cbtnVoiceInput = new DevExpress.XtraEditors.CheckButton();
@@ -70,10 +72,8 @@
             this.vietnameseToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.notifyIcon_Taskbar = new System.Windows.Forms.NotifyIcon(this.components);
-            this.tb_answer = new DevExpress.XtraRichEdit.RichEditControl();
             this.tb_quest = new DevExpress.XtraRichEdit.RichEditControl();
-            this.btnTranslate = new DevExpress.XtraEditors.SimpleButton();
-            this.cbtn_autoCopy = new System.Windows.Forms.CheckBox();
+            this.tb_answer = new DevExpress.XtraRichEdit.RichEditControl();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
@@ -98,10 +98,9 @@
             // 
             // xtraTabPage1
             // 
+            this.xtraTabPage1.Controls.Add(this.tb_answer);
             this.xtraTabPage1.Controls.Add(this.cbtn_autoCopy);
             this.xtraTabPage1.Controls.Add(this.btnTranslate);
-            this.xtraTabPage1.Controls.Add(this.tb_quest);
-            this.xtraTabPage1.Controls.Add(this.tb_answer);
             this.xtraTabPage1.Controls.Add(this.cbtn_autoTranslate);
             this.xtraTabPage1.Controls.Add(this.cbtn_removeSpace);
             this.xtraTabPage1.Controls.Add(this.cbtnVoiceInput);
@@ -112,9 +111,30 @@
             this.xtraTabPage1.Controls.Add(this.cbb_answer);
             this.xtraTabPage1.Controls.Add(this.cbb_quest);
             this.xtraTabPage1.Controls.Add(this.cbtnCamera);
+            this.xtraTabPage1.Controls.Add(this.tb_quest);
             this.xtraTabPage1.Name = "xtraTabPage1";
             this.xtraTabPage1.Size = new System.Drawing.Size(560, 316);
             this.xtraTabPage1.Text = "Main";
+            // 
+            // cbtn_autoCopy
+            // 
+            this.cbtn_autoCopy.AutoSize = true;
+            this.cbtn_autoCopy.Location = new System.Drawing.Point(254, 0);
+            this.cbtn_autoCopy.Name = "cbtn_autoCopy";
+            this.cbtn_autoCopy.Size = new System.Drawing.Size(74, 17);
+            this.cbtn_autoCopy.TabIndex = 30;
+            this.cbtn_autoCopy.Text = "AutoCopy";
+            this.cbtn_autoCopy.UseVisualStyleBackColor = true;
+            this.cbtn_autoCopy.CheckStateChanged += new System.EventHandler(this.cbtn_autoCopy_CheckStateChanged);
+            // 
+            // btnTranslate
+            // 
+            this.btnTranslate.Location = new System.Drawing.Point(473, 153);
+            this.btnTranslate.Name = "btnTranslate";
+            this.btnTranslate.Size = new System.Drawing.Size(77, 23);
+            this.btnTranslate.TabIndex = 29;
+            this.btnTranslate.Text = "Translate";
+            this.btnTranslate.Click += new System.EventHandler(this.btnTranslate_Click);
             // 
             // cbtn_autoTranslate
             // 
@@ -704,48 +724,26 @@
             this.notifyIcon_Taskbar.Visible = true;
             this.notifyIcon_Taskbar.MouseClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_Taskbar_MouseClick_1);
             // 
+            // tb_quest
+            // 
+            this.tb_quest.AccessibleRole = System.Windows.Forms.AccessibleRole.ScrollBar;
+            this.tb_quest.ActiveViewType = DevExpress.XtraRichEdit.RichEditViewType.Simple;
+            this.tb_quest.LayoutUnit = DevExpress.XtraRichEdit.DocumentLayoutUnit.Pixel;
+            this.tb_quest.Location = new System.Drawing.Point(11, 22);
+            this.tb_quest.Name = "tb_quest";
+            this.tb_quest.Size = new System.Drawing.Size(538, 126);
+            this.tb_quest.TabIndex = 31;
+            this.tb_quest.TextChanged += new System.EventHandler(this.tb_quest_TextChanged);
+            // 
             // tb_answer
             // 
             this.tb_answer.AccessibleRole = System.Windows.Forms.AccessibleRole.ScrollBar;
             this.tb_answer.ActiveViewType = DevExpress.XtraRichEdit.RichEditViewType.Simple;
             this.tb_answer.LayoutUnit = DevExpress.XtraRichEdit.DocumentLayoutUnit.Pixel;
-            this.tb_answer.Location = new System.Drawing.Point(11, 180);
+            this.tb_answer.Location = new System.Drawing.Point(11, 182);
             this.tb_answer.Name = "tb_answer";
-            this.tb_answer.ReadOnly = true;
-            this.tb_answer.Size = new System.Drawing.Size(538, 130);
-            this.tb_answer.TabIndex = 27;
-            // 
-            // tb_quest
-            // 
-            this.tb_quest.AccessibleRole = System.Windows.Forms.AccessibleRole.ScrollBar;
-            this.tb_quest.ActiveViewType = DevExpress.XtraRichEdit.RichEditViewType.Simple;
-            this.tb_quest.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.tb_quest.LayoutUnit = DevExpress.XtraRichEdit.DocumentLayoutUnit.Pixel;
-            this.tb_quest.Location = new System.Drawing.Point(11, 18);
-            this.tb_quest.Name = "tb_quest";
-            this.tb_quest.Size = new System.Drawing.Size(538, 130);
-            this.tb_quest.TabIndex = 28;
-            this.tb_quest.TextChanged += new System.EventHandler(this.tb_quest_TextChanged_1);
-            // 
-            // btnTranslate
-            // 
-            this.btnTranslate.Location = new System.Drawing.Point(473, 153);
-            this.btnTranslate.Name = "btnTranslate";
-            this.btnTranslate.Size = new System.Drawing.Size(77, 23);
-            this.btnTranslate.TabIndex = 29;
-            this.btnTranslate.Text = "Translate";
-            this.btnTranslate.Click += new System.EventHandler(this.btnTranslate_Click);
-            // 
-            // cbtn_autoCopy
-            // 
-            this.cbtn_autoCopy.AutoSize = true;
-            this.cbtn_autoCopy.Location = new System.Drawing.Point(254, 0);
-            this.cbtn_autoCopy.Name = "cbtn_autoCopy";
-            this.cbtn_autoCopy.Size = new System.Drawing.Size(74, 17);
-            this.cbtn_autoCopy.TabIndex = 30;
-            this.cbtn_autoCopy.Text = "AutoCopy";
-            this.cbtn_autoCopy.UseVisualStyleBackColor = true;
-            this.cbtn_autoCopy.CheckStateChanged += new System.EventHandler(this.cbtn_autoCopy_CheckStateChanged);
+            this.tb_answer.Size = new System.Drawing.Size(538, 126);
+            this.tb_answer.TabIndex = 32;
             // 
             // KdgTranslateApp
             // 
@@ -816,10 +814,10 @@
         private System.Windows.Forms.ToolStripMenuItem stopRecordToolStripMenuItem;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox cbb_ChosseSpeaker;
-        private DevExpress.XtraRichEdit.RichEditControl tb_answer;
-        private DevExpress.XtraRichEdit.RichEditControl tb_quest;
         private DevExpress.XtraEditors.SimpleButton btnTranslate;
         private System.Windows.Forms.CheckBox cbtn_autoCopy;
+        private DevExpress.XtraRichEdit.RichEditControl tb_quest;
+        private DevExpress.XtraRichEdit.RichEditControl tb_answer;
     }
 }
 

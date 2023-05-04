@@ -336,7 +336,7 @@ namespace KdgTranslationApp
             }
         }
 
-        private void tb_quest_TextChanged_1(object sender, EventArgs e)
+        private void tb_quest_TextChanged(object sender, EventArgs e)
         {
             if (cbtn_autoTranslate.Checked) // Nếu ô radio button "translate" được chọn
             {
@@ -720,5 +720,7 @@ namespace KdgTranslationApp
                 Unsubscribe();
             }
         }
+
+        
     }
 }

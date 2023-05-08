@@ -244,6 +244,8 @@ namespace KdgTranslationApp
                 {
                     cbtn_removeSpace_CheckStateChanged(sender, e);
                 }
+                cbb_quest.Text = "Vietnamese";
+                cbb_answer.Text = "English";
             }
             catch (Exception ex)
             {
@@ -282,6 +284,8 @@ namespace KdgTranslationApp
                 {
                     cbtn_removeSpace_CheckStateChanged(sender, e);
                 }
+                cbb_quest.Text = "English";
+                cbb_answer.Text = "Vietnamese";
             }
             catch (Exception ex)
             {
@@ -574,17 +578,23 @@ namespace KdgTranslationApp
                     this.Show();
                     this.WindowState = FormWindowState.Normal;
                 }
+                else
+                {
+                    this.Hide();
+                }
                 this.Activate();
             }
 
             if (m.Msg == WM_HOTKEY && (int)m.WParam == 2)
             {
                 this.englishToolStripMenuItem.PerformClick();
+                
             }
 
             if (m.Msg == WM_HOTKEY && (int)m.WParam == 3)
             {
                 this.vietnameseToolStripMenuItem.PerformClick();
+                
             }
             base.WndProc(ref m);
         }
@@ -720,7 +730,5 @@ namespace KdgTranslationApp
                 Unsubscribe();
             }
         }
-
-        
     }
 }

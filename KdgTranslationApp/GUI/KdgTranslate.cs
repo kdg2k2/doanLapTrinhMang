@@ -44,18 +44,6 @@ namespace KdgTranslationApp
 
             //set hotkey
             con.Open();
-            //dbcon.CreateTable(con);
-            //dbcon.Insert(con, "sf", "D");
-            //dbcon.Insert(con, "orc_en", "E");
-            //dbcon.Insert(con, "orc_vi", "V");
-            //dbcon.CreateTableVoices(con);
-            //dbcon.InsertVoices(con, 1, "South women");
-            //dbcon.InsertVoices(con, 2, "Northern women");
-            //dbcon.InsertVoices(con, 3, "South men");
-            //dbcon.InsertVoices(con, 4, "Northern men");
-            //dbcon.CreateTableChooseVoice(con);
-            //dbcon.InsertChooseVoice(con, "Northern women");
-
 
             using (SQLiteCommand cmd = new SQLiteCommand("select keys from Keys where idEvent = 'sf'", con))
             {
@@ -79,6 +67,12 @@ namespace KdgTranslationApp
             {
                 string result = (string)cmd.ExecuteScalar();
                 cbb_ChosseSpeaker.Text = result;
+            }
+
+            using (SQLiteCommand cmd = new SQLiteCommand("SELECT key  FROM apiKey", con))
+            {
+                string result = (string)cmd.ExecuteScalar();
+                tb_zaloApiKey.Text = result;
             }
 
             if (tb_ShowFormKey.Text != "")
@@ -244,8 +238,8 @@ namespace KdgTranslationApp
                 {
                     cbtn_removeSpace_CheckStateChanged(sender, e);
                 }
-                cbb_quest.Text = "Vietnamese";
-                cbb_answer.Text = "English";
+                //cbb_quest.Text = "Vietnamese";
+                //cbb_answer.Text = "English";
             }
             catch (Exception ex)
             {
@@ -284,8 +278,8 @@ namespace KdgTranslationApp
                 {
                     cbtn_removeSpace_CheckStateChanged(sender, e);
                 }
-                cbb_quest.Text = "English";
-                cbb_answer.Text = "Vietnamese";
+                //cbb_quest.Text = "English";
+                //cbb_answer.Text = "Vietnamese";
             }
             catch (Exception ex)
             {
@@ -400,7 +394,7 @@ namespace KdgTranslationApp
             if (quest == false)
             {
                 quest = true;
-                string url = zalo.GetAudioUrl(tb_quest.Text, id);
+                string url = zalo.GetAudioUrl(tb_zaloApiKey.Text, tb_quest.Text, id);
                 Thread.Sleep(500);
                 zalo.PlaySoundFromUrl(url);
             }
@@ -417,9 +411,9 @@ namespace KdgTranslationApp
             SQLiteCommand cmd = new SQLiteCommand("select idVoice from Voices where nameVoice = '" + cbb_ChosseSpeaker.Text + "'", con);
             int id = (int)cmd.ExecuteScalar();
             if (answer == false)
-            {
+            { 
                 answer = true;
-                string url = zalo.GetAudioUrl(tb_answer.Text, id);
+                string url = zalo.GetAudioUrl(tb_zaloApiKey.Text, tb_answer.Text, id);
                 Thread.Sleep(500);
                 zalo.PlaySoundFromUrl(url);
             }
@@ -639,6 +633,20 @@ namespace KdgTranslationApp
                 RegisterHotKey(this.Handle, 3, MOD_ALT, (int)(Keys)Enum.Parse(typeof(Keys), hotKey));
             }
 
+            if(String.IsNullOrEmpty(tb_zaloApiKey.Text))
+            {
+                MessageBox.Show("Hãy nhập API");
+                using (SQLiteCommand cmd = new SQLiteCommand("SELECT key  FROM apiKey", con))
+                {
+                    string result = (string)cmd.ExecuteScalar();
+                    tb_zaloApiKey.Text = result;
+                }
+            }
+            else
+            {
+                dbcon.UpdateZaloApiKey(tb_zaloApiKey.Text);
+            }
+
             dbcon.UpdateChooseVoice(cbb_ChosseSpeaker.Text);
         }
 
@@ -719,6 +727,11 @@ namespace KdgTranslationApp
             }
         }
 
+        /// <summary>
+        /// tự copy văn bản được bôi đen vào form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cbtn_autoCopy_CheckStateChanged(object sender, EventArgs e)
         {
             if (cbtn_autoCopy.CheckState == CheckState.Checked)
@@ -729,6 +742,21 @@ namespace KdgTranslationApp
             {
                 Unsubscribe();
             }
+        }
+
+        /// <summary>
+        /// mở đường dẫn lấy api
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            // Ngăn chặn mở đường link mặc định
+            e.Link.Visited = true;
+
+            // Mở đường link tùy chỉnh
+            string customLink = "https://zalo.ai/"; // Đường link tùy chỉnh
+            System.Diagnostics.Process.Start(customLink);
         }
     }
 }

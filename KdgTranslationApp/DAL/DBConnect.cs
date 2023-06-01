@@ -90,5 +90,26 @@ namespace AutoCopySelectionText
             cmd.ExecuteNonQuery();
             con.Close();
         }
+
+        public void InsertZaloApiKey(SQLiteConnection con, string key)
+        {
+            string sql = "insert into apiKey (key) values (@key)";
+            var com = new SQLiteCommand(sql, con);
+            com.Parameters.AddWithValue("@key", key);
+            com.ExecuteNonQuery();
+        }
+
+        public void UpdateZaloApiKey(string key)
+        {
+            if (con.State == System.Data.ConnectionState.Closed)
+            {
+                con.Open();
+            }
+            string update = "UPDATE apiKey SET key = @key";
+            SQLiteCommand cmd = new SQLiteCommand(update, con);
+            cmd.Parameters.AddWithValue("@key", key);
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
     }
 }

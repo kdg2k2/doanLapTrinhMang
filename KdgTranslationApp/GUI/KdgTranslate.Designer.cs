@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KdgTranslateApp));
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
+            this.tb_answer = new DevExpress.XtraRichEdit.RichEditControl();
             this.cbtn_autoCopy = new System.Windows.Forms.CheckBox();
             this.btnTranslate = new DevExpress.XtraEditors.SimpleButton();
             this.cbtn_autoTranslate = new System.Windows.Forms.CheckBox();
@@ -50,6 +51,7 @@
             this.contextMenuStrip_CameraIcon = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.englishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.vietnameseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tb_quest = new DevExpress.XtraRichEdit.RichEditControl();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.label9 = new System.Windows.Forms.Label();
             this.cbb_ChosseSpeaker = new System.Windows.Forms.ComboBox();
@@ -72,8 +74,9 @@
             this.vietnameseToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.notifyIcon_Taskbar = new System.Windows.Forms.NotifyIcon(this.components);
-            this.tb_quest = new DevExpress.XtraRichEdit.RichEditControl();
-            this.tb_answer = new DevExpress.XtraRichEdit.RichEditControl();
+            this.label10 = new System.Windows.Forms.Label();
+            this.tb_zaloApiKey = new System.Windows.Forms.TextBox();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
@@ -98,7 +101,6 @@
             // 
             // xtraTabPage1
             // 
-            this.xtraTabPage1.Controls.Add(this.tb_answer);
             this.xtraTabPage1.Controls.Add(this.cbtn_autoCopy);
             this.xtraTabPage1.Controls.Add(this.btnTranslate);
             this.xtraTabPage1.Controls.Add(this.cbtn_autoTranslate);
@@ -112,14 +114,25 @@
             this.xtraTabPage1.Controls.Add(this.cbb_quest);
             this.xtraTabPage1.Controls.Add(this.cbtnCamera);
             this.xtraTabPage1.Controls.Add(this.tb_quest);
+            this.xtraTabPage1.Controls.Add(this.tb_answer);
             this.xtraTabPage1.Name = "xtraTabPage1";
             this.xtraTabPage1.Size = new System.Drawing.Size(560, 316);
-            this.xtraTabPage1.Text = "Main";
+            this.xtraTabPage1.Text = "Dịch";
+            // 
+            // tb_answer
+            // 
+            this.tb_answer.AccessibleRole = System.Windows.Forms.AccessibleRole.ScrollBar;
+            this.tb_answer.ActiveViewType = DevExpress.XtraRichEdit.RichEditViewType.Simple;
+            this.tb_answer.LayoutUnit = DevExpress.XtraRichEdit.DocumentLayoutUnit.Pixel;
+            this.tb_answer.Location = new System.Drawing.Point(11, 182);
+            this.tb_answer.Name = "tb_answer";
+            this.tb_answer.Size = new System.Drawing.Size(538, 126);
+            this.tb_answer.TabIndex = 32;
             // 
             // cbtn_autoCopy
             // 
             this.cbtn_autoCopy.AutoSize = true;
-            this.cbtn_autoCopy.Location = new System.Drawing.Point(254, 0);
+            this.cbtn_autoCopy.Location = new System.Drawing.Point(256, 3);
             this.cbtn_autoCopy.Name = "cbtn_autoCopy";
             this.cbtn_autoCopy.Size = new System.Drawing.Size(74, 17);
             this.cbtn_autoCopy.TabIndex = 30;
@@ -133,18 +146,18 @@
             this.btnTranslate.Name = "btnTranslate";
             this.btnTranslate.Size = new System.Drawing.Size(77, 23);
             this.btnTranslate.TabIndex = 29;
-            this.btnTranslate.Text = "Translate";
+            this.btnTranslate.Text = "Dịch";
             this.btnTranslate.Click += new System.EventHandler(this.btnTranslate_Click);
             // 
             // cbtn_autoTranslate
             // 
             this.cbtn_autoTranslate.AutoSize = true;
             this.cbtn_autoTranslate.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.cbtn_autoTranslate.Location = new System.Drawing.Point(438, 0);
+            this.cbtn_autoTranslate.Location = new System.Drawing.Point(459, 3);
             this.cbtn_autoTranslate.Name = "cbtn_autoTranslate";
-            this.cbtn_autoTranslate.Size = new System.Drawing.Size(115, 17);
+            this.cbtn_autoTranslate.Size = new System.Drawing.Size(87, 17);
             this.cbtn_autoTranslate.TabIndex = 24;
-            this.cbtn_autoTranslate.Text = "Instant translation";
+            this.cbtn_autoTranslate.Text = "Dịch tự động";
             this.cbtn_autoTranslate.UseVisualStyleBackColor = true;
             this.cbtn_autoTranslate.CheckedChanged += new System.EventHandler(this.cbtn_autoTranslate_CheckedChanged);
             // 
@@ -152,11 +165,11 @@
             // 
             this.cbtn_removeSpace.AutoSize = true;
             this.cbtn_removeSpace.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.cbtn_removeSpace.Location = new System.Drawing.Point(335, 0);
+            this.cbtn_removeSpace.Location = new System.Drawing.Point(339, 3);
             this.cbtn_removeSpace.Name = "cbtn_removeSpace";
-            this.cbtn_removeSpace.Size = new System.Drawing.Size(96, 17);
+            this.cbtn_removeSpace.Size = new System.Drawing.Size(111, 17);
             this.cbtn_removeSpace.TabIndex = 23;
-            this.cbtn_removeSpace.Text = "Remove space";
+            this.cbtn_removeSpace.Text = "Xóa khoảng trắng";
             this.cbtn_removeSpace.UseVisualStyleBackColor = true;
             this.cbtn_removeSpace.CheckStateChanged += new System.EventHandler(this.cbtn_removeSpace_CheckStateChanged);
             // 
@@ -515,8 +528,22 @@
             this.vietnameseToolStripMenuItem.Text = "Vietnamese";
             this.vietnameseToolStripMenuItem.Click += new System.EventHandler(this.vietnameseToolStripMenuItem_Click_1);
             // 
+            // tb_quest
+            // 
+            this.tb_quest.AccessibleRole = System.Windows.Forms.AccessibleRole.ScrollBar;
+            this.tb_quest.ActiveViewType = DevExpress.XtraRichEdit.RichEditViewType.Simple;
+            this.tb_quest.LayoutUnit = DevExpress.XtraRichEdit.DocumentLayoutUnit.Pixel;
+            this.tb_quest.Location = new System.Drawing.Point(11, 22);
+            this.tb_quest.Name = "tb_quest";
+            this.tb_quest.Size = new System.Drawing.Size(538, 126);
+            this.tb_quest.TabIndex = 31;
+            this.tb_quest.TextChanged += new System.EventHandler(this.tb_quest_TextChanged);
+            // 
             // xtraTabPage2
             // 
+            this.xtraTabPage2.Controls.Add(this.linkLabel1);
+            this.xtraTabPage2.Controls.Add(this.tb_zaloApiKey);
+            this.xtraTabPage2.Controls.Add(this.label10);
             this.xtraTabPage2.Controls.Add(this.label9);
             this.xtraTabPage2.Controls.Add(this.cbb_ChosseSpeaker);
             this.xtraTabPage2.Controls.Add(this.label8);
@@ -533,29 +560,29 @@
             this.xtraTabPage2.Controls.Add(this.label1);
             this.xtraTabPage2.Name = "xtraTabPage2";
             this.xtraTabPage2.Size = new System.Drawing.Size(560, 316);
-            this.xtraTabPage2.Text = "Properties";
+            this.xtraTabPage2.Text = "Tùy Chỉnh";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(138, 206);
+            this.label9.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(171, 248);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(101, 13);
+            this.label9.Size = new System.Drawing.Size(56, 13);
             this.label9.TabIndex = 6;
-            this.label9.Text = "Default Speaker:";
+            this.label9.Text = "Giọng Đọc";
             // 
             // cbb_ChosseSpeaker
             // 
             this.cbb_ChosseSpeaker.FormattingEnabled = true;
             this.cbb_ChosseSpeaker.Items.AddRange(new object[] {
-            "South women",
-            "Northern women",
-            "South men",
-            "Northern men"});
-            this.cbb_ChosseSpeaker.Location = new System.Drawing.Point(238, 231);
+            "Nữ Miền Nam",
+            "Nữ Miền Bắc",
+            "Nam Miền Nam",
+            "Nam Miền Bắc"});
+            this.cbb_ChosseSpeaker.Location = new System.Drawing.Point(262, 245);
             this.cbb_ChosseSpeaker.Name = "cbb_ChosseSpeaker";
-            this.cbb_ChosseSpeaker.Size = new System.Drawing.Size(134, 21);
+            this.cbb_ChosseSpeaker.Size = new System.Drawing.Size(110, 21);
             this.cbb_ChosseSpeaker.TabIndex = 5;
             // 
             // label8
@@ -566,7 +593,7 @@
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(106, 25);
             this.label8.TabIndex = 4;
-            this.label8.Text = "Hot Keys";
+            this.label8.Text = "Phím Tắt";
             // 
             // label5
             // 
@@ -619,7 +646,7 @@
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(85, 42);
             this.btnSave.TabIndex = 2;
-            this.btnSave.Text = "Save";
+            this.btnSave.Text = "Lưu";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
@@ -656,9 +683,9 @@
             this.label2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(138, 114);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(130, 13);
+            this.label2.Size = new System.Drawing.Size(89, 13);
             this.label2.TabIndex = 0;
-            this.label2.Text = "Use Text Recognition:";
+            this.label2.Text = "Quét Màn Hình";
             // 
             // label1
             // 
@@ -666,9 +693,9 @@
             this.label1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(138, 55);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(102, 13);
+            this.label1.Size = new System.Drawing.Size(85, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Show Main Form:";
+            this.label1.Text = "Ẩn/Hiện Form";
             // 
             // contextMenuStrip_notiIcon
             // 
@@ -724,26 +751,33 @@
             this.notifyIcon_Taskbar.Visible = true;
             this.notifyIcon_Taskbar.MouseClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_Taskbar_MouseClick_1);
             // 
-            // tb_quest
+            // label10
             // 
-            this.tb_quest.AccessibleRole = System.Windows.Forms.AccessibleRole.ScrollBar;
-            this.tb_quest.ActiveViewType = DevExpress.XtraRichEdit.RichEditViewType.Simple;
-            this.tb_quest.LayoutUnit = DevExpress.XtraRichEdit.DocumentLayoutUnit.Pixel;
-            this.tb_quest.Location = new System.Drawing.Point(11, 22);
-            this.tb_quest.Name = "tb_quest";
-            this.tb_quest.Size = new System.Drawing.Size(538, 126);
-            this.tb_quest.TabIndex = 31;
-            this.tb_quest.TextChanged += new System.EventHandler(this.tb_quest_TextChanged);
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(138, 215);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(54, 13);
+            this.label10.TabIndex = 7;
+            this.label10.Text = "Zalo API";
             // 
-            // tb_answer
+            // tb_zaloApiKey
             // 
-            this.tb_answer.AccessibleRole = System.Windows.Forms.AccessibleRole.ScrollBar;
-            this.tb_answer.ActiveViewType = DevExpress.XtraRichEdit.RichEditViewType.Simple;
-            this.tb_answer.LayoutUnit = DevExpress.XtraRichEdit.DocumentLayoutUnit.Pixel;
-            this.tb_answer.Location = new System.Drawing.Point(11, 182);
-            this.tb_answer.Name = "tb_answer";
-            this.tb_answer.Size = new System.Drawing.Size(538, 126);
-            this.tb_answer.TabIndex = 32;
+            this.tb_zaloApiKey.Location = new System.Drawing.Point(204, 212);
+            this.tb_zaloApiKey.Name = "tb_zaloApiKey";
+            this.tb_zaloApiKey.Size = new System.Drawing.Size(211, 21);
+            this.tb_zaloApiKey.TabIndex = 8;
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(421, 215);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(74, 13);
+            this.linkLabel1.TabIndex = 9;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "Lấy API ở đây";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // KdgTranslateApp
             // 
@@ -818,6 +852,9 @@
         private System.Windows.Forms.CheckBox cbtn_autoCopy;
         private DevExpress.XtraRichEdit.RichEditControl tb_quest;
         private DevExpress.XtraRichEdit.RichEditControl tb_answer;
+        private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.TextBox tb_zaloApiKey;
+        private System.Windows.Forms.Label label10;
     }
 }
 
